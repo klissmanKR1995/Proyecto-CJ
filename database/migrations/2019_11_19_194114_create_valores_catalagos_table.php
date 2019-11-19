@@ -14,7 +14,12 @@ class CreateValoresCatalagosTable extends Migration
     public function up()
     {
         Schema::create('valores_catalagos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_valor');
+            $table->bigInteger('id_catalogo')->unsigned();
+            $table->string('valor_variable');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreing('id_catalogo')->references('id_catalogo')->on('catalogos');
+            $table->foreing('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

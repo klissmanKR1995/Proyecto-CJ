@@ -14,7 +14,13 @@ class CreateJuzgadosTable extends Migration
     public function up()
     {
         Schema::create('juzgados', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_juzgado');
+            $table->string('nombre_juzgado');
+            $table->string('estatus');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('id_distrito')->unsigned();
+            $table->foreing('user_id')->references('id')->on('users');
+            $table->foreing('id_distrito')->references('id_distrito')->on('distritos');
             $table->timestamps();
         });
     }

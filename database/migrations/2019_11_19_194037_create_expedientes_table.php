@@ -14,7 +14,17 @@ class CreateExpedientesTable extends Migration
     public function up()
     {
         Schema::create('expedientes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_expediente');
+            $table->integer('numero_expediente');
+            $table->string('nombre_actor');
+            $table->string('nombre_demandado');
+            $table->date('fecha_en_tribunal');
+            $table->date('fecha_en_juzgado');
+            $table->bigInteger('id_juicio')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreing('id_juicio')->references('id_juicio')->on('juicios');   
+            $table->foreing('user_id')->references('id')->on('users');  
+
             $table->timestamps();
         });
     }
