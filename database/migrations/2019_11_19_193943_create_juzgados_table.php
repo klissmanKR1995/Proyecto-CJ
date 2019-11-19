@@ -19,8 +19,8 @@ class CreateJuzgadosTable extends Migration
             $table->string('estatus');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('id_distrito')->unsigned();
-            $table->foreing('user_id')->references('id')->on('users');
-            $table->foreing('id_distrito')->references('id_distrito')->on('distritos');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('id_distrito')->references('id_distrito')->on('distritos');
             $table->timestamps();
         });
     }

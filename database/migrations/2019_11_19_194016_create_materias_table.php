@@ -18,7 +18,7 @@ class CreateMateriasTable extends Migration
             $table->string('nombre_materia');
             $table->string('estatus');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreing('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

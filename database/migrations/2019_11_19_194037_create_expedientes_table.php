@@ -22,8 +22,8 @@ class CreateExpedientesTable extends Migration
             $table->date('fecha_en_juzgado');
             $table->bigInteger('id_juicio')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->foreing('id_juicio')->references('id_juicio')->on('juicios');   
-            $table->foreing('user_id')->references('id')->on('users');  
+            $table->foreign('id_juicio')->references('id_juicio')->on('juicios');   
+            $table->foreign('user_id')->references('id')->on('users');  
 
             $table->timestamps();
         });

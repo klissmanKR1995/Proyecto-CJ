@@ -18,8 +18,8 @@ class CreateValoresCatalagosTable extends Migration
             $table->bigInteger('id_catalogo')->unsigned();
             $table->string('valor_variable');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreing('id_catalogo')->references('id_catalogo')->on('catalogos');
-            $table->foreing('user_id')->references('id')->on('users');
+            $table->foreign('id_catalogo')->references('id_catalogo')->on('catalogos');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

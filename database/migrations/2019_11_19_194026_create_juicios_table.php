@@ -19,8 +19,8 @@ class CreateJuiciosTable extends Migration
             $table->string('estatus');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('id_materia')->unsigned();
-            $table->foreing('user_id')->references('id')->on('users');   
-            $table->foreing('id_materia')->references('id_materia')->on('materias');    
+            $table->foreign('user_id')->references('id')->on('users');   
+            $table->foreign('id_materia')->references('id_materia')->on('materias');    
             $table->timestamps();
         });
     }
