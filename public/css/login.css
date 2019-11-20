@@ -1,0 +1,38 @@
+.ancho{
+	width: 80%;
+}
+
+.panelejemplo{
+  background-image: url(../images/fondo_jumbotron.jpg);
+  background-size: 100% 100%;
+
+}
+
+hr {
+background-color: #A7A7A6;
+height: 1px;
+border: 0;
+color: blue;
+width: 80%;
+}
+
+.jumbotron{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+.navbar{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+.login-container{
+  max-width: 100%;
+}
+
+
+.texto{
+	font-size: 150%;
+	color: #DEDEDE;
+}
+

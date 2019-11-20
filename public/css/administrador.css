@@ -1,0 +1,38 @@
+.sidebar-wrapper{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+#sidebar-wrapper{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+.escudo{
+
+	margin-top: -1em;
+	width: 75%;
+
+}
+
+.fondo{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+#fondo{
+	background-image: url(../images/fondo_jumbotron.jpg);
+  	background-size: 100% 100%;
+}
+
+ .rayabutron{
+
+  background-color: white;
+  
+ }
+
+
+input{
+
+	width: 50%;
+}
