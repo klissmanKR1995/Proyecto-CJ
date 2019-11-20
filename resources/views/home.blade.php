@@ -90,12 +90,12 @@
                               </a>
                           </li>
                            <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-juicios-tab" data-toggle="pill" href="#v-pills-juicios" role="tab" aria-controls="v-pills-juicios" aria-selected="false">
+                              <a class="nav-link p-1" id="v-pills-variables-tab" data-toggle="pill" href="#v-pills-variables" role="tab" aria-controls="v-pills-variables" aria-selected="false">
                               <i class="fas fa-align-justify"></i> Variables
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-variables-tab" data-toggle="pill" href="#v-pills-variables" role="tab" aria-controls="v-pills-variables" aria-selected="false">
+                              <a class="nav-link p-1" id="v-pills-valoresvariables-tab" data-toggle="pill" href="#v-pills-valoresvariables" role="tab" aria-controls="v-pills-valoresvariables" aria-selected="false">
                               <i class="fas fa-book"></i>  Valores-Variables
                               </a>
                           </li>
@@ -160,7 +160,7 @@
 
           <div class="container">
            
-            <consulta-component></consulta-component>
+            
 
           </div>
            
@@ -176,7 +176,7 @@
 
           <div class="container">
            
-            <distrito-component> </distrito-component>
+           
 
           </div>
 
@@ -194,7 +194,7 @@
 
           <div class="container">
            
-            <juzgado-component></juzgado-component>
+            
 
             
 
@@ -202,6 +202,24 @@
           </div>
         </div>
       <!-- Termina formulario juzgado -->
+
+       <!-- Empieza formulario de catalogos variables -->
+        <div class="tab-pane fade" id="v-pills-variables" role="tabpanel" aria-labelledby="v-pills-variables-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+          <variables-component> </variables-component>
+
+          </div>
+        </div>
+      <!-- Termina formulario juzgado -->
+
+
+
     <!-- /#wrapper -->
   </div>
 <!--Cierre de div="app" -->

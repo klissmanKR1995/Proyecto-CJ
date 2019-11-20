@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\catalogos;
+
 class catalogosController extends Controller
 {
     /**
@@ -11,9 +13,15 @@ class catalogosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $catalogos = catalogos::all();
+        
+         if($request->ajax()){
+            return catalogos::where('user_id', auth()->id())->get();
+        }else{
+            return view('home', compact('catalogos'));
+        }
     }
 
     /**
@@ -34,7 +42,13 @@ class catalogosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $catalogos = new catalogos();
+        $catalogos->nombre_variable = $request->nombre_variable;
+        $catalogos->estatus = $request->estatus;
+        $catalogos->user_id = auth()->id();
+        $catalogos->save();
+
+        return $catalogos;
     }
 
     /**
@@ -68,7 +82,11 @@ class catalogosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $catalogos = catalogos::find($id);
+        $catalogos->nombre_variable = $request->nombre_variable;
+        $catalogos->estatus = $request->estatus;
+        $catalogos->save();
+        return $catalogos;
     }
 
     /**
@@ -79,6 +97,7 @@ class catalogosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $catalogos = catalogos::find($id);
+        $catalogos->delete();
     }
 }
