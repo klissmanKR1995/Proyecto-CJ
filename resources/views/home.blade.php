@@ -176,13 +176,12 @@
 
           <div class="container">
            
-           
+           distritos
 
           </div>
-
-          <br>
-        <!-- Termina formulario tipos de usuarios -->
+    
       </div>
+     
       <!-- Termina formulario distritos -->
 
       <!-- Empieza formulario de juzgado -->
@@ -194,9 +193,7 @@
 
           <div class="container">
            
-            
-
-            
+           bajhabjhabj
 
 
           </div>
@@ -213,6 +210,21 @@
           <div class="container">
            
           <variables-component> </variables-component>
+
+          </div>
+        </div>
+      <!-- Termina formulario juzgado -->
+
+      <!-- Empieza formulario de catalogos materias -->
+        <div class="tab-pane fade" id="v-pills-materia" role="tabpanel" aria-labelledby="v-pills-materia-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+            <materias-component> </materias-component>
 
           </div>
         </div>
