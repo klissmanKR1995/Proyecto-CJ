@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/variables', 'catalogosController');
 
 Route::resource('/materias', 'materiasController');
+
+Route::resource('/distritos','distritosController');

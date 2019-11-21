@@ -176,7 +176,7 @@
 
           <div class="container">
            
-           distritos
+           <distritos-component></distritos-component>
 
           </div>
     

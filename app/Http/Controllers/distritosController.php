@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\distritos;
+
+
 
 class distritosController extends Controller
 {
@@ -11,9 +14,15 @@ class distritosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index(Request $request)
     {
-        //
+        $distritos = distritos::all();
+        
+         if($request->ajax()){
+            return distritos::where('user_id', auth()->id())->get();
+        }else{
+            return view('home', compact('distritos'));
+        }
     }
 
     /**
@@ -34,7 +43,13 @@ class distritosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $distritos = new distritos();
+        $distritos->nombre_distrito = $request->nombre_distrito;
+        $distritos->estatus = $request->estatus;
+        $distritos->user_id = auth()->id();
+        $distritos->save();
+
+        return $distritos;
     }
 
     /**
@@ -68,7 +83,11 @@ class distritosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $distritos = distritos::find($id);
+        $distritos->nombre_distrito = $request->nombre_distrito;
+        $distritos->estatus = $request->estatus;
+        $distritos->save();
+        return $distritos;
     }
 
     /**
@@ -79,6 +98,7 @@ class distritosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $distritos = distritos::find($id);
+        $distritos->delete();
     }
 }
