@@ -11,7 +11,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('variables-component', require('./components/variablesComponent.vue').default);
-
+Vue.component('valoresvariables-component', require('./components/valoresvariablesComponent.vue').default);
 
 const app = new Vue({
     el: '#app'
