@@ -85,7 +85,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-modulos-tab" data-toggle="pill" href="#v-pills-modulos" role="tab" aria-controls="v-pills-modulos" aria-selected="false">
+                              <a class="nav-link p-1" id="v-pills-juicios-tab" data-toggle="pill" href="#v-pills-juicios" role="tab" aria-controls="v-pills-juicios" aria-selected="false">
                                <i class="fas fa-boxes"></i>   Juicios
                               </a>
                           </li>
@@ -160,7 +160,7 @@
 
           <div class="container">
            
-            
+            Tipo de users
 
           </div>
            
@@ -193,7 +193,7 @@
 
           <div class="container">
            
-           bajhabjhabj
+           <juzgados-component></juzgados-component>
 
 
           </div>
@@ -228,8 +228,23 @@
 
           </div>
         </div>
-      <!-- Termina formulario juzgado -->
+      <!-- Termina formulario materias -->
 
+
+      <!-- Empieza formulario de catalogos juicios -->
+        <div class="tab-pane fade" id="v-pills-juicios" role="tabpanel" aria-labelledby="v-pills-juicios-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+            <juicios-component> </juicios-component>
+
+          </div>
+        </div>
+      <!-- Termina formulario juicios -->
 
 
     <!-- /#wrapper -->

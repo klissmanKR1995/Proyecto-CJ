@@ -24,3 +24,7 @@ Route::resource('/variables', 'catalogosController');
 Route::resource('/materias', 'materiasController');
 
 Route::resource('/distritos','distritosController');
+
+Route::resource('/juzgados', 'juzgadosController');
+
+Route::resource('/juicios', 'juiciosController');

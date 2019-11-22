@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\juzgados;
+use App\distritos;
+
 
 class juzgadosController extends Controller
 {
@@ -11,9 +14,15 @@ class juzgadosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index(Request $request)
     {
-        //
+        $juzgados = juzgados::all();
+        
+         if($request->ajax()){
+            return juzgados::where('user_id', auth()->id())->get();
+        }else{
+            return view('home', compact('juzgados'));
+        }
     }
 
     /**
@@ -34,7 +43,14 @@ class juzgadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $juzgados = new juzgados();
+        $juzgados->nombre_juzgado = $request->nombre_juzgado;
+        $juzgados->estatus = $request->estatus;
+        $juzgados->id_distrito= $request->id_distrito;
+        $juzgados->user_id = auth()->id();
+        $juzgados->save();
+
+        return $juzgados;
     }
 
     /**
@@ -68,7 +84,12 @@ class juzgadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $juzgados = juzgados::find($id);
+        $juzgados->nombre_juzgado = $request->nombre_juzgado;
+        $juzgados->estatus = $request->estatus;
+        $juzgados->id_distrito = $request->id_distrito;
+        $juzgados->save();
+        return $juzgados;
     }
 
     /**
@@ -79,6 +100,7 @@ class juzgadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $juzgados = juzgados::find($id);
+        $juzgados->delete();
     }
 }
