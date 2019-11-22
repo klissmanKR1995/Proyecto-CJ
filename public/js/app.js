@@ -86,6 +86,7 @@
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -51875,11 +51876,14 @@ module.exports = function(module) {
 
 /***/ }),
 
+=======
+>>>>>>> a614cec30a8a50d95a89af417464e0229a245c67
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
 /*! no static exports found */
+<<<<<<< HEAD
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -52370,7 +52374,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_variablesComponent_vue_vue_type_template_id_a481c05e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
+=======
+/***/ (function(module, exports) {
+>>>>>>> a614cec30a8a50d95a89af417464e0229a245c67
 
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\wamp64\\www\\Proyecto-CJ\\resources\\js\\app.js: Unexpected token (14:0)\n\n  12 | Vue.component('example-component', require('./components/ExampleComponent.vue').default);\n  13 | Vue.component('variables-component', require('./components/variablesComponent.vue').default);\n> 14 | <<<<<<< HEAD\n     | ^\n  15 | Vue.component('valoresvariables-component', require('./components/valoresvariablesComponent.vue').default);\n  16 | =======\n  17 | Vue.component('materias-component', require('./components/materiasComponent.vue').default);\n    at Parser.raise (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:6930:17)\n    at Parser.unexpected (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:8323:16)\n    at Parser.parseExprAtom (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:9582:20)\n    at Parser.parseExprSubscripts (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:9165:23)\n    at Parser.parseMaybeUnary (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:9145:21)\n    at Parser.parseExprOps (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:9011:23)\n    at Parser.parseMaybeConditional (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:8984:23)\n    at Parser.parseMaybeAssign (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:8930:21)\n    at Parser.parseExpression (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:8880:23)\n    at Parser.parseStatementContent (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:10740:23)\n    at Parser.parseStatement (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:10611:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:11187:25)\n    at Parser.parseBlockBody (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:11174:10)\n    at Parser.parseTopLevel (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:10542:10)\n    at Parser.parse (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:12051:10)\n    at parse (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\parser\\lib\\index.js:12102:38)\n    at parser (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:168:34)\n    at normalizeFile (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:102:11)\n    at runSync (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at C:\\wamp64\\www\\Proyecto-CJ\\node_modules\\@babel\\core\\lib\\transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
 
 /***/ }),
 

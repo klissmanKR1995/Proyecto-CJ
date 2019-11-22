@@ -213,7 +213,23 @@
 
           </div>
         </div>
-      <!-- Termina formulario juzgado -->
+      <!-- Termina formulario catalogos -->
+
+
+         <!-- Empieza formulario de valores variables -->
+        <div class="tab-pane fade" id="v-pills-valoresvariables" role="tabpanel" aria-labelledby="v-pills-valoresvariables-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de valores-variables, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+              <valoresvariables-component> </valoresvariables-component>
+
+          </div>
+        </div>
+      <!-- Termina formulario valores -->
 
       <!-- Empieza formulario de catalogos materias -->
         <div class="tab-pane fade" id="v-pills-materia" role="tabpanel" aria-labelledby="v-pills-materia-tab">

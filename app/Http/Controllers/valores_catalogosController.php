@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\valorescatalagos;
+
 class valores_catalogosController extends Controller
 {
     /**
@@ -11,9 +13,15 @@ class valores_catalogosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+         $valorescatalagos = valorescatalagos::all();
+        
+         if($request->ajax()){
+            return valorescatalagos::where('user_id', auth()->id())->get();
+        }else{
+            return view('home', compact('valorescatalagos'));
+        }
     }
 
     /**
@@ -34,7 +42,13 @@ class valores_catalogosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valorescatalagos = new valorescatalagos();
+        $valorescatalagos->id_catalogo = $request->id_catalogo;
+        $valorescatalagos->valor_variable = $request->valor_variable;
+        $valorescatalagos->user_id = auth()->id();
+        $valorescatalagos->save();
+
+        return $valorescatalagos;
     }
 
     /**
@@ -68,7 +82,11 @@ class valores_catalogosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $valorescatalagos = valorescatalagos::find($id);
+        $valorescatalagos->id_catalogo = $request->id_catalogo;
+        $valorescatalagos->valor_variable = $request->valor_variable;
+        $valorescatalagos->save();
+        return $valorescatalagos;
     }
 
     /**
@@ -79,6 +97,7 @@ class valores_catalogosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $valorescatalagos = valorescatalagos::find($id);
+        $valorescatalagos->delete();
     }
 }

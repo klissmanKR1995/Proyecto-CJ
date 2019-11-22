@@ -21,10 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/variables', 'catalogosController');
 
+Route::resource('/valorescatalogos', 'valores_catalogosController');
+
 Route::resource('/materias', 'materiasController');
 
 Route::resource('/distritos','distritosController');
 
+<<<<<<< HEAD
 Route::resource('/juzgados', 'juzgadosController');
 
 Route::resource('/juicios', 'juiciosController');
+=======
+>>>>>>> a614cec30a8a50d95a89af417464e0229a245c67

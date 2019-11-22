@@ -11,10 +11,14 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('variables-component', require('./components/variablesComponent.vue').default);
+
+Vue.component('valoresvariables-component', require('./components/valoresvariablesComponent.vue').default);
+
 Vue.component('materias-component', require('./components/materiasComponent.vue').default);
 Vue.component('distritos-component', require('./components/distritosComponent.vue').default);
 Vue.component('juzgados-component', require('./components/juzgadosComponent.vue').default);
 Vue.component('juicios-component', require('./components/juiciosComponent.vue').default);
+
 
 
 const app = new Vue({
