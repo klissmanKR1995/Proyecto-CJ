@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\materias;
+
 
 class materiasController extends Controller
 {
@@ -11,9 +13,15 @@ class materiasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   public function index(Request $request)
     {
-        //
+        $materias = materias::all();
+        
+         if($request->ajax()){
+            return materias::where('user_id', auth()->id())->get();
+        }else{
+            return view('home', compact('materias'));
+        }
     }
 
     /**
@@ -34,7 +42,13 @@ class materiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $materias = new materias();
+        $materias->nombre_materia = $request->nombre_materia;
+        $materias->estatus = $request->estatus;
+        $materias->user_id = auth()->id();
+        $materias->save();
+
+        return $materias;
     }
 
     /**
@@ -68,7 +82,11 @@ class materiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $materias = materias::find($id);
+        $materias->nombre_materia = $request->nombre_materia;
+        $materias->estatus = $request->estatus;
+        $materias->save();
+        return $materias;
     }
 
     /**
@@ -79,6 +97,7 @@ class materiasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $materias = materias::find($id);
+        $materias->delete();
     }
 }
