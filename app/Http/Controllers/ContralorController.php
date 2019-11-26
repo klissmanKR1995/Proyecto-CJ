@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-class HomeController extends Controller
+use App\Http\Controllers\Controller;
+
+class ContralorController extends Controller
 {
     public function __construct()
     {
@@ -9,9 +13,9 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin']);
+        $request->user()->authorizeRoles(['contralor']);
         
-        return view('home');
+        return view('contralor');
 
     }
 }

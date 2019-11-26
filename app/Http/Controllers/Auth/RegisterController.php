@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/oficial';
 
     /**
      * Create a new controller instance.
@@ -63,10 +65,44 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => $data['role_id'],
         ]);
+
+       $user->roles()->attach(Role::where('name', 'admin')->first());
+
+       $user->roles()->attach(Role::where('name', 'oficial')->first());
+
+       $user->roles()->attach(Role::where('name', 'contralor')->first());
+
+
+       return $user;
     }
+
+    public function redirectTo(){
+            
+        // User role
+        $role = Auth::user()->role_id;
+        
+        // Check user role
+        switch ($role) {
+            case 1:
+                    return '/home';
+                break;
+            case 2:
+                    return '/oficial';
+                break; 
+            case 3:
+                    return '/contralor';
+                break; 
+            default:
+                    return '/login'; 
+                break;
+        }
+    }
+
 }
+

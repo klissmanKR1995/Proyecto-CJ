@@ -17,7 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/oficial', 'OficialController@index');
+
+Route::get('/contralor', 'ContralorController@index');
+
+
+
 
 Route::resource('/variables', 'catalogosController');
 
@@ -27,9 +36,6 @@ Route::resource('/materias', 'materiasController');
 
 Route::resource('/distritos','distritosController');
 
-<<<<<<< HEAD
 Route::resource('/juzgados', 'juzgadosController');
 
 Route::resource('/juicios', 'juiciosController');
-=======
->>>>>>> a614cec30a8a50d95a89af417464e0229a245c67
