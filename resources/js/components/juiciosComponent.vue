@@ -29,7 +29,7 @@
 
          <div class="form-group">
             <select id="id_materia" class="form-control" v-model="juicio.id_materia">
-              <option value="">Distrito al que pertenece </option>
+              <option value="">Materia al que pertenece </option>
               <option v-for="(item, index) in materias" :value="item.id_materia">{{item.nombre_materia}}</option>
             </select>
           </div>

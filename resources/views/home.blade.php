@@ -43,26 +43,9 @@
 
               <a class="nav-link menuMain active" id="v-pills-inicio-tab" data-toggle="pill" href="#v-pills-inicio" role="tab" aria-controls="v-pills-inicio" aria-selected="false"><i class="fas fa-home"></i> Inicio</a>
 
-              <!-- Menu con submenu usuarios-->
+              <a class="nav-link menuMain" id="v-pills-usuarios-tab" data-toggle="pill" href="#v-pills-usuarios" role="tab" aria-controls="v-pills-usuarios" aria-selected="false"><i class="fas fa-user"></i> Usuarios</a>
 
-              <li class="nav-item">
-                  <a class="nav-link collapsed py-1 dropdown-toggle" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-users"></i> Usuarios</a>
-                  <div class="collapse" id="submenu1sub1" aria-expanded="false" aria-controls="v-pills-home">
-                      <ul class="flex-column nav pl-4">
-                          <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-tiposUsuarios-tab" data-toggle="pill" href="#v-pills-tiposUsuarios" role="tab" aria-controls="v-pills-tiposUsuarios" aria-selected="false"><i class="fas fa-users"></i>
-                                   Tipos de Usuario
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-usuarios-tab" data-toggle="pill" href="#v-pills-usuarios" role="tab" aria-controls="v-pills-usuarios" aria-selected="false"> <i class="fas fa-user"></i>
-                                  Altas Usuarios
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <!-- Termina menu con submenu usuarios-->
+              
 
                <!-- Menu con submenu catalogos-->
               <li class="nav-item">
@@ -86,7 +69,7 @@
                           </li>
                           <li class="nav-item">
                               <a class="nav-link p-1" id="v-pills-juicios-tab" data-toggle="pill" href="#v-pills-juicios" role="tab" aria-controls="v-pills-juicios" aria-selected="false">
-                               <i class="fas fa-boxes"></i>   Juicios
+                               <i class="fas fa-align-justify"></i>   Juicios
                               </a>
                           </li>
                            <li class="nav-item">

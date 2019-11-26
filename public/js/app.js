@@ -38711,7 +38711,7 @@ var render = function() {
                   },
                   [
                     _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Distrito al que pertenece ")
+                      _vm._v("Materia al que pertenece ")
                     ]),
                     _vm._v(" "),
                     _vm._l(_vm.materias, function(item, index) {
