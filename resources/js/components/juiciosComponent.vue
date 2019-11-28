@@ -109,7 +109,6 @@
             },
            editar(item){
               const params = {nombre_juicio: item.nombre_juicio, estatus: item.estatus, id_materia: item.id_materia};
-              console.log("identificador " + item.id_juicio)
               axios.put(`/Proyecto-CJ/public/juicios/${item.id_juicio}`, params)
                 .then(res =>{
 
@@ -160,7 +159,6 @@
                     })     
             },
             eliminar(item, index){
-              console.log("identificador " + item.id_juicio)
               axios.delete(`/Proyecto-CJ/public/juicios/${item.id_juicio}`)
                 .then(()=>{
                     this.juicios.splice(index, 1);

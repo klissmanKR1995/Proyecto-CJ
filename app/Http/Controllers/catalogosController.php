@@ -8,6 +8,12 @@ use App\catalogos;
 
 class catalogosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +23,8 @@ class catalogosController extends Controller
     {
         $catalogos = catalogos::all();
         
-         if($request->ajax()){
-            return catalogos::where('user_id', auth()->id())->get();
+        if($request->ajax()){
+            return catalogos::all();
         }else{
             return view('home', compact('catalogos'));
         }

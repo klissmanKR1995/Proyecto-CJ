@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\juzgados;
-use App\distritos;
+//use App\distritos;
 
 
 class juzgadosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +26,7 @@ class juzgadosController extends Controller
         $juzgados = juzgados::all();
         
          if($request->ajax()){
-            return juzgados::where('user_id', auth()->id())->get();
+            return juzgados::all();
         }else{
             return view('home', compact('juzgados'));
         }

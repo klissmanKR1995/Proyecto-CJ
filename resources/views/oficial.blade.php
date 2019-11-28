@@ -90,12 +90,13 @@
      <!-- Menu nav -->
       <nav id="fondo" class="navbar navbar-expand-lg navbar-light bg-light border-bottom fondo">
         <button class="btn btn-danger" id="menu-toggle"><i class="fas fa-align-justify"></i></button>
-        <div class="row">
-          <div class="col-md-12 offset-md-3 col-lg-12 col-sm-12 offset-sm-3">
-            <h5 class="text-white"> SISTEMA DE ESTADISTICAS DEL PODER JUDICIAL DEL ESTADO DE TLAXCALA </h5>       
-            <hr class="my-4 rayabutron">
-          </div>
-        </div>
+            <div class="row">
+              <div class="col-md-12 offset-md-1">
+                <h5 class="text-white"> 
+                 SISTEMA GESTOR DE VARIABLES ESTADISTICAS DEL PODER JUDICIAL DEL ESTADO DE TLAXCALA
+                </h5>       
+              </div>
+            </div>  
       </nav>
       <!--Termina menu nav-->
       <!-- Etiqueta para los contenidos del menu Nav-->
@@ -124,11 +125,13 @@
 
           <div class="container">
            
-            Libro de gobierno
+            <expedientes-component> </expedientes-component>
 
           </div>
         </div>
       <!-- Termina formulario libro de gobierno -->
+
+
 
      <!-- Empieza formulario de moduloUno -->
       <div class="tab-pane fade" id="v-pills-moduloUno" role="tabpanel" aria-labelledby="v-pills-moduloUno-tab">
@@ -139,7 +142,7 @@
 
         <div class="container">
          
-          Modulo I
+          <modulouno-component> </modulouno-component>
 
         </div>
       </div>

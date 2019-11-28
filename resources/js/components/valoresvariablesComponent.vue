@@ -55,7 +55,7 @@
               <th scope="col"> Fecha - Registro</th>
             </tr>
             <tr v-for="(item, index) in valorescatalogos" :key="index">
-              <td>{{item.id_catalogo}}</td>
+              <td>{{item.nombre_variable}}</td>
               <td>{{item.valor_variable}}</td>
               <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
               <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>

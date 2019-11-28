@@ -7,6 +7,13 @@ use App\juicios;
 
 class juiciosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +21,11 @@ class juiciosController extends Controller
      */
      public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin','oficial']);
         $juicios = juicios::all();
         
-         if($request->ajax()){
-            return juicios::where('user_id', auth()->id())->get();
+        if($request->ajax()){
+            return juicios::all();
         }else{
             return view('home', compact('juicios'));
         }
@@ -100,5 +108,10 @@ class juiciosController extends Controller
     {
         $juicios = juicios::find($id);
         $juicios->delete();
+    }
+
+    public function searchByID(Request $request)
+    {
+        return json_encode(juicios::where('id_juicio', $request->id_juicio)->get());
     }
 }

@@ -38,3 +38,11 @@ Route::resource('/distritos','distritosController');
 Route::resource('/juzgados', 'juzgadosController');
 
 Route::resource('/juicios', 'juiciosController');
+
+Route::resource('/expedientes', 'expedientesController');
+
+Route::get('/searchByID', 'juiciosController@searchByID')->name('searchByID');
+
+/* Rutas del PDF */
+
+Route::get('distritosPDF', 'distritosController@exportPdf')->name('distritos.pdf');

@@ -40,12 +40,12 @@
               <td>{{item.estatus}}</td>
               <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
               <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
-              <td><button class="btn btn-danger" @click="eliminar(item, index)">Eliminar</button></td>
+              <td><button class="btn btn-danger" @click="confirmar(item.id_distrito, index)">Eliminar</button></td>
             </tr>
         </thead>   
       </table>
 
-       <nav aria-label="Page navigation example">
+      <nav aria-label="Page navigation example">
             <ul class="pagination">
               <li class="page-item"><a class="page-link" href="#">Previous</a></li>
               <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -53,10 +53,32 @@
               <li class="page-item"><a class="page-link" href="#">3</a></li>
               <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
-        </nav>
+      </nav>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirmar elminación</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="id" id="id">
+              <input type="hidden" name="index" id="index">
+              ¿Estas seguro(a) de eliminar el registro seleccionado?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarDistrito('cancelar')">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarDistrito('aceptar')">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
         
-
-
       <br>
     </div>   
   </div>            
@@ -135,12 +157,22 @@
                         console.log(res)
                     })     
             },
-            eliminar(item, index){
-              console.log("identificador " + item.id_distrito)
-              axios.delete(`/Proyecto-CJ/public/distritos/${item.id_distrito}`)
-                .then(()=>{
-                    this.distritos.splice(index, 1);
-                })
+            confirmar(id, index){
+              $('#exampleModal').modal("show")
+              $('#id').val(id)
+              $('#index').val(index)
+            },
+            eliminarDistrito(op){
+              if (op === "aceptar") {
+                axios.delete(`/Proyecto-CJ/public/distritos/` + $("#id").val())
+                  .then(()=>{
+                      this.distritos.splice($("#index").val(), 1);
+                      $('#exampleModal').modal("hide")
+                  })
+              }
+              else{
+                $('#exampleModal').modal("hide")
+              }
 
             }
        }

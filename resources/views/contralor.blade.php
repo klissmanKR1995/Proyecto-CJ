@@ -4,6 +4,13 @@
 	<title></title>
 </head>
 <body>
-Pagina del contralor
+
+<div id="app">
+	 <juicios-component> </juicios-component>
+</div>
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

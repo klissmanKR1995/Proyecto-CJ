@@ -111,12 +111,13 @@
      <!-- Menu nav -->
       <nav id="fondo" class="navbar navbar-expand-lg navbar-light bg-light border-bottom fondo">
         <button class="btn btn-danger" id="menu-toggle"><i class="fas fa-align-justify"></i></button>
-        <div class="row">
-          <div class="col-md-12 offset-md-3 col-lg-12 col-sm-12 offset-sm-3">
-            <h5 class="text-white"> SISTEMA DE ESTADISTICAS DEL PODER JUDICIAL DEL ESTADO DE TLAXCALA </h5>       
-            <hr class="my-4 rayabutron">
-          </div>
-        </div>
+          <div class="row">
+              <div class="col-md-12 offset-md-1">
+                <h5 class="text-white"> 
+                 SISTEMA GESTOR DE VARIABLES ESTADISTICAS DEL PODER JUDICIAL DEL ESTADO DE TLAXCALA
+                </h5>       
+              </div>
+          </div>  
       </nav>
       <!--Termina menu nav-->
       <!-- Etiqueta para los contenidos del menu Nav-->
@@ -252,10 +253,14 @@
 
           <div class="container">
            
-           <distritos-component></distritos-component>
+            <distritos-component></distritos-component>
 
-          </div>
-    
+            <center>
+                <a href="{{ route('distritos.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+                <a href="" class="btn btn-success"> Exportar EXCEL </a>
+            </center>    
+
+          </div>    
       </div>
      
       <!-- Termina formulario distritos -->
@@ -337,6 +342,23 @@
           </div>
         </div>
       <!-- Termina formulario juicios -->
+
+        <!-- Empieza formulario de distritos -->
+        <div class="tab-pane fade" id="v-pills-manualAyuda" role="tabpanel" aria-labelledby="v-pills-manualAyuda-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+           <expedientes-component></expedientes-component>
+
+          </div>
+    
+      </div>
+     
+      <!-- Termina formulario distritos -->
 
 
     <!-- /#wrapper -->

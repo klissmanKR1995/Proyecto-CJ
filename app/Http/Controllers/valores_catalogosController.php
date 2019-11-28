@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\valorescatalagos;
 
 class valores_catalogosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +22,15 @@ class valores_catalogosController extends Controller
      */
     public function index(Request $request)
     {
-         $valorescatalagos = valorescatalagos::all();
         
-         if($request->ajax()){
-            return valorescatalagos::where('user_id', auth()->id())->get();
+        $valorescatalagos = valorescatalagos::all();
+        
+        if($request->ajax()){
+            return DB::table('valores_catalagos')
+            ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
+            ->select('valores_catalagos.*', 'catalogos.nombre_variable')
+            ->orderBy('id_catalogo', 'desc')
+            ->get();        
         }else{
             return view('home', compact('valorescatalagos'));
         }

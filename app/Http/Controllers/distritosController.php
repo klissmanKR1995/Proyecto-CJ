@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use App\distritos;
 
 
 
 class distritosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,13 +24,15 @@ class distritosController extends Controller
      */
      public function index(Request $request)
     {
-        $distritos = distritos::all();
-        
-         if($request->ajax()){
-            return distritos::where('user_id', auth()->id())->get();
+
+
+        if($request->ajax()){
+            return distritos::all();
         }else{
             return view('home', compact('distritos'));
         }
+
+       
     }
 
     /**
@@ -100,5 +110,15 @@ class distritosController extends Controller
     {
         $distritos = distritos::find($id);
         $distritos->delete();
+    }
+
+    public function exportPdf()
+    {
+        $distritos = distritos::get();
+        
+        $pdf = PDF::loadView('pdf.distritos', compact('distritos'));
+
+
+        return $pdf->download('consulta-distritos.pdf');
     }
 }

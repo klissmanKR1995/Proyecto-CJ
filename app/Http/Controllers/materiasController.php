@@ -8,6 +8,13 @@ use App\materias;
 
 class materiasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +25,7 @@ class materiasController extends Controller
         $materias = materias::all();
         
          if($request->ajax()){
-            return materias::where('user_id', auth()->id())->get();
+            return materias::all();
         }else{
             return view('home', compact('materias'));
         }
