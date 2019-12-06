@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use App\juzgados;
 //use App\distritos;
 
@@ -23,10 +25,8 @@ class juzgadosController extends Controller
      */
      public function index(Request $request)
     {
-        $juzgados = juzgados::all();
-        
          if($request->ajax()){
-            return juzgados::all();
+            return DB::table('juzgados')->paginate(5);
         }else{
             return view('home', compact('juzgados'));
         }
@@ -109,5 +109,20 @@ class juzgadosController extends Controller
     {
         $juzgados = juzgados::find($id);
         $juzgados->delete();
+    }
+
+    public function searchNombreJuzgado(Request $request)
+    {
+        $status = false;
+        $juzgados = DB::table('juzgados')
+            ->select('id_juzgado')
+            ->where('nombre_juzgado',$request->nombre_juzgado)
+            ->get();
+        if ($juzgados->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
     }
 }

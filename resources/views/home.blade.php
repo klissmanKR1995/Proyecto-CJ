@@ -253,13 +253,12 @@
 
           <div class="container">
            
-            <distritos-component></distritos-component>
-
+           <distritos-component> </distritos-component>
+            
             <center>
                 <a href="{{ route('distritos.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
                 <a href="" class="btn btn-success"> Exportar EXCEL </a>
             </center>    
-
           </div>    
       </div>
      
@@ -274,43 +273,11 @@
 
           <div class="container">
            
-           <juzgados-component></juzgados-component>
-
+           <juzgados-component> </juzgados-component> 
 
           </div>
         </div>
       <!-- Termina formulario juzgado -->
-
-       <!-- Empieza formulario de catalogos variables -->
-        <div class="tab-pane fade" id="v-pills-variables" role="tabpanel" aria-labelledby="v-pills-variables-tab">
-
-          <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
-          </div>
-
-          <div class="container">
-           
-          <variables-component> </variables-component>
-
-          </div>
-        </div>
-      <!-- Termina formulario catalogos -->
-
-
-         <!-- Empieza formulario de valores variables -->
-        <div class="tab-pane fade" id="v-pills-valoresvariables" role="tabpanel" aria-labelledby="v-pills-valoresvariables-tab">
-
-          <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de valores-variables, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
-          </div>
-
-          <div class="container">
-           
-              <valoresvariables-component> </valoresvariables-component>
-
-          </div>
-        </div>
-      <!-- Termina formulario valores -->
 
       <!-- Empieza formulario de catalogos materias -->
         <div class="tab-pane fade" id="v-pills-materia" role="tabpanel" aria-labelledby="v-pills-materia-tab">
@@ -321,8 +288,8 @@
 
           <div class="container">
            
-            <materias-component> </materias-component>
-
+           <materias-component> </materias-component>
+           
           </div>
         </div>
       <!-- Termina formulario materias -->
@@ -337,11 +304,44 @@
 
           <div class="container">
            
-            <juicios-component> </juicios-component>
+             
 
           </div>
         </div>
       <!-- Termina formulario juicios -->
+
+      <!-- Empieza formulario de catalogos variables -->
+        <div class="tab-pane fade" id="v-pills-variables" role="tabpanel" aria-labelledby="v-pills-variables-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+            <variables-component></variables-component>
+
+          </div>
+        </div>
+      <!-- Termina formulario catalogos -->
+
+
+      <!-- Empieza formulario de valores variables -->
+        <div class="tab-pane fade" id="v-pills-valoresvariables" role="tabpanel" aria-labelledby="v-pills-valoresvariables-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de valores-variables, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+          </div>
+
+          <div class="container">
+           
+              
+
+          </div>
+        </div>
+      <!-- Termina formulario valores -->
+
+     
 
         <!-- Empieza formulario de distritos -->
         <div class="tab-pane fade" id="v-pills-manualAyuda" role="tabpanel" aria-labelledby="v-pills-manualAyuda-tab">
@@ -352,8 +352,7 @@
 
           <div class="container">
            
-           <expedientes-component></expedientes-component>
-
+          
           </div>
     
       </div>
@@ -369,10 +368,10 @@
 </div> </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
 
 
 <!-- Menu Toggle Script -->

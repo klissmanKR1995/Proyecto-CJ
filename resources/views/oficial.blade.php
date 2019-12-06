@@ -21,6 +21,9 @@
   <link href="{{ asset('css/simple-sidebar.css')}}" rel="stylesheet">
   <link href="{{ asset('css/administrador.css')}}" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/select2/4.0.0/css/select2.css">
+  <link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
+
 </head>
 
 <body>
@@ -125,7 +128,7 @@
 
           <div class="container">
            
-            <expedientes-component> </expedientes-component>
+          <!--  <expedientes-component> </expedientes-component> -->
 
           </div>
         </div>
@@ -142,7 +145,7 @@
 
         <div class="container">
          
-          <modulouno-component> </modulouno-component>
+        <!-- <modulouno-component></modulouno-component> -->
 
         </div>
       </div>
@@ -157,7 +160,6 @@
 </div> </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

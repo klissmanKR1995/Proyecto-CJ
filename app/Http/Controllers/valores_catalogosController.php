@@ -60,7 +60,12 @@ class valores_catalogosController extends Controller
         $valorescatalagos->user_id = auth()->id();
         $valorescatalagos->save();
 
-        return $valorescatalagos;
+        return DB::table('valores_catalagos')
+            ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
+            ->select('valores_catalagos.*', 'catalogos.nombre_variable')
+            ->where('valores_catalagos.id_valor', $valorescatalagos->id_valor)
+            ->orderBy('id_catalogo', 'desc')
+            ->get(); 
     }
 
     /**
@@ -111,5 +116,16 @@ class valores_catalogosController extends Controller
     {
         $valorescatalagos = valorescatalagos::find($id);
         $valorescatalagos->delete();
+    }
+
+    public function getCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor', 'valor_variable')
+            ->where('id_catalogo', $request->id_catalogo)
+            ->orderBy('id_valor', 'desc')
+            ->get()
+        );
     }
 }

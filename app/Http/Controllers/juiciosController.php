@@ -109,9 +109,4 @@ class juiciosController extends Controller
         $juicios = juicios::find($id);
         $juicios->delete();
     }
-
-    public function searchByID(Request $request)
-    {
-        return json_encode(juicios::where('id_juicio', $request->id_juicio)->get());
-    }
 }

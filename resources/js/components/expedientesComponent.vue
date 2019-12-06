@@ -74,7 +74,7 @@
           </div><br>
 
           <div class="form-group">
-            <select id="id_juicio" class="form-control" v-model="expediente.id_juicio"  @change="cambio()">
+            <select id="id_juicio" class="form-control" v-model="expediente.id_juicio">
               <option value="">Juicio al expediente</option>
               <option v-for="(item, index) in juicios" :value="item.id_juicio">{{item.nombre_juicio}}</option>
             </select>
@@ -89,7 +89,7 @@
     <br>
 
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table  table-bordered">
         <thead>
             <tr>
               <th scope="col"> Número - Expediente </th>
@@ -99,6 +99,8 @@
               <th scope="col"> Fecha - Juzgado</th>
               <th scope="col"> Tipo - Juicio</th>
               <th scope="col"> Fecha - Registro</th>
+              <th scope="col"> Actualizar - Registro</th>
+              <th scope="col"> Eliminar - Registro</th>
             </tr>
             <tr v-for="(item, index) in expedientes" :key="index">
               <td>{{item.numero_expediente}}</td>
@@ -114,15 +116,7 @@
         </thead>   
       </table>
 
-       <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+      
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,7 +155,7 @@
             return{
                 expedientes: [],
                 juicios: [],
-                expediente: {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '',nombre_juicio:'', id_juicio: '' },
+                expediente: {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: '' },
                 editarActivo: false
             }
        },
@@ -210,13 +204,6 @@
               this.editarActivo = false;
               this.expediente = {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: ''}
             },
-            cambio(){
-              axios.get('/Proyecto-CJ/public/searchByID?id_juicio=' + this.expediente.id_juicio)
-              .then(res => {
-                  console.log(res)
-                  this.expediente.nombre_juicio = res.data[0].nombre_juicio
-              })
-            },
             agregar(){
 
                 //Validacion de formularios
@@ -248,7 +235,7 @@
                 
                 axios.post('/Proyecto-CJ/public/expedientes', params)     
                     .then(res => {
-                        this.expedientes.push(res.data)
+                        this.expedientes.push(res.data[0])
                     })     
             },
             confirmar(id, index){

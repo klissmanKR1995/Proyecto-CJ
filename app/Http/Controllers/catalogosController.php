@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\catalogos;
 
 class catalogosController extends Controller
@@ -21,13 +21,11 @@ class catalogosController extends Controller
      */
     public function index(Request $request)
     {
-        $catalogos = catalogos::all();
-        
         if($request->ajax()){
-            return catalogos::all();
+            return DB::table('catalogos')->paginate(5);
         }else{
             return view('home', compact('catalogos'));
-        }
+        }     
     }
 
     /**

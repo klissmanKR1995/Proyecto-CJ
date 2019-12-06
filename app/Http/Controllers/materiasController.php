@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\materias;
 
 
@@ -22,10 +23,9 @@ class materiasController extends Controller
      */
    public function index(Request $request)
     {
-        $materias = materias::all();
         
-         if($request->ajax()){
-            return materias::all();
+        if($request->ajax()){
+            return DB::table('materias')->paginate(5);
         }else{
             return view('home', compact('materias'));
         }
@@ -106,5 +106,20 @@ class materiasController extends Controller
     {
         $materias = materias::find($id);
         $materias->delete();
+    }
+
+    public function searchNombreMateria(Request $request)
+    {
+        $status = false;
+        $materias = DB::table('materias')
+            ->select('id_materia')
+            ->where('nombre_materia',$request->nombre_materia)
+            ->get();
+        if ($materias->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
     }
 }

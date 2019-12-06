@@ -61,11 +61,17 @@ class expedientesController extends Controller
         $expedientes->fecha_en_tribunal = $request->fecha_en_tribunal;
         $expedientes->fecha_en_juzgado = $request->fecha_en_juzgado;
         $expedientes->id_juicio = $request->id_juicio;
-        $expedientes->nombre_juicio = $request->nombre_juicio;
         $expedientes->user_id = auth()->id();
         $expedientes->save();
 
-        return $expedientes;
+        //return $expedientes;
+
+        return DB::table('expedientes')
+            ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
+            ->select('expedientes.*', 'juicios.nombre_juicio')
+            ->where('id_expediente', $expedientes->id_expediente)
+            ->orderBy('numero_expediente', 'asc')
+            ->get(); 
     }
 
     /**

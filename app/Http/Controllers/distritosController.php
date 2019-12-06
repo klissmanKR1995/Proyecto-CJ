@@ -27,7 +27,7 @@ class distritosController extends Controller
 
 
         if($request->ajax()){
-            return distritos::all();
+            return DB::table('distritos')->paginate(5);
         }else{
             return view('home', compact('distritos'));
         }
@@ -120,5 +120,27 @@ class distritosController extends Controller
 
 
         return $pdf->download('consulta-distritos.pdf');
+    }
+
+    public function distritosAll()
+    {
+        return json_encode(
+            distritos::all()
+        );
+    }
+
+    public function searchNombreDistrito(Request $request)
+    {
+        $status = false;
+        $distritos = DB::table('distritos')
+            ->select('id_distrito')
+            ->where('nombre_distrito',$request->nombre_distrito)
+            ->get();
+        if ($distritos->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
     }
 }

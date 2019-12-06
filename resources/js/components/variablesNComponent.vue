@@ -1,0 +1,168 @@
+<template>
+  <div>
+    <div class="modal-content"> <br>
+      <form @submit.prevent="editar(catalogo)" v-if="editarActivo">
+          <h5 class="text-center"> Actualizar Información <i> (catalogos) </i> </h5> <br>
+          <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable"><br>
+
+          <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
+          
+          <center>    
+          <button class="btn btn-primary" type="submit"> Actualizar </button>
+          <button class="btn btn-danger" type="submit" @click="cancelarEdicion()"> Cancelar </button>
+          </center> <br>
+      </form>  
+
+      <form @submit.prevent="agregar" v-else>
+        <h4 class="text-center"> Formulario catalogos </h4> <br>
+        <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable"><br>
+
+        <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
+        
+        <center>    
+        <button class="btn btn-danger" type="submit"> Guardar </button> 
+        </center><br>
+      </form>  
+    </div> <br>
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col"> Nombre - Variable </th>
+              <th scope="col"> Estatus - Variable </th>
+              <th scope="col"> Fecha de Registro</th>
+            </tr>
+            <tr v-for="(item, index) in catalogos.data" :key="index">
+              <td>{{item.nombre_variable}}</td>
+              <td>{{item.estatus}}</td>
+              <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
+              <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
+              <td><button class="btn btn-danger" @click="confirmar(item.id_catalogo)">Eliminar</button></td>
+            </tr>
+        </thead>   
+      </table> 
+
+
+      <pagination :data="catalogos" @pagination-change-page="getResults">
+      </pagination>
+
+        <!-- Modal -->
+      <div class="modal fade" id="modal_catalagos" tabindex="-1" role="dialog" aria-labelledby="modal_catalagosLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal_catalagosLabel">Confirmar elminación</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="id" id="id">
+              ¿Estas seguro(a) de eliminar el registro seleccionado?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarCatalogo('cancelar')">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarCatalogo('aceptar')">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <br>
+    </div>   
+  </div>            
+</template>
+
+<script>
+    export default {
+       data(){
+            return{
+                laravelData: {},
+                catalogos: {},
+                catalogo: {nombre_variable: '', estatus: ''},
+                editarActivo: false
+            }
+       },
+       mounted() {
+        // Fetch initial results
+        this.getResults();
+      },
+       created(){
+            axios.get('/Proyecto-CJ/public/variables')
+            .then(res => {
+                this.catalogos = res.data;
+                
+            })
+       },
+       methods:{
+            getResults(page = 1) {
+              axios.get('/Proyecto-CJ/public/variables?page=' + page)
+                .then(response => {
+                  this.catalogos = response.data;
+                });
+            },
+            editarFormulario(item){
+              this.editarActivo = true;
+              this.catalogo.nombre_variable = item.nombre_variable;
+              this.catalogo.estatus = item.estatus;
+              this.catalogo.id_catalogo = item.id_catalogo;
+
+            },
+           editar(item){
+              const params = {nombre_variable: item.nombre_variable, estatus: item.estatus};
+              axios.put(`/Proyecto-CJ/public/variables/${item.id_catalogo}`, params)
+                .then(res =>{
+
+                  this.editarActivo = false;
+                  this.catalogo = {nombre_variable: '', estatus: ''}
+                  this.getResults(this.catalogos.current_page);
+                })
+            },
+            cancelarEdicion(){
+              this.editarActivo = false;
+              this.catalogo = {nombre_variable: '', estatus: ''}
+            },
+            agregar(){
+                //Valida catalogo de formularios
+                 if(this.catalogo.nombre_variable.trim() === '', this.catalogo.estatus.trim() === ''){
+                    alert('Debes completar todos los campos antes de guardar');
+                    return;
+                  }
+
+                //console.log(this.catalogo.nombre_variable, this.catalogo.descripcion); 
+                const params = {
+                nombre_variable: this.catalogo.nombre_variable,
+                estatus: this.catalogo.estatus
+                }
+                //Accion para limpiar los campos
+
+                this.catalogo.nombre_variable = '';
+                this.catalogo.estatus = '';
+                
+                axios.post('/Proyecto-CJ/public/variables', params)     
+                    .then(res => {
+                        this.getResults(this.catalogos.last_page);
+                    })     
+            },
+            confirmar(id){
+              $('#modal_catalagos').modal("show")
+              $('#id').val(id)
+            },
+            eliminarCatalogo(op){
+              if (op === "aceptar") {
+                axios.delete(`/Proyecto-CJ/public/variables/` + $("#id").val())
+                  .then(()=>{
+                      this.getResults(this.catalogos.current_page);
+                      $('#modal_catalagos').modal("hide")
+                  })
+              }
+              else{
+                $('#modal_catalagos').modal("hide")
+              }
+
+            }
+       }
+    }
+</script>
+
