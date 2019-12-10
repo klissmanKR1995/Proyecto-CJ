@@ -23,91 +23,33 @@
           <h4 class="text-center"> Datos de las partes en los procesos (Modulo I)  </h4> <br>
 
           <div class="container"> 
-            <div class="form-row">
-              <div class="col-md-4">
-                <label for="inputState">Datos de las partes</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Seleccionar</option>
-                  <option>Parte actora</option>
-                  <option>Parte demandada</option>
-                  <option>Tercero interesado</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="inputState">Persona</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Seleccionar</option>
-                  <option>Fisica</option>
-                  <option>Moral</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="inputState">Razon Social</label>
-                <input type="text" class="form-control">
-              </div>
-            </div> <br>
 
-             <div class="form-row">
-              <div class="col-md-4">
-                <label for="inputState">Nombre Comercial</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-md-4">
-               <label for="inputState">Nombre Completo</label>
-               <input type="text" class="form-control">
-              </div>
-              <div class="col-md-4">
-                <label for="inputState">Sexo</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Seleccionar</option>
-                  <option>Femenino</option>
-                  <option>Masculino</option>
-                  <option>Transgenero femenino</option>
-                  <option>Transgenero masculino</option>
-                </select>
-              </div>
-            </div> <br>
 
-            <div class="form-row">
-              <div class="col-md-4">
-                <label for="inputState">Fecha de nacimiento</label>
-                <input type="date" class="form-control">
-              </div>
-              <div class="col-md-4">
-               <label for="inputState">RFC</label>
-               <input type="text" class="form-control">
-              </div>
-              <div class="col-md-4">
-               <label for="inputState">CURP</label>
-               <input type="text" class="form-control">
-              </div>
-            </div> <br>
+            <div class="form-group">
+              <select id="id_expediente" class="form-control" v-model="modulouno.id_expediente">
+                <option value="">Número de expediente </option>
+                <option v-for="(item, index) in expedientes" :value="item.id_expediente">{{item.numero_expediente}}</option>
+              </select>
+            </div>
 
+            
             <div class="form-row">
               <div class="col-md-4">
                 <label for="inputState">Pais de nacimiento</label>
                 <vue-select class="vue-select1" name="id_valor" label="valor_variable" :options='
-                  paises' :model.sync="result1"></vue-select>
+                  paises' :model.sync="result1" v-model="modulouno.municipios"></vue-select>
               </div>
               <div class="col-md-4">
                 <label for="inputState">Estado de nacimiento</label>
                 <vue-select class="vue-select1" name="id_valor" label="valor_variable" :options='
-                  estados' :model.sync="result1"></vue-select>
+                  estados' :model.sync="result1" v-model="modulouno.estados"></vue-select>
               </div>
-              <div class="col-md-4">
-                <label for="inputState">Municipio de nacimiento</label>
-                <vue-select class="vue-select1" name="id_valor" label="valor_variable" :options='
-                  municipios' :model.sync="result1"></vue-select>
-              </div>
-            </div> <br>
-
-
-
+            </div> 
 
           </div>
             
             
-
+          <br>
           <center>    
           <button class="btn btn-danger" type="submit"> Guardar Registro </button> 
           </center><br>
@@ -115,6 +57,25 @@
     </div>
 
     <br>
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th scope="col"> Número de expediente </th>
+            <th scope="col"> Pais </th>
+            <th scope="col"> Estados </th>
+            <th scope="col"> Fecha de Registro</th>
+          </tr>
+          <tr v-for="(item, index) in modulounos" :key="index">
+            <td>{{item.numero_expediente}}</td>
+            <td>{{item.municipios}}</td>
+            <td>{{item.estados}}</td>
+            <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
+            <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
+            <td><button class="btn btn-danger" @click="confirmar(item.id_juzgado)">Eliminar</button></td>
+          </tr>
+      </thead>   
+    </table> 
 
     <div>
     </div>   
@@ -128,22 +89,21 @@
     export default {
        data(){
             return{
-                paises: [],
-                estados: [],
-                municipios: [],
                 expedientes: [],
-                juicios: [],
-                modelouno: {id_valor: ''},
+                modulounos: {},
+                modulouno: {id_expediente: '', municipios: '',estados: ''},
+                paises: [] ,
+                estados: [] ,
                 editarActivo: false,
                 result1: ""
             }
        },
+       mounted() {
+        // Fetch initial results
+        this.getResults();
+      },
        created(){
-            axios.get('/Proyecto-CJ/public/juicios')
-            .then(res => {
-                this.juicios = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/expedientes')
+            axios.get('/Proyecto-CJ/public/expedientesAll')
             .then(res => {
                 this.expedientes = res.data;
             }),
@@ -154,87 +114,102 @@
             axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=1')
             .then(res => {
                 this.estados = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=2')
-            .then(res => {
-                this.municipios = res.data;
             })
        },
-
-       methods:{
+        methods:{
+            getResults(page = 1) {
+              axios.get('/Proyecto-CJ/public/modulouno?page=' + page)
+                .then(response => {
+                  this.modulounos = response.data;
+                });
+            },
             editarFormulario(item){
               this.editarActivo = true;
-              this.expediente.id_expediente = item.id_expediente;
-              this.expediente.numero_expediente = item.numero_expediente;
-              this.expediente.nombre_actor = item.nombre_actor;
-              this.expediente.nombre_demandado = item.nombre_demandado;
-              this.expediente.fecha_en_tribunal = item.fecha_en_tribunal;
-              this.expediente.fecha_en_juzgado = item.fecha_en_juzgado;
-              this.expediente.id_juicio = item.id_juicio;
+              this.modulouno.id_expediente = item.id_expediente;
+              this.modulouno.municipios = item.municipios;
+              this.modulouno.estados = item.estados;
+              this.modulouno.id_modulo = item.id_modulo;
+
             },
-            editar(item){
-              const params = {numero_expediente: item.numero_expediente, nombre_actor: item.nombre_actor, nombre_demandado: item.nombre_demandado, fecha_en_tribunal: item.fecha_en_tribunal, fecha_en_juzgado: item.fecha_en_juzgado, id_juicio: item.id_juicio };
-              axios.put(`/Proyecto-CJ/public/expedientes/${item.id_expediente}`, params)
+           editar(item){
+              const params = {id_expediente: item.id_expediente, municipios: item.municipios, estados: item.estados};
+              axios.put(`/Proyecto-CJ/public/modulouno/${item.id_modulouno}`, params)
                 .then(res =>{
-
                   this.editarActivo = false;
-                  const index = this.expedientes.findIndex(
-                    notaBuscar => notaBuscar.id_expediente === res.data.id_expediente)
-
-                    this.expedientes[index] = res.data;
-
-                    this.expediente = {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: ''}
-
-                     axios.get('/Proyecto-CJ/public/expedientes')
-                      .then(res => {
-                          this.expedientes = res.data;
-                      })
+                  this.getResults(this.modulounos.current_page);
                 })
+                  this.modulouno.id_expediente = '';
+                  this.modulouno.municipios = '';
+                  this.modulouno.estados = '';
             },
             cancelarEdicion(){
               this.editarActivo = false;
-              this.expediente = {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: ''}
+              this.modulouno = {id_expediente: '', municipios: '', estados: ''}
             },
             agregar(){
 
-                //Validacion de formularios
-                 if(this.expediente.numero_expediente.trim() === ''){
-                    alert('Debes completar todos los campos antes de guardar');
-                    return;
-                  }
+                //Valida modulouno de formularios
+                 //if(this.modulouno.municipios.trim() === ''){
+                    //alert('Debes completar todos los campos antes de guardar');
+                    //return;
+                  //}
 
-                //console.log(this.expediente.nombre, this.expediente.descripcion); 
+                //console.log(this.modulouno.id_expediente, this.modulouno.descripcion); 
                 const params = {
-                numero_expediente: this.expediente.numero_expediente,
-                nombre_actor: this.expediente.nombre_actor,
-                nombre_demandado: this.expediente.nombre_demandado,
-                fecha_en_tribunal: this.expediente.fecha_en_tribunal,
-                fecha_en_juzgado: this.expediente.fecha_en_juzgado,
-                id_juicio: this.expediente.id_juicio
+                id_expediente: this.modulouno.id_expediente,
+                municipios: this.modulouno.municipios.valor_variable,
+                estados: this.modulouno.estados.valor_variable
                 }
                 //Accion para limpiar los campos
 
-                this.expediente.numero_expediente = '';
-                this.expediente.nombre_actor = '';
-                this.expediente.nombre_demandado = '';
-                this.expediente.fecha_en_tribunal = '';
-                this.expediente.fecha_en_juzgado = '';
-                this.expediente.id_juicio = '';
-
-               
+                this.modulouno.id_expediente = '';
+                this.modulouno.municipios = '';
+                this.modulouno.estados = '';
                 
-                axios.post('/Proyecto-CJ/public/expedientes', params)     
+                axios.post('/Proyecto-CJ/public/modulouno', params)     
                     .then(res => {
-                        this.expedientes.push(res.data)
-                    })     
-            },
-            eliminarNota(item, index){
-              axios.delete(`/Proyecto-CJ/public/expedientes/${item.id_expediente}`)
-                .then(()=>{
-                    this.expedientes.splice(index, 1);
+                        this.getResults(this.modulounos.last_page);
+                        this.expedientes.length = 0
+                        axios.get('/Proyecto-CJ/public/expedientesAll')
+                        .then(res => {
+                            this.expedientes = res.data;
+                        })
                 })
 
-            }
+            },
+            confirmar(id){
+              $('#exampleModal1').modal("show")
+              $('#id').val(id)
+            },
+            eliminarmodulouno(op){
+              if (op === "aceptar") {
+                axios.delete(`/Proyecto-CJ/public/modulouno/` + $("#id").val())
+                  .then(()=>{
+                      this.getResults(this.modulounos.current_page);
+                      $('#exampleModal1').modal("hide")
+                  })
+              }
+              else{
+                $('#exampleModal1').modal("hide")
+              }
+
+            },
+            comprobarDuplicados() {
+              axios.get('/Proyecto-CJ/public/searchNombremodulouno?nombre_modulouno=' + this.modulouno.nombre_modulouno)
+                .then(response => {
+                  //console.log(response.data.status)
+                  if (response.data.status) {
+                    $("#existeAlerta2").show("slow")
+                    $("#guardarmodulouno").attr("disabled",true)
+                  }
+                  else{
+                    $("#guardarmodulouno").attr("disabled",false)
+                    $("#existeAlerta2").hide("slow")
+                  }
+                });
+            },
        }
     }
 </script>
+
+

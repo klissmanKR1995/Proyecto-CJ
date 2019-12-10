@@ -104,4 +104,27 @@ class catalogosController extends Controller
         $catalogos = catalogos::find($id);
         $catalogos->delete();
     }
+
+    public function catalogosAll()
+    {
+        return json_encode(
+            catalogos::all()
+        );
+    }
+
+
+    public function searchNombreVariable(Request $request)
+    {
+        $status = false;
+        $catalogos = DB::table('catalogos')
+            ->select('id_catalogo')
+            ->where('nombre_variable',$request->nombre_variable)
+            ->get();
+        if ($catalogos->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
+    }
 }

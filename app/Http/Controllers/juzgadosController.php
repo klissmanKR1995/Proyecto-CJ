@@ -25,11 +25,16 @@ class juzgadosController extends Controller
      */
      public function index(Request $request)
     {
-         if($request->ajax()){
-            return DB::table('juzgados')->paginate(5);
+        if($request->ajax()){
+            return json_encode(DB::table('juzgados')
+            ->join('distritos', 'juzgados.id_distrito', '=', 'distritos.id_distrito')
+            ->select('juzgados.*', 'distritos.nombre_distrito')
+            ->orderBy('nombre_juzgado', 'asc')
+            ->paginate(5));
         }else{
             return view('home', compact('juzgados'));
         }
+         
     }
 
     /**

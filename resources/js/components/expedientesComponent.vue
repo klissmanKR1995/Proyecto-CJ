@@ -4,7 +4,7 @@
        <form @submit.prevent="editar(expediente)" v-if="editarActivo">
           <h5 class="text-center"> Actualizar Información <i> (Libro de gobierno) </i> </h5> <br>
           
-           <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente"></input><br>
+           <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente" @blur="comprobarDuplicados"><br>
 
           <div class="form-row">
             <div class="col">
@@ -39,7 +39,10 @@
 
           
           <center>    
-          <button class="btn btn-primary" type="submit"> Actualizar </button>
+          <div class="alert alert-danger" role="alert" id="existeAlertaExpediente">
+            Registro existente, verifique la información a almacenar
+          </div> 
+          <button class="btn btn-primary" type="submit" id="guardarexpediente"> Actualizar </button>
           <button class="btn btn-danger" type="submit" @click="cancelarEdicion()"> Cancelar </button>
           </center> <br>
       </form>  
@@ -47,7 +50,7 @@
       <form @submit.prevent="agregar" v-else>
           <h4 class="text-center"> Formulario Libro de gobierno </h4> <br>
           
-          <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente"></input><br>
+          <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente" @blur="comprobarDuplicados"><br>
 
           <div class="form-row">
             <div class="col">
@@ -81,7 +84,10 @@
           </div>
           
           <center>    
-          <button class="btn btn-danger" type="submit"> Guardar </button> 
+          <div class="alert alert-danger" role="alert" id="existeAlertaExpediente">
+            Registro existente, verifique la información a almacenar
+          </div> 
+          <button class="btn btn-danger" type="submit" id="guardarexpediente"> Guardar </button> 
           </center><br>
       </form>  
     </div>
@@ -111,39 +117,36 @@
               <td>{{item.nombre_juicio}}</td>
               <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
               <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
-              <td><button class="btn btn-danger"  @click="confirmar(item.id_expediente, index)">Eliminar</button></td>
+              <td><button class="btn btn-danger"  @click="confirmar(item.id_expediente)">Eliminar</button></td>
             </tr>
         </thead>   
       </table>
 
       
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmar elminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" name="id" id="id">
-                <input type="hidden" name="index" id="index">
-                ¿Estas seguro(a) de eliminar el registro seleccionado?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarExpediente('cancelar')">Cancelar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarExpediente('aceptar')">Eliminar</button>
-              </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalExpedientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalExpedientesLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalExpedientesLabel">Confirmar elminación</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="id" id="id">
+              ¿Estas seguro(a) de eliminar el registro seleccionado?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarExpediente('cancelar')">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarExpediente('aceptar')">Eliminar</button>
             </div>
           </div>
         </div>
+      </div>
 
-        
-
-
+      
       <br>
     </div>   
   </div>            
@@ -153,14 +156,19 @@
     export default {
        data(){
             return{
-                expedientes: [],
-                juicios: [],
+                juicios: {},
+                expedientes: {},
                 expediente: {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: '' },
                 editarActivo: false
             }
        },
+       mounted: function () { 
+        // Fetch initial results
+        this.getResults();
+        $("#existeAlertaExpediente").hide()
+        },
        created(){
-            axios.get('/Proyecto-CJ/public/juicios')
+            axios.get('/Proyecto-CJ/public/juiciosAll')
             .then(res => {
                 this.juicios = res.data;
             }),
@@ -169,8 +177,13 @@
                 this.expedientes = res.data;
             })
        },
-
-       methods:{
+        methods:{
+            getResults(page = 1) {
+              axios.get('/Proyecto-CJ/public/expedientes?page=' + page)
+                .then(response => {
+                  this.expedientes = response.data;
+                });
+            },
             editarFormulario(item){
               this.editarActivo = true;
               this.expediente.id_expediente = item.id_expediente;
@@ -180,25 +193,21 @@
               this.expediente.fecha_en_tribunal = item.fecha_en_tribunal;
               this.expediente.fecha_en_juzgado = item.fecha_en_juzgado;
               this.expediente.id_juicio = item.id_juicio;
+
             },
-            editar(item){
+           editar(item){
               const params = {numero_expediente: item.numero_expediente, nombre_actor: item.nombre_actor, nombre_demandado: item.nombre_demandado, fecha_en_tribunal: item.fecha_en_tribunal, fecha_en_juzgado: item.fecha_en_juzgado, id_juicio: item.id_juicio };
               axios.put(`/Proyecto-CJ/public/expedientes/${item.id_expediente}`, params)
                 .then(res =>{
-
                   this.editarActivo = false;
-                  const index = this.expedientes.findIndex(
-                    notaBuscar => notaBuscar.id_expediente === res.data.id_expediente)
-
-                    this.expedientes[index] = res.data;
-
-                    this.expediente = {numero_expediente: '', nombre_actor: '', nombre_demandado: '', fecha_en_tribunal: '', fecha_en_juzgado: '', id_juicio: ''}
-
-                     axios.get('/Proyecto-CJ/public/expedientes')
-                      .then(res => {
-                          this.expedientes = res.data;
-                      })
+                  this.getResults(this.expedientes.current_page);
                 })
+                  this.expediente.numero_expediente = '';
+                  this.expediente.nombre_actor = '';
+                  this.expediente.nombre_demandado = '';
+                  this.expediente.fecha_en_tribunal = '';
+                  this.expediente.fecha_en_juzgado = '';
+                  this.expediente.id_juicio = '';
             },
             cancelarEdicion(){
               this.editarActivo = false;
@@ -206,13 +215,13 @@
             },
             agregar(){
 
-                //Validacion de formularios
-                 if(this.expediente.numero_expediente.trim() === ''){
+                //Valida juzgado de formularios
+                 if(this.expediente.numero_expediente.trim() === '', this.expediente.nombre_actor.trim() === ''){
                     alert('Debes completar todos los campos antes de guardar');
                     return;
                   }
 
-                //console.log(this.expediente.nombre, this.expediente.descripcion); 
+                //console.log(this.juzgado.nombre_juzgado, this.juzgado.descripcion); 
                 const params = {
                 numero_expediente: this.expediente.numero_expediente,
                 nombre_actor: this.expediente.nombre_actor,
@@ -230,33 +239,45 @@
                 this.expediente.fecha_en_tribunal = '';
                 this.expediente.fecha_en_juzgado = '';
                 this.expediente.id_juicio = '';
-
-               
                 
                 axios.post('/Proyecto-CJ/public/expedientes', params)     
                     .then(res => {
-                        this.expedientes.push(res.data[0])
+                        this.getResults(this.expedientes.last_page);
                     })     
             },
-            confirmar(id, index){
-              $('#exampleModal').modal("show")
+            confirmar(id){
+              $('#exampleModalExpedientes').modal("show")
               $('#id').val(id)
-              $('#index').val(index)
             },
             eliminarExpediente(op){
               if (op === "aceptar") {
                 axios.delete(`/Proyecto-CJ/public/expedientes/` + $("#id").val())
                   .then(()=>{
-                      this.expedientes.splice($("#index").val(), 1);
-                      $('#exampleModal').modal("hide")
+                      this.getResults(this.expedientes.current_page);
+                      $('#exampleModalExpedientes').modal("hide")
                   })
               }
               else{
-                $('#exampleModal').modal("hide")
+                $('#exampleModalExpedientes').modal("hide")
               }
 
-            }
+            },
+            comprobarDuplicados() {
+              axios.get('/Proyecto-CJ/public/searchNombreExpdiente?numero_expediente=' + this.expediente.numero_expediente)
+                .then(response => {
+                  //console.log(response.data.status)
+                  if (response.data.status) {
+                    $("#existeAlertaExpediente").show("slow")
+                    $("#guardarexpediente").attr("disabled",true)
+                  }
+                  else{
+                    $("#guardarexpediente").attr("disabled",false)
+                    $("#existeAlertaExpediente").hide("slow")
+                  }
+                });
+            },
        }
     }
 </script>
+
 

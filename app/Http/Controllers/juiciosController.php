@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\juicios;
 
 class juiciosController extends Controller
@@ -22,10 +23,13 @@ class juiciosController extends Controller
      public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin','oficial']);
-        $juicios = juicios::all();
         
         if($request->ajax()){
-            return juicios::all();
+            return json_encode(DB::table('juicios')
+            ->join('materias', 'juicios.id_materia', '=', 'materias.id_materia')
+            ->select('juicios.*', 'materias.nombre_materia')
+            ->orderBy('nombre_juicio', 'asc')
+            ->paginate(5));
         }else{
             return view('home', compact('juicios'));
         }
@@ -108,5 +112,27 @@ class juiciosController extends Controller
     {
         $juicios = juicios::find($id);
         $juicios->delete();
+    }
+
+    public function juiciosAll()
+    {
+        return json_encode(
+            juicios::all()
+        );
+    }
+
+    public function searchNombreJuicio(Request $request)
+    {
+        $status = false;
+        $juicios = DB::table('juicios')
+            ->select('id_juicio')
+            ->where('nombre_juicio',$request->nombre_juicio)
+            ->get();
+        if ($juicios->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
     }
 }

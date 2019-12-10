@@ -14,7 +14,12 @@ Vue.component('distritos-component', require('./components/distritosNComponent.v
 Vue.component('juzgados-component', require('./components/juzgadosNComponent.vue').default);
 Vue.component('variables-component', require('./components/variablesNComponent.vue').default);
 Vue.component('materias-component', require('./components/materiasNComponent.vue').default);
+Vue.component('juicios-component', require('./components/juiciosNComponent.vue').default);
 Vue.component('valoresvariables-component', require('./components/valoresvariablesNComponent.vue').default);
+
+Vue.component('expedientes-component', require('./components/expedientesComponent.vue').default);
+
+Vue.component('modulouno-component', require('./components/modulounoComponent.vue').default);
 
 
 

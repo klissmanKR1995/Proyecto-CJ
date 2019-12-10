@@ -9,6 +9,7 @@ return array(
     'App\\Catalogos' => $baseDir . '/app/Catalogos.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Distritos' => $baseDir . '/app/Distritos.php',
+    'App\\Ejemplo' => $baseDir . '/app/Ejemplo.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Expedientes' => $baseDir . '/app/Expedientes.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

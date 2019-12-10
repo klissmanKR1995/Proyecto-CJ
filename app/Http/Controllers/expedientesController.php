@@ -23,7 +23,6 @@ class expedientesController extends Controller
      */
     public function index(Request $request)
     {
-        $expedientes = expedientes::all();
         
         if($request->ajax()){
             return DB::table('expedientes')
@@ -126,5 +125,40 @@ class expedientesController extends Controller
     {
         $expedientes = expedientes::find($id);
         $expedientes->delete();
+    }
+
+    public function expedientesAll()
+    {
+        return  DB::table('expedientes')->select('id_expediente', 'numero_expediente')->whereNotExists(function($query)
+            {
+                $query->select(DB::raw(1))
+                      ->from('ejemplos')
+                      ->whereRaw('expedientes.id_expediente = ejemplos.id_expediente');
+            })
+            ->get();
+    }
+
+    public function searchNombreExpdiente(Request $request)
+    {
+        $status = false;
+        $expedientes = DB::table('expedientes')
+            ->select('id_expediente')
+            ->where('numero_expediente',$request->numero_expediente)
+            ->get();
+        if ($expedientes->count() == 0)
+            $status = false;
+        else
+            $status = true;
+        
+        return json_encode(array('status' => $status));
+    }
+
+    public function prueba(Request $request)
+    {
+        return json_encode(DB::table('expedientes')
+            ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
+            ->select('expedientes.*', 'juicios.nombre_juicio')
+            ->orderBy('numero_expediente', 'asc')
+            ->paginate(5));
     }
 }

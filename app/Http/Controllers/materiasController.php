@@ -108,6 +108,13 @@ class materiasController extends Controller
         $materias->delete();
     }
 
+    public function materiasAll()
+    {
+        return json_encode(
+            materias::all()
+        );
+    }
+
     public function searchNombreMateria(Request $request)
     {
         $status = false;

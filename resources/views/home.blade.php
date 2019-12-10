@@ -304,7 +304,7 @@
 
           <div class="container">
            
-             
+            <juicios-component> </juicios-component>
 
           </div>
         </div>
@@ -335,7 +335,7 @@
 
           <div class="container">
            
-              
+              <valoresvariables-component></valoresvariables-component>
 
           </div>
         </div>

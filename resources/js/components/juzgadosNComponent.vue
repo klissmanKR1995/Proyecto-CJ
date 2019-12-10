@@ -43,7 +43,7 @@
         <button class="btn btn-danger" type="submit" id="guardarJuzgado"> Guardar </button> 
         </center><br>
       </form>  
-    </div> <br>
+    </div> 
 
     <div>
       <table class="table table-striped">
@@ -51,13 +51,13 @@
             <tr>
               <th scope="col"> Nombre - Juzgado </th>
               <th scope="col"> Estatus - Juzgado </th>
-              <th scope="col"> ID - Distrito </th>
+              <th scope="col"> Nombre - Distrito </th>
               <th scope="col"> Fecha de Registro</th>
             </tr>
             <tr v-for="(item, index) in juzgados.data" :key="index">
               <td>{{item.nombre_juzgado}}</td>
               <td>{{item.estatus}}</td>
-              <td>{{item.id_distrito}}</td>
+              <td>{{item.nombre_distrito}}</td>
               <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
               <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
               <td><button class="btn btn-danger" @click="confirmar(item.id_juzgado)">Eliminar</button></td>
@@ -65,7 +65,7 @@
         </thead>   
       </table> 
 
-      <pagination :data="juzgados" @pagination-change-page="getResults">
+      <pagination :data="juzgados" @pagination-change-page="getResultsJuzgados">
       </pagination>
 
 
@@ -107,11 +107,8 @@
             }
        },
        mounted: function () { 
-        this.$root.$on('actualizarDatos', (distritos) => { // here you need to use the arrow function
-        this.distritos = distritos;
-        })
         // Fetch initial results
-        this.getResults();
+        this.getResultsJuzgados();
         $("#existeAlerta2").hide()
       },
        created(){
@@ -125,7 +122,7 @@
             })
        },
        methods:{
-            getResults(page = 1) {
+            getResultsJuzgados(page = 1) {
               axios.get('/Proyecto-CJ/public/juzgados?page=' + page)
                 .then(response => {
                   this.juzgados = response.data;
@@ -144,8 +141,11 @@
               axios.put(`/Proyecto-CJ/public/juzgados/${item.id_juzgado}`, params)
                 .then(res =>{
                   this.editarActivo = false;
-                  this.getResults(this.juzgados.current_page);
+                  this.getResultsJuzgados(this.juzgados.current_page);
                 })
+                  this.juzgado.nombre_juzgado = '';
+                  this.juzgado.estatus = '';
+                  this.juzgado.id_distrito = '';
             },
             cancelarEdicion(){
               this.editarActivo = false;
@@ -173,7 +173,7 @@
                 
                 axios.post('/Proyecto-CJ/public/juzgados', params)     
                     .then(res => {
-                        this.getResults(this.juzgados.last_page);
+                        this.getResultsJuzgados(this.juzgados.last_page);
                     })     
             },
             confirmar(id){
@@ -184,7 +184,7 @@
               if (op === "aceptar") {
                 axios.delete(`/Proyecto-CJ/public/juzgados/` + $("#id").val())
                   .then(()=>{
-                      this.getResults(this.juzgados.current_page);
+                      this.getResultsJuzgados(this.juzgados.current_page);
                       $('#exampleModal1').modal("hide")
                   })
               }

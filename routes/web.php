@@ -41,25 +41,41 @@ Route::get('/searchNombreJuzgado', 'juzgadosController@searchNombreJuzgado')->na
 
 Route::resource('/materias', 'materiasController');
 
-Route::get('/searchNombreMateria', 'materiasController@searchNombreMateria')->name('searchNombreMateria');
+Route::get('materiasAll', 'materiasController@materiasAll')->name('materiasAll');
 
+Route::get('/searchNombreMateria', 'materiasController@searchNombreMateria')->name('searchNombreMateria');
 
 Route::resource('/juicios', 'juiciosController');
 
+Route::get('juiciosAll', 'juiciosController@juiciosAll')->name('juiciosAll');
+
 Route::get('/searchByID', 'juiciosController@searchByID')->name('searchByID');
 
+Route::get('/searchNombreJuicio', 'juiciosController@searchNombreJuicio')->name('searchNombreJuicio');
+
 Route::resource('/variables', 'catalogosController');
+
+Route::get('catalogosAll', 'catalogosController@catalogosAll')->name('catalogosAll');
+
+Route::get('/searchNombreVariable', 'catalogosController@searchNombreVariable')->name('searchNombreVariable');
 
 Route::resource('/valorescatalogos', 'valores_catalogosController');
 
 Route::get('/getCatalogos', 'valores_catalogosController@getCatalogos')->name('getCatalogos');
 
+Route::get('/searchNombreValores', 'valores_catalogosController@searchNombreValores')->name('searchNombreValores');
 
 
 /* Rutas de los componentes en interfaz Oficial (Oficial de partes) */
 
 Route::resource('/expedientes', 'expedientesController');
 
+Route::get('expedientesAll', 'expedientesController@expedientesAll')->name('expedientesAll');
+Route::get('prueba', 'expedientesController@prueba')->name('prueba');
+
+Route::get('/searchNombreExpdiente', 'expedientesController@searchNombreExpdiente')->name('searchNombreExpdiente');
+
+Route::resource('/modulouno', 'ejemploController');
 
 
 /* Rutas del PDF */

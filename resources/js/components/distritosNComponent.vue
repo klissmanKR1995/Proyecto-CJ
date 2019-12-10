@@ -66,7 +66,7 @@
       
 
       <!-- Paginador -->
-      <pagination :data="distritos" @pagination-change-page="getResults">
+      <pagination :data="distritos" @pagination-change-page="getResultsDistritos">
       </pagination>
 
 
@@ -111,7 +111,7 @@
        },
        mounted() {
         // Fetch initial results
-        this.getResults();
+        this.getResultsDistritos();
         $("#existeAlerta").hide()
       },
        created(){
@@ -122,7 +122,7 @@
             })
        },
        methods:{
-            getResults(page = 1) {
+            getResultsDistritos(page = 1) {
               axios.get('/Proyecto-CJ/public/distritos?page=' + page)
                 .then(response => {
                   this.distritos = response.data;
@@ -142,7 +142,7 @@
 
                   this.editarActivo = false;
                   this.distrito = {nombre_distrito: '', estatus: ''}
-                  this.getResults(this.distritos.current_page);
+                  this.getResultsDistritos(this.distritos.current_page);
                 })
             },
             cancelarEdicion(){
@@ -168,7 +168,7 @@
                 
                 axios.post('/Proyecto-CJ/public/distritos', params)     
                     .then(res => {
-                        this.getResults(this.distritos.last_page);
+                        this.getResultsDistritos(this.distritos.last_page);
                        
                     })     
             },
@@ -180,7 +180,7 @@
               if (op === "aceptar") {
                 axios.delete(`/Proyecto-CJ/public/distritos/` + $("#id").val())
                   .then(()=>{
-                      this.getResults(this.distritos.current_page);
+                      this.getResultsDistritos(this.distritos.current_page);
                       
                       $('#exampleModal').modal("hide")
                   })

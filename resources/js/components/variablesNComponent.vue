@@ -3,24 +3,30 @@
     <div class="modal-content"> <br>
       <form @submit.prevent="editar(catalogo)" v-if="editarActivo">
           <h5 class="text-center"> Actualizar Información <i> (catalogos) </i> </h5> <br>
-          <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable"><br>
+          <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable" @blur="comprobarDuplicados"><br>
 
           <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
           
           <center>    
-          <button class="btn btn-primary" type="submit"> Actualizar </button>
+          <div class="alert alert-danger" role="alert" id="existeAlertaVariable">
+            Registro existente, verifique la información a almacenar
+          </div>
+          <button class="btn btn-primary" type="submit" id="guardarVariable"> Actualizar </button>
           <button class="btn btn-danger" type="submit" @click="cancelarEdicion()"> Cancelar </button>
           </center> <br>
       </form>  
 
       <form @submit.prevent="agregar" v-else>
         <h4 class="text-center"> Formulario catalogos </h4> <br>
-        <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable"><br>
+        <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable" @blur="comprobarDuplicados"><br>
 
         <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
         
         <center>    
-        <button class="btn btn-danger" type="submit"> Guardar </button> 
+        <div class="alert alert-danger" role="alert" id="existeAlertaVariable">
+          Registro existente, verifique la información a almacenar
+        </div>
+        <button class="btn btn-danger" type="submit" id="guardarVariable"> Guardar </button> 
         </center><br>
       </form>  
     </div> <br>
@@ -44,7 +50,7 @@
       </table> 
 
 
-      <pagination :data="catalogos" @pagination-change-page="getResults">
+      <pagination :data="catalogos" @pagination-change-page="getResultsVariables">
       </pagination>
 
         <!-- Modal -->
@@ -86,7 +92,8 @@
        },
        mounted() {
         // Fetch initial results
-        this.getResults();
+        this.getResultsVariables();
+        $("#existeAlertaVariable").hide()
       },
        created(){
             axios.get('/Proyecto-CJ/public/variables')
@@ -96,7 +103,7 @@
             })
        },
        methods:{
-            getResults(page = 1) {
+            getResultsVariables(page = 1) {
               axios.get('/Proyecto-CJ/public/variables?page=' + page)
                 .then(response => {
                   this.catalogos = response.data;
@@ -116,7 +123,7 @@
 
                   this.editarActivo = false;
                   this.catalogo = {nombre_variable: '', estatus: ''}
-                  this.getResults(this.catalogos.current_page);
+                  this.getResultsVariables(this.catalogos.current_page);
                 })
             },
             cancelarEdicion(){
@@ -142,7 +149,7 @@
                 
                 axios.post('/Proyecto-CJ/public/variables', params)     
                     .then(res => {
-                        this.getResults(this.catalogos.last_page);
+                        this.getResultsVariables(this.catalogos.last_page);
                     })     
             },
             confirmar(id){
@@ -153,16 +160,28 @@
               if (op === "aceptar") {
                 axios.delete(`/Proyecto-CJ/public/variables/` + $("#id").val())
                   .then(()=>{
-                      this.getResults(this.catalogos.current_page);
+                      this.getResultsVariables(this.catalogos.current_page);
                       $('#modal_catalagos').modal("hide")
                   })
               }
               else{
                 $('#modal_catalagos').modal("hide")
               }
-
-            }
+            },
+            comprobarDuplicados() {
+              axios.get('/Proyecto-CJ/public/searchNombreVariable?nombre_variable=' + this.catalogo.nombre_variable)
+                .then(response => {
+                  //console.log(response.data.status)
+                  if (response.data.status) {
+                    $("#existeAlertaVariable").show("slow")
+                    $("#guardarVariable").attr("disabled",true)
+                  }
+                  else{
+                    $("#guardarVariable").attr("disabled",false)
+                    $("#existeAlertaVariable").hide("slow")
+                  }
+                });
+            },
        }
     }
 </script>
-

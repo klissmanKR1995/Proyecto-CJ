@@ -128,7 +128,7 @@
 
           <div class="container">
            
-          <!--  <expedientes-component> </expedientes-component> -->
+          <expedientes-component> </expedientes-component> 
 
           </div>
         </div>
@@ -145,7 +145,7 @@
 
         <div class="container">
          
-        <!-- <modulouno-component></modulouno-component> -->
+        <modulouno-component></modulouno-component> 
 
         </div>
       </div>

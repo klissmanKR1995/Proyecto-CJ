@@ -415,6 +415,7 @@ class ComposerStaticInit12cc62d798f54b476e0fa90bba79993c
         'App\\Catalogos' => __DIR__ . '/../..' . '/app/Catalogos.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Distritos' => __DIR__ . '/../..' . '/app/Distritos.php',
+        'App\\Ejemplo' => __DIR__ . '/../..' . '/app/Ejemplo.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Expedientes' => __DIR__ . '/../..' . '/app/Expedientes.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

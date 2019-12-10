@@ -49,7 +49,7 @@
         </thead>   
       </table> 
 
-      <pagination :data="materias" @pagination-change-page="getResults">
+      <pagination :data="materias" @pagination-change-page="getResultsMaterias">
       </pagination>
 
       <!-- Modal -->
@@ -91,7 +91,7 @@
        },
        mounted() {
         // Fetch initial results
-        this.getResults();
+        this.getResultsMaterias();
         $("#existeAlertaMateria").hide()
       },
        created(){
@@ -102,7 +102,7 @@
             })
        },
        methods:{
-            getResults(page = 1) {
+            getResultsMaterias(page = 1) {
               axios.get('/Proyecto-CJ/public/materias?page=' + page)
                 .then(response => {
                   this.materias = response.data;
@@ -122,7 +122,7 @@
 
                   this.editarActivo = false;
                   this.materia = {nombre_materia: '', estatus: ''}
-                  this.getResults(this.materias.current_page);
+                  this.getResultsMaterias(this.materias.current_page);
                 })
             },
             cancelarEdicion(){
@@ -148,7 +148,7 @@
                 
                 axios.post('/Proyecto-CJ/public/materias', params)     
                     .then(res => {
-                        this.getResults(this.materias.last_page);
+                        this.getResultsMaterias(this.materias.last_page);
                     })     
             },
             confirmar(id){
@@ -159,7 +159,7 @@
               if (op === "aceptar") {
                 axios.delete(`/Proyecto-CJ/public/materias/` + $("#id").val())
                   .then(()=>{
-                      this.getResults(this.materias.current_page);
+                      this.getResultsMaterias(this.materias.current_page);
                       $('#modal_materias').modal("hide")
                   })
               }
