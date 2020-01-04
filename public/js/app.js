@@ -2998,6 +2998,464 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
@@ -3008,11 +3466,53 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
       modulounos: {},
       modulouno: {
         id_expediente: '',
+        datos: '',
+        persona: '',
+        razon_social: '',
+        nombre_comercial: '',
+        nombre_completo: '',
+        sexo: '',
+        fecha_nacimiento: '',
+        rfc: '',
+        curp: '',
+        pais: '',
+        estados: '',
         municipios: '',
-        estados: ''
+        nacionalidad: '',
+        pais_habitual: '',
+        estado_habitual: '',
+        municipio_habitual: '',
+        tipo_domicilio: '',
+        tipo_discapacidad: '',
+        situacion_conyugal: '',
+        escolaridad: '',
+        condicion_migratoria: '',
+        habla_español: '',
+        habla_lengua_indigena: '',
+        tipo_lengua_indigena: '',
+        habla_lengua_extranjera: '',
+        trabaja_ocupacion: '',
+        condicion_actividad: '',
+        fuente_ingresos: '',
+        ingreso_mensual: '',
+        tipo_representacion: '',
+        sexo_representacion: ''
       },
+      datosPartes: [],
+      persona: [],
+      sexo: [],
       paises: [],
       estados: [],
+      municipios: [],
+      nacionalidades: [],
+      tipoDomicilio: [],
+      discapacidades: [],
+      escolaridad: [],
+      lenguaIndigena: [],
+      ocupacion: [],
+      condicionActividad: [],
+      fuenteIngresos: [],
+      tipoRepresentacion: [],
       editarActivo: false,
       result1: ""
     };
@@ -3026,10 +3526,36 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
     axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
       _this.expedientes = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=1').then(function (res) {
+      _this.datosPartes = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=2').then(function (res) {
+      _this.persona = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=3').then(function (res) {
+      _this.sexo = res.data;
     }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=4').then(function (res) {
       _this.paises = res.data;
-    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=1').then(function (res) {
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=5').then(function (res) {
       _this.estados = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=6').then(function (res) {
+      _this.municipios = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=7').then(function (res) {
+      _this.nacionalidades = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=8').then(function (res) {
+      _this.tipoDomicilio = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=9').then(function (res) {
+      _this.discapacidades = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=10').then(function (res) {
+      _this.escolaridad = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=11').then(function (res) {
+      _this.lenguaIndigena = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=12').then(function (res) {
+      _this.ocupacion = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=13').then(function (res) {
+      _this.condicionActividad = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=14').then(function (res) {
+      _this.fuenteIngresos = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=15').then(function (res) {
+      _this.tipoRepresentacion = res.data;
     });
   },
   methods: {
@@ -3044,8 +3570,37 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
     editarFormulario: function editarFormulario(item) {
       this.editarActivo = true;
       this.modulouno.id_expediente = item.id_expediente;
-      this.modulouno.municipios = item.municipios;
+      this.modulouno.datos = item.datos;
+      this.modulouno.persona = item.persona;
+      this.modulouno.razon_social = item.razon_social;
+      this.modulouno.nombre_comercial = item.nombre_comercial;
+      this.modulouno.nombre_completo = item.nombre_completo;
+      this.modulouno.sexo = item.sexo;
+      this.modulouno.fecha_nacimiento = item.fecha_nacimiento;
+      this.modulouno.rfc = item.rfc;
+      this.modulouno.curp = item.curp;
+      this.modulouno.pais = item.pais;
       this.modulouno.estados = item.estados;
+      this.modulouno.municipios = item.municipios;
+      this.modulouno.nacionalidad = item.nacionalidad;
+      this.modulouno.pais_habitual = item.pais_habitual;
+      this.modulouno.estado_habitual = item.estado_habitual;
+      this.modulouno.municipio_habitual = item.municipio_habitual;
+      this.modulouno.tipo_domicilio = item.tipo_domicilio;
+      this.modulouno.tipo_discapacidad = item.tipo_discapacidad;
+      this.modulouno.situacion_conyugal = item.situacion_conyugal;
+      this.modulouno.escolaridad = item.escolaridad;
+      this.modulouno.condicion_migratoria = item.condicion_migratoria;
+      this.modulouno.habla_español = item.habla_español;
+      this.modulouno.habla_lengua_indigena = item.habla_lengua_indigena;
+      this.modulouno.tipo_lengua_indigena = item.tipo_lengua_indigena;
+      this.modulouno.habla_lengua_extranjera = item.habla_lengua_extranjera;
+      this.modulouno.trabaja_ocupacion = item.trabaja_ocupacion;
+      this.modulouno.condicion_actividad = item.condicion_actividad;
+      this.modulouno.fuente_ingresos = item.fuente_ingresos;
+      this.modulouno.ingreso_mensual = item.ingreso_mensual;
+      this.modulouno.tipo_representacion = item.tipo_representacion;
+      this.modulouno.sexo_representacion = item.sexo_representacion;
       this.modulouno.id_modulo = item.id_modulo;
     },
     editar: function editar(item) {
@@ -3053,24 +3608,110 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       var params = {
         id_expediente: item.id_expediente,
+        datos: item.datos,
+        persona: item.persona,
+        razon_social: item.razon_social,
+        nombre_comercial: item.nombre_comercial,
+        nombre_completo: item.nombre_completo,
+        sexo: item.sexo,
+        fecha_nacimiento: item.fecha_nacimiento,
+        rfc: item.rfc,
+        curp: item.curp,
+        pais: item.pais,
+        estados: item.estados,
         municipios: item.municipios,
-        estados: item.estados
+        nacionalidad: item.nacionalidad,
+        pais_habitual: item.pais_habitual,
+        estado_habitual: item.estado_habitual,
+        municipio_habitual: item.municipio_habitual,
+        tipo_domicilio: item.tipo_domicilio,
+        tipo_discapacidad: item.tipo_discapacidad,
+        situacion_conyugal: item.situacion_conyugal,
+        escolaridad: item.escolaridad,
+        condicion_migratoria: item.condicion_migratoria,
+        habla_español: item.habla_español,
+        habla_lengua_indigena: item.habla_lengua_indigena,
+        tipo_lengua_indigena: item.tipo_lengua_indigena,
+        habla_lengua_extranjera: item.habla_lengua_extranjera,
+        trabaja_ocupacion: item.trabaja_ocupacion,
+        condicion_actividad: item.condicion_actividad,
+        fuente_ingresos: item.fuente_ingresos,
+        ingreso_mensual: item.ingreso_mensual,
+        tipo_representacion: item.tipo_representacion,
+        sexo_representacion: item.sexo_representacion
       };
-      axios.put("/Proyecto-CJ/public/modulouno/".concat(item.id_modulouno), params).then(function (res) {
+      axios.put("/Proyecto-CJ/public/modulouno/".concat(item.id_modulo), params).then(function (res) {
         _this3.editarActivo = false;
 
         _this3.getResults(_this3.modulounos.current_page);
       });
       this.modulouno.id_expediente = '';
-      this.modulouno.municipios = '';
+      this.modulouno.datos = '';
+      this.modulouno.persona = '';
+      this.modulouno.razon_social = '';
+      this.modulouno.nombre_comercial = '';
+      this.modulouno.nombre_completo = '';
+      this.modulouno.sexo = '';
+      this.modulouno.fecha_nacimiento = '';
+      this.modulouno.rfc = '';
+      this.modulouno.curp = '';
+      this.modulouno.pais = '';
       this.modulouno.estados = '';
+      this.modulouno.municipios = '';
+      this.modulouno.nacionalidad = '';
+      this.modulouno.pais_habitual = '';
+      this.modulouno.estado_habitual = '';
+      this.modulouno.municipio_habitual = '';
+      this.modulouno.tipo_domicilio = '';
+      this.modulouno.tipo_discapacidad = '';
+      this.modulouno.situacion_conyugal = '';
+      this.modulouno.escolaridad = '';
+      this.modulouno.habla_español = '';
+      this.modulouno.habla_lengua_indigena = '';
+      this.modulouno.tipo_lengua_indigena = '';
+      this.modulouno.habla_lengua_extranjera = '';
+      this.modulouno.trabaja_ocupacion = '';
+      this.modulouno.condicion_actividad = '';
+      this.modulouno.fuente_ingresos = '';
+      this.modulouno.ingreso_mensual = '';
+      this.modulouno.tipo_representacion = '';
+      this.modulouno.sexo_representacion = '';
     },
     cancelarEdicion: function cancelarEdicion() {
       this.editarActivo = false;
       this.modulouno = {
         id_expediente: '',
+        datos: '',
+        persona: '',
+        razon_social: '',
+        nombre_comercial: '',
+        nombre_completo: '',
+        sexo: '',
+        fecha_nacimiento: '',
+        rfc: '',
+        curp: '',
+        pais: '',
+        estados: '',
         municipios: '',
-        estados: ''
+        nacionalidad: '',
+        pais_habitual: '',
+        estado_habitual: '',
+        municipio_habitual: '',
+        tipo_domicilio: '',
+        tipo_discapacidad: '',
+        situacion_conyugal: '',
+        escolaridad: '',
+        condicion_migratoria: '',
+        habla_español: '',
+        habla_lengua_indigena: '',
+        tipo_lengua_indigena: '',
+        habla_lengua_extranjera: '',
+        trabaja_ocupacion: '',
+        condicion_actividad: '',
+        fuente_ingresos: '',
+        ingreso_mensual: '',
+        tipo_representacion: '',
+        sexo_representacion: ''
       };
     },
     agregar: function agregar() {
@@ -3084,13 +3725,70 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
       //console.log(this.modulouno.id_expediente, this.modulouno.descripcion); 
       var params = {
         id_expediente: this.modulouno.id_expediente,
+        datos: this.modulouno.datos.valor_variable,
+        persona: this.modulouno.persona.valor_variable,
+        razon_social: this.modulouno.razon_social,
+        nombre_comercial: this.modulouno.nombre_comercial,
+        nombre_completo: this.modulouno.nombre_completo,
+        sexo: this.modulouno.sexo.valor_variable,
+        fecha_nacimiento: this.modulouno.fecha_nacimiento,
+        rfc: this.modulouno.rfc,
+        curp: this.modulouno.curp,
+        pais: this.modulouno.pais.valor_variable,
+        estados: this.modulouno.estados.valor_variable,
         municipios: this.modulouno.municipios.valor_variable,
-        estados: this.modulouno.estados.valor_variable
+        nacionalidad: this.modulouno.nacionalidad.valor_variable,
+        pais_habitual: this.modulouno.pais_habitual.valor_variable,
+        estado_habitual: this.modulouno.estado_habitual.valor_variable,
+        municipio_habitual: this.modulouno.municipio_habitual.valor_variable,
+        tipo_domicilio: this.modulouno.tipo_domicilio.valor_variable,
+        tipo_discapacidad: this.modulouno.tipo_discapacidad.valor_variable,
+        situacion_conyugal: this.modulouno.situacion_conyugal,
+        escolaridad: this.modulouno.escolaridad.valor_variable,
+        condicion_migratoria: this.modulouno.condicion_migratoria,
+        habla_español: this.modulouno.habla_español,
+        habla_lengua_indigena: this.modulouno.habla_lengua_indigena,
+        tipo_lengua_indigena: this.modulouno.tipo_lengua_indigena.valor_variable,
+        habla_lengua_extranjera: this.modulouno.habla_lengua_extranjera,
+        trabaja_ocupacion: this.modulouno.trabaja_ocupacion.valor_variable,
+        condicion_actividad: this.modulouno.condicion_actividad.valor_variable,
+        fuente_ingresos: this.modulouno.fuente_ingresos.valor_variable,
+        ingreso_mensual: this.modulouno.ingreso_mensual,
+        tipo_representacion: this.modulouno.tipo_representacion.valor_variable,
+        sexo_representacion: this.modulouno.sexo_representacion.valor_variable
       }; //Accion para limpiar los campos
 
       this.modulouno.id_expediente = '';
-      this.modulouno.municipios = '';
+      this.modulouno.datos = '';
+      this.modulouno.persona = '';
+      this.modulouno.razon_social = '';
+      this.modulouno.nombre_comercial = '';
+      this.modulouno.nombre_completo = '';
+      this.modulouno.sexo = '';
+      this.modulouno.fecha_nacimiento = '';
+      this.modulouno.rfc = '';
+      this.modulouno.curp = '';
+      this.modulouno.pais = '';
       this.modulouno.estados = '';
+      this.modulouno.municipios = '';
+      this.modulouno.nacionalidad = '';
+      this.modulouno.pais_habitual = '';
+      this.modulouno.estado_habitual = '';
+      this.modulouno.municipio_habitual = '';
+      this.modulouno.tipo_domicilio = '';
+      this.modulouno.tipo_discapacidad = '';
+      this.modulouno.situacion_conyugal = '';
+      this.modulouno.escolaridad = '';
+      this.modulouno.habla_español = '';
+      this.modulouno.habla_lengua_indigena = '';
+      this.modulouno.tipo_lengua_indigena = '';
+      this.modulouno.habla_lengua_extranjera = '';
+      this.modulouno.trabaja_ocupacion = '';
+      this.modulouno.condicion_actividad = '';
+      this.modulouno.fuente_ingresos = '';
+      this.modulouno.ingreso_mensual = '';
+      this.modulouno.tipo_representacion = '';
+      this.modulouno.sexo_representacion = '';
       axios.post('/Proyecto-CJ/public/modulouno', params).then(function (res) {
         _this4.getResults(_this4.modulounos.last_page);
 
@@ -3101,33 +3799,942 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
       });
     },
     confirmar: function confirmar(id) {
-      $('#exampleModal1').modal("show");
+      $('#exampleModalModuloUno').modal("show");
       $('#id').val(id);
     },
-    eliminarmodulouno: function eliminarmodulouno(op) {
+    eliminarModulouno: function eliminarModulouno(op) {
       var _this5 = this;
 
       if (op === "aceptar") {
         axios["delete"]("/Proyecto-CJ/public/modulouno/" + $("#id").val()).then(function () {
           _this5.getResults(_this5.modulounos.current_page);
 
-          $('#exampleModal1').modal("hide");
+          $('#exampleModalModuloUno').modal("hide");
         });
       } else {
-        $('#exampleModal1').modal("hide");
+        $('#exampleModalModuloUno').modal("hide");
       }
-    },
-    comprobarDuplicados: function comprobarDuplicados() {
-      axios.get('/Proyecto-CJ/public/searchNombremodulouno?nombre_modulouno=' + this.modulouno.nombre_modulouno).then(function (response) {
-        //console.log(response.data.status)
-        if (response.data.status) {
-          $("#existeAlerta2").show("slow");
-          $("#guardarmodulouno").attr("disabled", true);
-        } else {
-          $("#guardarmodulouno").attr("disabled", false);
-          $("#existeAlerta2").hide("slow");
-        }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulounos: {},
+      modulouno: {
+        id_expediente: '',
+        datos: '',
+        persona: '',
+        razon_social: '',
+        nombre_comercial: '',
+        nombre_completo: '',
+        sexo: '',
+        fecha_nacimiento: '',
+        rfc: '',
+        curp: '',
+        pais: '',
+        estados: '',
+        municipios: '',
+        nacionalidad: '',
+        pais_habitual: '',
+        estado_habitual: '',
+        municipio_habitual: '',
+        tipo_domicilio: '',
+        tipo_discapacidad: '',
+        situacion_conyugal: '',
+        escolaridad: '',
+        condicion_migratoria: '',
+        habla_español: '',
+        habla_lengua_indigena: '',
+        tipo_lengua_indigena: '',
+        habla_lengua_extranjera: '',
+        trabaja_ocupacion: '',
+        condicion_actividad: '',
+        fuente_ingresos: '',
+        ingreso_mensual: '',
+        tipo_representacion: '',
+        sexo_representacion: ''
+      },
+      datosPartes: [],
+      persona: [],
+      sexo: [],
+      paises: [],
+      estados: [],
+      municipios: [],
+      nacionalidades: [],
+      tipoDomicilio: [],
+      discapacidades: [],
+      escolaridad: [],
+      lenguaIndigena: [],
+      ocupacion: [],
+      condicionActividad: [],
+      fuenteIngresos: [],
+      tipoRepresentacion: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResults();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=1').then(function (res) {
+      _this.datosPartes = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=2').then(function (res) {
+      _this.persona = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=3').then(function (res) {
+      _this.sexo = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=4').then(function (res) {
+      _this.paises = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=5').then(function (res) {
+      _this.estados = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=6').then(function (res) {
+      _this.municipios = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=7').then(function (res) {
+      _this.nacionalidades = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=8').then(function (res) {
+      _this.tipoDomicilio = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=9').then(function (res) {
+      _this.discapacidades = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=10').then(function (res) {
+      _this.escolaridad = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=11').then(function (res) {
+      _this.lenguaIndigena = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=12').then(function (res) {
+      _this.ocupacion = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=13').then(function (res) {
+      _this.condicionActividad = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=14').then(function (res) {
+      _this.fuenteIngresos = res.data;
+    }), axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=15').then(function (res) {
+      _this.tipoRepresentacion = res.data;
+    });
+  },
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulouno?page=' + page).then(function (response) {
+        _this2.modulounos = response.data;
       });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulouno.id_expediente = item.id_expediente;
+      this.modulouno.datos = item.datos;
+      this.modulouno.persona = item.persona;
+      this.modulouno.razon_social = item.razon_social;
+      this.modulouno.nombre_comercial = item.nombre_comercial;
+      this.modulouno.nombre_completo = item.nombre_completo;
+      this.modulouno.sexo = item.sexo;
+      this.modulouno.fecha_nacimiento = item.fecha_nacimiento;
+      this.modulouno.rfc = item.rfc;
+      this.modulouno.curp = item.curp;
+      this.modulouno.pais = item.pais;
+      this.modulouno.estados = item.estados;
+      this.modulouno.municipios = item.municipios;
+      this.modulouno.nacionalidad = item.nacionalidad;
+      this.modulouno.pais_habitual = item.pais_habitual;
+      this.modulouno.estado_habitual = item.estado_habitual;
+      this.modulouno.municipio_habitual = item.municipio_habitual;
+      this.modulouno.tipo_domicilio = item.tipo_domicilio;
+      this.modulouno.tipo_discapacidad = item.tipo_discapacidad;
+      this.modulouno.situacion_conyugal = item.situacion_conyugal;
+      this.modulouno.escolaridad = item.escolaridad;
+      this.modulouno.condicion_migratoria = item.condicion_migratoria;
+      this.modulouno.habla_español = item.habla_español;
+      this.modulouno.habla_lengua_indigena = item.habla_lengua_indigena;
+      this.modulouno.tipo_lengua_indigena = item.tipo_lengua_indigena;
+      this.modulouno.habla_lengua_extranjera = item.habla_lengua_extranjera;
+      this.modulouno.trabaja_ocupacion = item.trabaja_ocupacion;
+      this.modulouno.condicion_actividad = item.condicion_actividad;
+      this.modulouno.fuente_ingresos = item.fuente_ingresos;
+      this.modulouno.ingreso_mensual = item.ingreso_mensual;
+      this.modulouno.tipo_representacion = item.tipo_representacion;
+      this.modulouno.sexo_representacion = item.sexo_representacion;
+      this.modulouno.id_modulo = item.id_modulo;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        datos: item.datos,
+        persona: item.persona,
+        razon_social: item.razon_social,
+        nombre_comercial: item.nombre_comercial,
+        nombre_completo: item.nombre_completo,
+        sexo: item.sexo,
+        fecha_nacimiento: item.fecha_nacimiento,
+        rfc: item.rfc,
+        curp: item.curp,
+        pais: item.pais,
+        estados: item.estados,
+        municipios: item.municipios,
+        nacionalidad: item.nacionalidad,
+        pais_habitual: item.pais_habitual,
+        estado_habitual: item.estado_habitual,
+        municipio_habitual: item.municipio_habitual,
+        tipo_domicilio: item.tipo_domicilio,
+        tipo_discapacidad: item.tipo_discapacidad,
+        situacion_conyugal: item.situacion_conyugal,
+        escolaridad: item.escolaridad,
+        condicion_migratoria: item.condicion_migratoria,
+        habla_español: item.habla_español,
+        habla_lengua_indigena: item.habla_lengua_indigena,
+        tipo_lengua_indigena: item.tipo_lengua_indigena,
+        habla_lengua_extranjera: item.habla_lengua_extranjera,
+        trabaja_ocupacion: item.trabaja_ocupacion,
+        condicion_actividad: item.condicion_actividad,
+        fuente_ingresos: item.fuente_ingresos,
+        ingreso_mensual: item.ingreso_mensual,
+        tipo_representacion: item.tipo_representacion,
+        sexo_representacion: item.sexo_representacion
+      };
+      axios.put("/Proyecto-CJ/public/modulouno/".concat(item.id_modulo), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResults(_this3.modulounos.current_page);
+      });
+      this.modulouno.id_expediente = '';
+      this.modulouno.datos = '';
+      this.modulouno.persona = '';
+      this.modulouno.razon_social = '';
+      this.modulouno.nombre_comercial = '';
+      this.modulouno.nombre_completo = '';
+      this.modulouno.sexo = '';
+      this.modulouno.fecha_nacimiento = '';
+      this.modulouno.rfc = '';
+      this.modulouno.curp = '';
+      this.modulouno.pais = '';
+      this.modulouno.estados = '';
+      this.modulouno.municipios = '';
+      this.modulouno.nacionalidad = '';
+      this.modulouno.pais_habitual = '';
+      this.modulouno.estado_habitual = '';
+      this.modulouno.municipio_habitual = '';
+      this.modulouno.tipo_domicilio = '';
+      this.modulouno.tipo_discapacidad = '';
+      this.modulouno.situacion_conyugal = '';
+      this.modulouno.escolaridad = '';
+      this.modulouno.habla_español = '';
+      this.modulouno.habla_lengua_indigena = '';
+      this.modulouno.tipo_lengua_indigena = '';
+      this.modulouno.habla_lengua_extranjera = '';
+      this.modulouno.trabaja_ocupacion = '';
+      this.modulouno.condicion_actividad = '';
+      this.modulouno.fuente_ingresos = '';
+      this.modulouno.ingreso_mensual = '';
+      this.modulouno.tipo_representacion = '';
+      this.modulouno.sexo_representacion = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulouno = {
+        id_expediente: '',
+        datos: '',
+        persona: '',
+        razon_social: '',
+        nombre_comercial: '',
+        nombre_completo: '',
+        sexo: '',
+        fecha_nacimiento: '',
+        rfc: '',
+        curp: '',
+        pais: '',
+        estados: '',
+        municipios: '',
+        nacionalidad: '',
+        pais_habitual: '',
+        estado_habitual: '',
+        municipio_habitual: '',
+        tipo_domicilio: '',
+        tipo_discapacidad: '',
+        situacion_conyugal: '',
+        escolaridad: '',
+        condicion_migratoria: '',
+        habla_español: '',
+        habla_lengua_indigena: '',
+        tipo_lengua_indigena: '',
+        habla_lengua_extranjera: '',
+        trabaja_ocupacion: '',
+        condicion_actividad: '',
+        fuente_ingresos: '',
+        ingreso_mensual: '',
+        tipo_representacion: '',
+        sexo_representacion: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulouno de formularios
+      //if(this.modulouno.municipios.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulouno.id_expediente, this.modulouno.descripcion); 
+      var params = {
+        id_expediente: this.modulouno.id_expediente,
+        datos: this.modulouno.datos.valor_variable,
+        persona: this.modulouno.persona.valor_variable,
+        razon_social: this.modulouno.razon_social,
+        nombre_comercial: this.modulouno.nombre_comercial,
+        nombre_completo: this.modulouno.nombre_completo,
+        sexo: this.modulouno.sexo.valor_variable,
+        fecha_nacimiento: this.modulouno.fecha_nacimiento,
+        rfc: this.modulouno.rfc,
+        curp: this.modulouno.curp,
+        pais: this.modulouno.pais.valor_variable,
+        estados: this.modulouno.estados.valor_variable,
+        municipios: this.modulouno.municipios.valor_variable,
+        nacionalidad: this.modulouno.nacionalidad.valor_variable,
+        pais_habitual: this.modulouno.pais_habitual.valor_variable,
+        estado_habitual: this.modulouno.estado_habitual.valor_variable,
+        municipio_habitual: this.modulouno.municipio_habitual.valor_variable,
+        tipo_domicilio: this.modulouno.tipo_domicilio.valor_variable,
+        tipo_discapacidad: this.modulouno.tipo_discapacidad.valor_variable,
+        situacion_conyugal: this.modulouno.situacion_conyugal,
+        escolaridad: this.modulouno.escolaridad.valor_variable,
+        condicion_migratoria: this.modulouno.condicion_migratoria,
+        habla_español: this.modulouno.habla_español,
+        habla_lengua_indigena: this.modulouno.habla_lengua_indigena,
+        tipo_lengua_indigena: this.modulouno.tipo_lengua_indigena.valor_variable,
+        habla_lengua_extranjera: this.modulouno.habla_lengua_extranjera,
+        trabaja_ocupacion: this.modulouno.trabaja_ocupacion.valor_variable,
+        condicion_actividad: this.modulouno.condicion_actividad.valor_variable,
+        fuente_ingresos: this.modulouno.fuente_ingresos.valor_variable,
+        ingreso_mensual: this.modulouno.ingreso_mensual,
+        tipo_representacion: this.modulouno.tipo_representacion.valor_variable,
+        sexo_representacion: this.modulouno.sexo_representacion.valor_variable
+      }; //Accion para limpiar los campos
+
+      this.modulouno.id_expediente = '';
+      this.modulouno.datos = '';
+      this.modulouno.persona = '';
+      this.modulouno.razon_social = '';
+      this.modulouno.nombre_comercial = '';
+      this.modulouno.nombre_completo = '';
+      this.modulouno.sexo = '';
+      this.modulouno.fecha_nacimiento = '';
+      this.modulouno.rfc = '';
+      this.modulouno.curp = '';
+      this.modulouno.pais = '';
+      this.modulouno.estados = '';
+      this.modulouno.municipios = '';
+      this.modulouno.nacionalidad = '';
+      this.modulouno.pais_habitual = '';
+      this.modulouno.estado_habitual = '';
+      this.modulouno.municipio_habitual = '';
+      this.modulouno.tipo_domicilio = '';
+      this.modulouno.tipo_discapacidad = '';
+      this.modulouno.situacion_conyugal = '';
+      this.modulouno.escolaridad = '';
+      this.modulouno.habla_español = '';
+      this.modulouno.habla_lengua_indigena = '';
+      this.modulouno.tipo_lengua_indigena = '';
+      this.modulouno.habla_lengua_extranjera = '';
+      this.modulouno.trabaja_ocupacion = '';
+      this.modulouno.condicion_actividad = '';
+      this.modulouno.fuente_ingresos = '';
+      this.modulouno.ingreso_mensual = '';
+      this.modulouno.tipo_representacion = '';
+      this.modulouno.sexo_representacion = '';
+      axios.post('/Proyecto-CJ/public/modulouno', params).then(function (res) {
+        _this4.getResults(_this4.modulounos.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloUno').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModulouno: function eliminarModulouno(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulouno/" + $("#id").val()).then(function () {
+          _this5.getResults(_this5.modulounos.current_page);
+
+          $('#exampleModalModuloUno').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloUno').modal("hide");
+      }
     }
   }
 });
@@ -3143,6 +4750,7 @@ Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3272,9 +4880,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page).then(function (response) {
-        _this2.valorescatalogos = response.data;
-      });
+
+      if ($("#buscar").val().length !== 0) {
+        axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page + '&buscar=' + $("#buscar").val()).then(function (response) {
+          _this2.valorescatalogos = response.data;
+        });
+      } else {
+        axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page).then(function (response) {
+          _this2.valorescatalogos = response.data;
+        });
+      }
     },
     editarFormulario: function editarFormulario(item) {
       this.editarActivo = true;
@@ -3291,6 +4906,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       axios.put("/Proyecto-CJ/public/valorescatalogos/".concat(item.id_valor), params).then(function (res) {
         _this3.editarActivo = false;
+        $("#buscar").val('');
 
         _this3.getResultsValores(_this3.valorescatalogos.current_page);
       });
@@ -3322,6 +4938,8 @@ __webpack_require__.r(__webpack_exports__);
       this.valorescatalogo.id_catalogo = '';
       this.valorescatalogo.valor_variable = '';
       axios.post('/Proyecto-CJ/public/valorescatalogos', params).then(function (res) {
+        $("#buscar").val('');
+
         _this4.getResultsValores(_this4.valorescatalogos.last_page);
       });
     },
@@ -3336,6 +4954,7 @@ __webpack_require__.r(__webpack_exports__);
         axios["delete"]("/Proyecto-CJ/public/valorescatalogos/" + $("#id").val()).then(function () {
           _this5.getResultsValores(_this5.valorescatalogos.current_page);
 
+          $("#buscar").val('');
           $('#exampleModalvaloresVariables').modal("hide");
         });
       } else {
@@ -3353,6 +4972,9 @@ __webpack_require__.r(__webpack_exports__);
           $("#existeAlertaValores").hide("slow");
         }
       });
+    },
+    buscarDato: function buscarDato() {
+      this.getResultsValores(1);
     }
   }
 });
@@ -41653,7 +43275,7 @@ var render = function() {
                   },
                   [
                     _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Distrito al que pertenece ")
+                      _vm._v("Materia al que pertenece ")
                     ]),
                     _vm._v(" "),
                     _vm._l(_vm.materias, function(item, index) {
@@ -42843,7 +44465,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.editar(_vm.expediente)
+                  return _vm.editar(_vm.modulouno)
                 }
               }
             },
@@ -42852,63 +44474,1160 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.expediente.nombre_actor,
-                        expression: "expediente.nombre_actor"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Datos de las partes" },
-                    domProps: { value: _vm.expediente.nombre_actor },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.modulouno.id_expediente,
+                          expression: "modulouno.id_expediente"
                         }
-                        _vm.$set(
-                          _vm.expediente,
-                          "nombre_actor",
-                          $event.target.value
-                        )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "id_expediente" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.modulouno,
+                            "id_expediente",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Número de expediente ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.expedientes, function(item, index) {
+                        return _c(
+                          "option",
+                          { domProps: { value: item.id_expediente } },
+                          [_vm._v(_vm._s(item.numero_expediente))]
+                        )
+                      })
+                    ],
+                    2
+                  )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.expediente.nombre_demandado,
-                        expression: "expediente.nombre_demandado"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Nomb" },
-                    domProps: { value: _vm.expediente.nombre_demandado },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.datosPartes,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.persona,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "persona", $$v)
+                            },
+                            expression: "modulouno.persona"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.persona,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.datos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "datos", $$v)
+                            },
+                            expression: "modulouno.datos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Razon Social")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.razon_social,
+                            expression: "modulouno.razon_social"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.razon_social },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "razon_social",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.expediente,
-                          "nombre_demandado",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Nombre Comercial")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_comercial,
+                            expression: "modulouno.nombre_comercial"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_comercial },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_comercial",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Nombre Completo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_completo,
+                            expression: "modulouno.nombre_completo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_completo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_completo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Sexo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "sexo", $$v)
+                            },
+                            expression: "modulouno.sexo"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha de nacimiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.fecha_nacimiento,
+                            expression: "modulouno.fecha_nacimiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulouno.fecha_nacimiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "fecha_nacimiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("RFC")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.rfc,
+                            expression: "modulouno.rfc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.rfc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "rfc", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("CURP")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.curp,
+                            expression: "modulouno.curp"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.curp },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "curp", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais", $$v)
+                            },
+                            expression: "modulouno.pais"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estados,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estados", $$v)
+                            },
+                            expression: "modulouno.estados"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipios,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipios", $$v)
+                            },
+                            expression: "modulouno.municipios"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Nacionalidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.nacionalidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.nacionalidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "nacionalidad", $$v)
+                            },
+                            expression: "modulouno.nacionalidad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais_habitual", $$v)
+                            },
+                            expression: "modulouno.pais_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estado_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estado_habitual", $$v)
+                            },
+                            expression: "modulouno.estado_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipio_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipio_habitual", $$v)
+                            },
+                            expression: "modulouno.municipio_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo domicilio")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoDomicilio,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_domicilio,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_domicilio", $$v)
+                            },
+                            expression: "modulouno.tipo_domicilio"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo discapacidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.discapacidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_discapacidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_discapacidad", $$v)
+                            },
+                            expression: "modulouno.tipo_discapacidad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Situación conyugal")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.situacion_conyugal,
+                            expression: "modulouno.situacion_conyugal"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.situacion_conyugal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "situacion_conyugal",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Escolaridad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.escolaridad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.escolaridad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "escolaridad", $$v)
+                            },
+                            expression: "modulouno.escolaridad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Condición migratoria")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.condicion_migratoria,
+                            expression: "modulouno.condicion_migratoria"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.condicion_migratoria },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "condicion_migratoria",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla español?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_español,
+                              expression: "modulouno.habla_español"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_español",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla lengua indigena?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_indigena,
+                              expression: "modulouno.habla_lengua_indigena"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_indigena",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo lengua indigena")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.lenguaIndigena,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_lengua_indigena,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_lengua_indigena",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_lengua_indigena"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla lengua extranjera?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_extranjera,
+                              expression: "modulouno.habla_lengua_extranjera"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_extranjera",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Ocupación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.ocupacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.trabaja_ocupacion,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "trabaja_ocupacion", $$v)
+                            },
+                            expression: "modulouno.trabaja_ocupacion"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Condicion actividad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.condicionActividad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.condicion_actividad,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "condicion_actividad",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.condicion_actividad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Fuente de ingresos")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.fuenteIngresos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.fuente_ingresos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "fuente_ingresos", $$v)
+                            },
+                            expression: "modulouno.fuente_ingresos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Ingreso mensual")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.ingreso_mensual,
+                            expression: "modulouno.ingreso_mensual"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.ingreso_mensual },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "ingreso_mensual",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoRepresentacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Sexo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "sexo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.sexo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
                 ])
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("center", [
@@ -43006,72 +45725,1105 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-4" },
-                    [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.datosPartes,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.persona,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "persona", $$v)
+                            },
+                            expression: "modulouno.persona"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.persona,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.datos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "datos", $$v)
+                            },
+                            expression: "modulouno.datos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
                       _c("label", { attrs: { for: "inputState" } }, [
-                        _vm._v("Pais de nacimiento")
+                        _vm._v("Razon Social")
                       ]),
                       _vm._v(" "),
-                      _c("vue-select", {
-                        staticClass: "vue-select1",
-                        attrs: {
-                          name: "id_valor",
-                          label: "valor_variable",
-                          options: _vm.paises,
-                          model: _vm.result1
-                        },
-                        on: {
-                          "update:model": function($event) {
-                            _vm.result1 = $event
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.razon_social,
+                            expression: "modulouno.razon_social"
                           }
-                        },
-                        model: {
-                          value: _vm.modulouno.municipios,
-                          callback: function($$v) {
-                            _vm.$set(_vm.modulouno, "municipios", $$v)
-                          },
-                          expression: "modulouno.municipios"
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.razon_social },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "razon_social",
+                              $event.target.value
+                            )
+                          }
                         }
                       })
-                    ],
-                    1
-                  ),
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-4" },
-                    [
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
                       _c("label", { attrs: { for: "inputState" } }, [
-                        _vm._v("Estado de nacimiento")
+                        _vm._v("Nombre Comercial")
                       ]),
                       _vm._v(" "),
-                      _c("vue-select", {
-                        staticClass: "vue-select1",
-                        attrs: {
-                          name: "id_valor",
-                          label: "valor_variable",
-                          options: _vm.estados,
-                          model: _vm.result1
-                        },
-                        on: {
-                          "update:model": function($event) {
-                            _vm.result1 = $event
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_comercial,
+                            expression: "modulouno.nombre_comercial"
                           }
-                        },
-                        model: {
-                          value: _vm.modulouno.estados,
-                          callback: function($$v) {
-                            _vm.$set(_vm.modulouno, "estados", $$v)
-                          },
-                          expression: "modulouno.estados"
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_comercial },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_comercial",
+                              $event.target.value
+                            )
+                          }
                         }
                       })
-                    ],
-                    1
-                  )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Nombre Completo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_completo,
+                            expression: "modulouno.nombre_completo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_completo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_completo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Sexo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "sexo", $$v)
+                            },
+                            expression: "modulouno.sexo"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha de nacimiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.fecha_nacimiento,
+                            expression: "modulouno.fecha_nacimiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulouno.fecha_nacimiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "fecha_nacimiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("RFC")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.rfc,
+                            expression: "modulouno.rfc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.rfc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "rfc", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("CURP")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.curp,
+                            expression: "modulouno.curp"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.curp },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "curp", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais", $$v)
+                            },
+                            expression: "modulouno.pais"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estados,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estados", $$v)
+                            },
+                            expression: "modulouno.estados"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipios,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipios", $$v)
+                            },
+                            expression: "modulouno.municipios"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Nacionalidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.nacionalidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.nacionalidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "nacionalidad", $$v)
+                            },
+                            expression: "modulouno.nacionalidad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais_habitual", $$v)
+                            },
+                            expression: "modulouno.pais_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estado_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estado_habitual", $$v)
+                            },
+                            expression: "modulouno.estado_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipio_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipio_habitual", $$v)
+                            },
+                            expression: "modulouno.municipio_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo domicilio")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoDomicilio,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_domicilio,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_domicilio", $$v)
+                            },
+                            expression: "modulouno.tipo_domicilio"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo discapacidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.discapacidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_discapacidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_discapacidad", $$v)
+                            },
+                            expression: "modulouno.tipo_discapacidad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Situación conyugal")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.situacion_conyugal,
+                            expression: "modulouno.situacion_conyugal"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.situacion_conyugal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "situacion_conyugal",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Escolaridad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.escolaridad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.escolaridad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "escolaridad", $$v)
+                            },
+                            expression: "modulouno.escolaridad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Condición migratoria")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.condicion_migratoria,
+                            expression: "modulouno.condicion_migratoria"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.condicion_migratoria },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "condicion_migratoria",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla español?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_español,
+                              expression: "modulouno.habla_español"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_español",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla lengua indigena?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_indigena,
+                              expression: "modulouno.habla_lengua_indigena"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_indigena",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo lengua indigena")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.lenguaIndigena,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_lengua_indigena,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_lengua_indigena",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_lengua_indigena"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Habla lengua extranjera?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_extranjera,
+                              expression: "modulouno.habla_lengua_extranjera"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_extranjera",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Ocupación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.ocupacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.trabaja_ocupacion,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "trabaja_ocupacion", $$v)
+                            },
+                            expression: "modulouno.trabaja_ocupacion"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Condicion actividad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.condicionActividad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.condicion_actividad,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "condicion_actividad",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.condicion_actividad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Fuente de ingresos")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.fuenteIngresos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.fuente_ingresos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "fuente_ingresos", $$v)
+                            },
+                            expression: "modulouno.fuente_ingresos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Ingreso mensual")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.ingreso_mensual,
+                            expression: "modulouno.ingreso_mensual"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.ingreso_mensual },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "ingreso_mensual",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Tipo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoRepresentacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Sexo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "sexo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.sexo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -43092,61 +46844,156 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-striped" }, [
-      _c(
-        "thead",
-        [
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._l(_vm.modulounos, function(item, index) {
-            return _c("tr", { key: index }, [
-              _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c("table", { staticClass: "table table-striped" }, [
+          _c(
+            "thead",
+            [
+              _vm._m(1),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.municipios))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.estados))]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "badge badge-primary" }, [
-                  _vm._v(" " + _vm._s(item.created_at) + " ")
+              _vm._l(_vm.modulounos.data, function(item, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.datos))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.persona))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.razon_social))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nombre_comercial))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nombre_completo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.sexo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fecha_nacimiento))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.rfc))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.curp))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.pais))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.estados))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.municipios))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nacionalidad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.pais_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.estado_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.municipio_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_domicilio))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_discapacidad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.situacion_conyugal))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.escolaridad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.condicion_migratoria))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_español))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_lengua_indigena))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_lengua_extranjera))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.trabaja_ocupacion))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.condicion_actividad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fuente_ingresos))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.ingreso_mensual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_representacion))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.sexo_representacion))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "badge badge-primary" }, [
+                      _vm._v(" " + _vm._s(item.created_at) + " ")
+                    ])
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function($event) {
-                        return _vm.editarFormulario(item)
-                      }
-                    }
-                  },
-                  [_vm._v("Actualizar")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    on: {
-                      click: function($event) {
-                        return _vm.confirmar(item.id_juzgado)
-                      }
-                    }
-                  },
-                  [_vm._v("Eliminar")]
-                )
-              ])
-            ])
-          })
-        ],
-        2
-      )
-    ]),
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { data: _vm.modulounos },
+          on: { "pagination-change-page": _vm.getResults }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "exampleModalModuloUno",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalModuloUnoLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarModulouno("cancelar")
+                          }
+                        }
+                      },
+                      [_vm._v("Cancelar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarModulouno("aceptar")
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div")
   ])
@@ -43168,11 +47015,2829 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
       _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Datos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Persona ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Razón-Social ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nombre-Comercial ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nombre-Completo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Sexo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha-Nacimiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" RFC ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Curp ")]),
+      _vm._v(" "),
       _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais ")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estados ")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado ")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de Registro")])
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Municipio ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nacionalidad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Municipio-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Domicilio ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Discapacidad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Situación-Conyugal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Escolaridad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Condición-Migratoria ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Habla-Español ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Habla-Lengua-Indigena ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Habla-Lengua-Extranjera ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Trabaja-Ocupación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Condición-Actividad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fuente-Ingresos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Ingreso-Mensual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Representación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Sexo-Representación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha-Registro ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloUnoLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n          ¿Estas seguro(a) de eliminar el registro seleccionado?\n        "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "modal-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.editarActivo
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.editar(_vm.modulouno)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.modulouno.id_expediente,
+                          expression: "modulouno.id_expediente"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "id_expediente" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.modulouno,
+                            "id_expediente",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Número de expediente ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.expedientes, function(item, index) {
+                        return _c(
+                          "option",
+                          { domProps: { value: item.id_expediente } },
+                          [_vm._v(_vm._s(item.numero_expediente))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.datosPartes,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.persona,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "persona", $$v)
+                            },
+                            expression: "modulouno.persona"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.persona,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.datos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "datos", $$v)
+                            },
+                            expression: "modulouno.datos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Razon Social")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.razon_social,
+                            expression: "modulouno.razon_social"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.razon_social },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "razon_social",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Nombre Comercial")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_comercial,
+                            expression: "modulouno.nombre_comercial"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_comercial },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_comercial",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Nombre Completo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_completo,
+                            expression: "modulouno.nombre_completo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_completo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_completo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Sexo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "sexo", $$v)
+                            },
+                            expression: "modulouno.sexo"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de nacimiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.fecha_nacimiento,
+                            expression: "modulouno.fecha_nacimiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulouno.fecha_nacimiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "fecha_nacimiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("RFC")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.rfc,
+                            expression: "modulouno.rfc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.rfc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "rfc", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("CURP")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.curp,
+                            expression: "modulouno.curp"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.curp },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "curp", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Pais de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais", $$v)
+                            },
+                            expression: "modulouno.pais"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Estado de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estados,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estados", $$v)
+                            },
+                            expression: "modulouno.estados"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Municipio de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipios,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipios", $$v)
+                            },
+                            expression: "modulouno.municipios"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Nacionalidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.nacionalidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.nacionalidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "nacionalidad", $$v)
+                            },
+                            expression: "modulouno.nacionalidad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Pais habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais_habitual", $$v)
+                            },
+                            expression: "modulouno.pais_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Estado habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estado_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estado_habitual", $$v)
+                            },
+                            expression: "modulouno.estado_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Municipio habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipio_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipio_habitual", $$v)
+                            },
+                            expression: "modulouno.municipio_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo domicilio")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoDomicilio,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_domicilio,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_domicilio", $$v)
+                            },
+                            expression: "modulouno.tipo_domicilio"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo discapacidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.discapacidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_discapacidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_discapacidad", $$v)
+                            },
+                            expression: "modulouno.tipo_discapacidad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Situación conyugal")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.situacion_conyugal,
+                            expression: "modulouno.situacion_conyugal"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.situacion_conyugal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "situacion_conyugal",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Escolaridad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.escolaridad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.escolaridad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "escolaridad", $$v)
+                            },
+                            expression: "modulouno.escolaridad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Condición migratoria")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.condicion_migratoria,
+                            expression: "modulouno.condicion_migratoria"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.condicion_migratoria },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "condicion_migratoria",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla español?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_español,
+                              expression: "modulouno.habla_español"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_español",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla lengua indigena?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_indigena,
+                              expression: "modulouno.habla_lengua_indigena"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_indigena",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo lengua indigena")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.lenguaIndigena,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_lengua_indigena,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_lengua_indigena",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_lengua_indigena"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla lengua extranjera?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_extranjera,
+                              expression: "modulouno.habla_lengua_extranjera"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_extranjera",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Ocupación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.ocupacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.trabaja_ocupacion,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "trabaja_ocupacion", $$v)
+                            },
+                            expression: "modulouno.trabaja_ocupacion"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Condicion actividad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.condicionActividad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.condicion_actividad,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "condicion_actividad",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.condicion_actividad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fuente de ingresos")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.fuenteIngresos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.fuente_ingresos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "fuente_ingresos", $$v)
+                            },
+                            expression: "modulouno.fuente_ingresos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Ingreso mensual")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.ingreso_mensual,
+                            expression: "modulouno.ingreso_mensual"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.ingreso_mensual },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "ingreso_mensual",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoRepresentacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Sexo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "sexo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.sexo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("center", [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v(" Actualizar ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.cancelarEdicion()
+                      }
+                    }
+                  },
+                  [_vm._v(" Cancelar ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("br")
+            ],
+            1
+          )
+        : _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.agregar($event)
+                }
+              }
+            },
+            [
+              _c("h4", { staticClass: "text-center" }, [
+                _vm._v(" Datos de las partes en los procesos (Modulo I)  ")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.modulouno.id_expediente,
+                          expression: "modulouno.id_expediente"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "id_expediente" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.modulouno,
+                            "id_expediente",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Número de expediente ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.expedientes, function(item, index) {
+                        return _c(
+                          "option",
+                          { domProps: { value: item.id_expediente } },
+                          [_vm._v(_vm._s(item.numero_expediente))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.datosPartes,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.persona,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "persona", $$v)
+                            },
+                            expression: "modulouno.persona"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Datos de las partes")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.persona,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.datos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "datos", $$v)
+                            },
+                            expression: "modulouno.datos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Razon Social")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.razon_social,
+                            expression: "modulouno.razon_social"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.razon_social },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "razon_social",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Nombre Comercial")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_comercial,
+                            expression: "modulouno.nombre_comercial"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_comercial },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_comercial",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Nombre Completo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.nombre_completo,
+                            expression: "modulouno.nombre_completo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.nombre_completo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "nombre_completo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Sexo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "sexo", $$v)
+                            },
+                            expression: "modulouno.sexo"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de nacimiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.fecha_nacimiento,
+                            expression: "modulouno.fecha_nacimiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulouno.fecha_nacimiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "fecha_nacimiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("RFC")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.rfc,
+                            expression: "modulouno.rfc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.rfc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "rfc", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("CURP")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.curp,
+                            expression: "modulouno.curp"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.curp },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.modulouno, "curp", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Pais de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais", $$v)
+                            },
+                            expression: "modulouno.pais"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Estado de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estados,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estados", $$v)
+                            },
+                            expression: "modulouno.estados"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Municipio de nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipios,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipios", $$v)
+                            },
+                            expression: "modulouno.municipios"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Nacionalidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.nacionalidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.nacionalidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "nacionalidad", $$v)
+                            },
+                            expression: "modulouno.nacionalidad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Pais habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.paises,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.pais_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "pais_habitual", $$v)
+                            },
+                            expression: "modulouno.pais_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Estado habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.estados,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.estado_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "estado_habitual", $$v)
+                            },
+                            expression: "modulouno.estado_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Municipio habitual")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.municipios,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.municipio_habitual,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "municipio_habitual", $$v)
+                            },
+                            expression: "modulouno.municipio_habitual"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo domicilio")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoDomicilio,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_domicilio,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_domicilio", $$v)
+                            },
+                            expression: "modulouno.tipo_domicilio"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo discapacidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.discapacidades,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_discapacidad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "tipo_discapacidad", $$v)
+                            },
+                            expression: "modulouno.tipo_discapacidad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Situación conyugal")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.situacion_conyugal,
+                            expression: "modulouno.situacion_conyugal"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.situacion_conyugal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "situacion_conyugal",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Escolaridad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.escolaridad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.escolaridad,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "escolaridad", $$v)
+                            },
+                            expression: "modulouno.escolaridad"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Condición migratoria")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.condicion_migratoria,
+                            expression: "modulouno.condicion_migratoria"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.condicion_migratoria },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "condicion_migratoria",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla español?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_español,
+                              expression: "modulouno.habla_español"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_español",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla lengua indigena?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_indigena,
+                              expression: "modulouno.habla_lengua_indigena"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_indigena",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo lengua indigena")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.lenguaIndigena,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_lengua_indigena,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_lengua_indigena",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_lengua_indigena"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Habla lengua extranjera?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulouno.habla_lengua_extranjera,
+                              expression: "modulouno.habla_lengua_extranjera"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "inputState1" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulouno,
+                                "habla_lengua_extranjera",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Ocupación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.ocupacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.trabaja_ocupacion,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "trabaja_ocupacion", $$v)
+                            },
+                            expression: "modulouno.trabaja_ocupacion"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Condicion actividad")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.condicionActividad,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.condicion_actividad,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "condicion_actividad",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.condicion_actividad"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fuente de ingresos")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.fuenteIngresos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.fuente_ingresos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulouno, "fuente_ingresos", $$v)
+                            },
+                            expression: "modulouno.fuente_ingresos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Ingreso mensual")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulouno.ingreso_mensual,
+                            expression: "modulouno.ingreso_mensual"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulouno.ingreso_mensual },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulouno,
+                              "ingreso_mensual",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.tipoRepresentacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.tipo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "tipo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.tipo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Sexo representación")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            name: "id_valor",
+                            label: "valor_variable",
+                            options: _vm.sexo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulouno.sexo_representacion,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulouno,
+                                "sexo_representacion",
+                                $$v
+                              )
+                            },
+                            expression: "modulouno.sexo_representacion"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("center", [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+                  [_vm._v(" Guardar Registro ")]
+                )
+              ]),
+              _c("br")
+            ],
+            1
+          )
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c("table", { staticClass: "table table-striped" }, [
+          _c(
+            "thead",
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._l(_vm.modulounos.data, function(item, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.datos))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.persona))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.razon_social))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nombre_comercial))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nombre_completo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.sexo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fecha_nacimiento))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.rfc))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.curp))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.pais))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.estados))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.municipios))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nacionalidad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.pais_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.estado_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.municipio_habitual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_domicilio))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_discapacidad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.situacion_conyugal))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.escolaridad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.condicion_migratoria))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_español))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_lengua_indigena))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.habla_lengua_extranjera))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.trabaja_ocupacion))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.condicion_actividad))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fuente_ingresos))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.ingreso_mensual))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipo_representacion))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.sexo_representacion))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("span", { staticClass: "badge badge-primary" }, [
+                      _vm._v(" " + _vm._s(item.created_at) + " ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: {
+                          click: function($event) {
+                            return _vm.editarFormulario(item)
+                          }
+                        }
+                      },
+                      [_vm._v("Actualizar")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.confirmar(item.id_modulo)
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
+                  ])
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { data: _vm.modulounos },
+          on: { "pagination-change-page": _vm.getResults }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "exampleModalModuloUno",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalModuloUnoLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarModulouno("cancelar")
+                          }
+                        }
+                      },
+                      [_vm._v("Cancelar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarModulouno("aceptar")
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div")
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-center" }, [
+      _vm._v(" Actualizar Información "),
+      _c("i", [_vm._v(" (Modulo - I) ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Datos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Persona ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Razón-Social ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nombre-Comercial ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nombre-Completo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Sexo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha-Nacimiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" RFC ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Curp ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Municipio ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nacionalidad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Municipio-Habitual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Domicilio ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Discapacidad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Situación-Conyugal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Escolaridad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Condición-Migratoria ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Habla-Español ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Habla-Lengua-Indigena ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Habla-Lengua-Extranjera ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Trabaja-Ocupación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Condición-Actividad ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fuente-Ingresos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Ingreso-Mensual ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo-Representación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Sexo-Representación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha-Registro ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloUnoLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n          ¿Estas seguro(a) de eliminar el registro seleccionado?\n        "
+      )
     ])
   }
 ]
@@ -43478,7 +50143,31 @@ var render = function() {
           _c(
             "thead",
             [
-              _vm._m(1),
+              _c("tr", [
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(" Nombre - Catalogo ")
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(" Valor - Catalogo")
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(" Fecha - Registro")
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", name: "buscar", id: "buscar" },
+                    on: {
+                      keyup: function($event) {
+                        return _vm.buscarDato()
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _vm._l(_vm.valorescatalogos.data, function(item, index) {
                 return _c("tr", { key: index }, [
@@ -43551,9 +50240,9 @@ var render = function() {
               { staticClass: "modal-dialog", attrs: { role: "document" } },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(2),
+                  _vm._m(1),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-footer" }, [
                     _c(
@@ -43602,18 +50291,6 @@ var staticRenderFns = [
     return _c("h5", { staticClass: "text-center" }, [
       _vm._v(" Actualizar Información "),
       _c("i", [_vm._v(" (Valores-Variables) ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Nombre - Catalogo ")]),
-      _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Valor - Catalogo")]),
-      _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha - Registro")])
     ])
   },
   function() {
@@ -56280,6 +62957,7 @@ Vue.component('juicios-component', __webpack_require__(/*! ./components/juiciosN
 Vue.component('valoresvariables-component', __webpack_require__(/*! ./components/valoresvariablesNComponent.vue */ "./resources/js/components/valoresvariablesNComponent.vue")["default"]);
 Vue.component('expedientes-component', __webpack_require__(/*! ./components/expedientesComponent.vue */ "./resources/js/components/expedientesComponent.vue")["default"]);
 Vue.component('modulouno-component', __webpack_require__(/*! ./components/modulounoComponent.vue */ "./resources/js/components/modulounoComponent.vue")["default"]);
+Vue.component('modulounoactualizar-component', __webpack_require__(/*! ./components/modulounoactualizarComponent.vue */ "./resources/js/components/modulounoactualizarComponent.vue")["default"]);
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 var app = new Vue({
   el: '#app'
@@ -56754,6 +63432,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoComponent_vue_vue_type_template_id_925d8db0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoComponent_vue_vue_type_template_id_925d8db0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modulounoactualizarComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/modulounoactualizarComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8& */ "./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8&");
+/* harmony import */ var _modulounoactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulounoactualizarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _modulounoactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modulounoactualizarComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./modulounoactualizarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulounoactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulounoactualizarComponent.vue?vue&type=template&id=5a1a8fb8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulounoactualizarComponent_vue_vue_type_template_id_5a1a8fb8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

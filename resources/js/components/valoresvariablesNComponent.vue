@@ -51,6 +51,7 @@
               <th scope="col"> Nombre - Catalogo </th>
               <th scope="col"> Valor - Catalogo</th>
               <th scope="col"> Fecha - Registro</th>
+              <th scope="col"> <input type="text" class="form-control" name="buscar" id="buscar"  @keyup="buscarDato()"> </th>
             </tr>
             <tr v-for="(item, index) in valorescatalogos.data" :key="index">
               <td>{{item.nombre_variable}}</td>
@@ -123,10 +124,18 @@
        },
        methods:{
             getResultsValores(page = 1) {
-              axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page)
-                .then(response => {
-                  this.valorescatalogos = response.data;
-                });
+              if ($("#buscar").val().length !== 0) {
+                axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page + '&buscar=' + $("#buscar").val())
+                  .then(response => {
+                    this.valorescatalogos = response.data;
+                  });
+              }
+              else{
+                axios.get('/Proyecto-CJ/public/valorescatalogos?page=' + page)
+                  .then(response => {
+                    this.valorescatalogos = response.data;
+                  });
+              }
             },
             editarFormulario(item){
               this.editarActivo = true;
@@ -139,6 +148,7 @@
               axios.put(`/Proyecto-CJ/public/valorescatalogos/${item.id_valor}`, params)
                 .then(res =>{
                   this.editarActivo = false;
+                  $("#buscar").val('')
                   this.getResultsValores(this.valorescatalogos.current_page);
                 })
                   this.valorescatalogo.id_catalogo = '';
@@ -168,6 +178,7 @@
                 
                 axios.post('/Proyecto-CJ/public/valorescatalogos', params)     
                     .then(res => {
+                      $("#buscar").val('')
                         this.getResultsValores(this.valorescatalogos.last_page);
                     })     
             },
@@ -180,6 +191,7 @@
                 axios.delete(`/Proyecto-CJ/public/valorescatalogos/` + $("#id").val())
                   .then(()=>{
                       this.getResultsValores(this.valorescatalogos.current_page);
+                      $("#buscar").val('')
                       $('#exampleModalvaloresVariables').modal("hide")
                   })
               }
@@ -202,10 +214,12 @@
                   }
                 });
             },
+            buscarDato(){
+              this.getResultsValores(1);
+            },
        }
     }
 </script>
 
 
-+
 

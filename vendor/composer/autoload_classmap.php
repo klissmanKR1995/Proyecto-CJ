@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\OficialController' => $baseDir . '/app/Http/Controllers/OficialController.php',
     'App\\Http\\Controllers\\catalogosController' => $baseDir . '/app/Http/Controllers/catalogosController.php',
     'App\\Http\\Controllers\\distritosController' => $baseDir . '/app/Http/Controllers/distritosController.php',
+    'App\\Http\\Controllers\\ejemploController' => $baseDir . '/app/Http/Controllers/ejemploController.php',
     'App\\Http\\Controllers\\expedientesController' => $baseDir . '/app/Http/Controllers/expedientesController.php',
     'App\\Http\\Controllers\\juiciosController' => $baseDir . '/app/Http/Controllers/juiciosController.php',
     'App\\Http\\Controllers\\juzgadosController' => $baseDir . '/app/Http/Controllers/juzgadosController.php',

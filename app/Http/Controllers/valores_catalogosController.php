@@ -24,11 +24,22 @@ class valores_catalogosController extends Controller
     {
 
         if($request->ajax()){
-            return json_encode(DB::table('valores_catalagos')
-            ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
-            ->select('valores_catalagos.*', 'catalogos.nombre_variable')
-            ->orderBy('id_catalogo', 'asc')
-            ->paginate(5));
+            if ($request->has('buscar')){
+                return json_encode(DB::table('valores_catalagos')
+                ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
+                ->select('valores_catalagos.*', 'catalogos.nombre_variable')
+                ->where('catalogos.nombre_variable','LIKE','%'.$request->buscar.'%')
+                ->orWhere('valores_catalagos.valor_variable','LIKE','%'.$request->buscar.'%')
+                ->orderBy('id_catalogo', 'asc')
+                ->paginate(5));
+            }
+            else{
+                return json_encode(DB::table('valores_catalagos')
+                ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
+                ->select('valores_catalagos.*', 'catalogos.nombre_variable')
+                ->orderBy('id_catalogo', 'asc')
+                ->paginate(5));
+            }
         }else{
             return view('home', compact('valorescatalagos'));
         }

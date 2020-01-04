@@ -79,7 +79,7 @@
                           </li>
                           <li class="nav-item">
                               <a class="nav-link p-1" id="v-pills-valoresvariables-tab" data-toggle="pill" href="#v-pills-valoresvariables" role="tab" aria-controls="v-pills-valoresvariables" aria-selected="false">
-                              <i class="fas fa-book"></i>  Valores-Variables
+                              <i class="fas fa-book"></i>  Catalogos-Relacionados
                               </a>
                           </li>
                       </ul>
@@ -87,7 +87,25 @@
               </li>
           <!-- Termina menu con submenu catalogos-->
 
-              <a class="nav-link menuMain" id="v-pills-expedientes-tab" data-toggle="pill" href="#v-pills-expedientes" role="tab" aria-controls="v-pills-expedientes" aria-selected="false"><i class="fas fa-file-alt"></i> Consulta-Expedientes</a>
+                <!-- Menu con submenu catalogos-->
+              <li class="nav-item">
+                  <a class="nav-link collapsed py-1 dropdown-toggle menuMain" href="#submenu2sub3" data-toggle="collapse" data-target="#submenu2sub3" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-align-justify"></i> Consulta-Expedientes</a>
+                  <div class="collapse" id="submenu2sub3" aria-expanded="false" aria-controls="v-pills-home">
+                      <ul class="flex-column nav pl-4">
+                          <li class="nav-item">
+                              <a class="nav-link p-1" id="v-pills-moduloUno-tab" data-toggle="pill" href="#v-pills-moduloUno" role="tab" aria-controls="v-pills-moduloUno" aria-selected="false">
+                              <i class="fas fa-university"></i>  Modulo - I
+                              </a>
+                          </li>
+                           <li class="nav-item">
+                              <a class="nav-link p-1" id="v-pills-moduloDos-tab" data-toggle="pill" href="#v-pills-moduloDos" role="tab" aria-controls="v-pills-moduloDos" aria-selected="false">
+                              <i class="fas fa-university"></i>  Modulo - II
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+          <!-- Termina menu con submenu catalogos-->
 
               <a class="nav-link menuMain" id="v-pills-manualAyuda-tab" data-toggle="pill" href="#v-pills-manualAyuda" role="tab" aria-controls="v-pills-manualAyuda" aria-selected="false"> <i class="fas fa-question"></i> Manual-Ayuda</a>
       
@@ -343,8 +361,8 @@
 
      
 
-        <!-- Empieza formulario de distritos -->
-        <div class="tab-pane fade" id="v-pills-manualAyuda" role="tabpanel" aria-labelledby="v-pills-manualAyuda-tab">
+        <!-- Empieza formulario modulo I -->
+        <div class="tab-pane fade" id="v-pills-moduloUno" role="tabpanel" aria-labelledby="v-pills-moduloUno-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
             <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
@@ -352,12 +370,13 @@
 
           <div class="container">
            
+           <modulounoactualizar-component> </modulounoactualizar-component>
           
           </div>
     
       </div>
      
-      <!-- Termina formulario distritos -->
+      <!-- Termina formulario modulo I -->
 
 
     <!-- /#wrapper -->

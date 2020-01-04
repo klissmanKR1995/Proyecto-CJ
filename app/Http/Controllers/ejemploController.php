@@ -16,13 +16,12 @@ class ejemploController extends Controller
      */
     public function index(Request $request)
     {
-      
         if($request->ajax()){
-            return DB::table('ejemplos')
+            return json_encode(DB::table('ejemplos')
             ->join('expedientes', 'ejemplos.id_expediente', '=', 'expedientes.id_expediente')
             ->select('ejemplos.*', 'expedientes.numero_expediente')
             ->orderBy('numero_expediente', 'asc')
-            ->get();        
+            ->paginate(5));
         }else{
             return view('home', compact('ejemplos'));
         }
@@ -48,8 +47,37 @@ class ejemploController extends Controller
     {
         $modulouno = new ejemplo();
         $modulouno->id_expediente = $request->id_expediente;
-        $modulouno->municipios = $request->municipios;
+        $modulouno->datos = $request->datos;
+        $modulouno->persona= $request->persona;
+        $modulouno->razon_social = $request->razon_social;
+        $modulouno->nombre_comercial= $request->nombre_comercial;
+        $modulouno->nombre_completo= $request->nombre_completo;
+        $modulouno->sexo= $request->sexo;
+        $modulouno->fecha_nacimiento= $request->fecha_nacimiento;
+        $modulouno->rfc= $request->rfc;
+        $modulouno->curp= $request->curp;
+        $modulouno->pais= $request->pais;
         $modulouno->estados= $request->estados;
+        $modulouno->municipios= $request->municipios;
+        $modulouno->nacionalidad= $request->nacionalidad;
+        $modulouno->pais_habitual= $request->pais_habitual;
+        $modulouno->estado_habitual= $request->estado_habitual;
+        $modulouno->municipio_habitual= $request->municipio_habitual;
+        $modulouno->tipo_domicilio= $request->tipo_domicilio;
+        $modulouno->tipo_discapacidad= $request->tipo_discapacidad;
+        $modulouno->situacion_conyugal= $request->situacion_conyugal;
+        $modulouno->escolaridad= $request->escolaridad;
+        $modulouno->condicion_migratoria= $request->condicion_migratoria;
+        $modulouno->habla_español= $request->habla_español;
+        $modulouno->habla_lengua_indigena= $request->habla_lengua_indigena;
+        $modulouno->tipo_lengua_indigena= $request->tipo_lengua_indigena;
+        $modulouno->habla_lengua_extranjera= $request->habla_lengua_extranjera;
+        $modulouno->trabaja_ocupacion= $request->trabaja_ocupacion;
+        $modulouno->condicion_actividad= $request->condicion_actividad;
+        $modulouno->fuente_ingresos= $request->fuente_ingresos;
+        $modulouno->ingreso_mensual= $request->ingreso_mensual;
+        $modulouno->tipo_representacion= $request->tipo_representacion;
+        $modulouno->sexo_representacion= $request->sexo_representacion;
         $modulouno->user_id = auth()->id();
         $modulouno->save();
 
@@ -89,8 +117,17 @@ class ejemploController extends Controller
     {
         $modulouno = ejemplo::find($id);
         $modulouno->id_expediente = $request->id_expediente;
-        $modulouno->municipios = $request->municipios;
-        $modulouno->estados = $request->estados;
+        $modulouno->datos = $request->datos;
+        $modulouno->persona= $request->persona;
+        $modulouno->razon_social = $request->razon_social;
+        $modulouno->nombre_comercial= $request->nombre_comercial;
+        $modulouno->nombre_completo= $request->nombre_completo;
+        $modulouno->sexo= $request->sexo;
+        $modulouno->fecha_nacimiento= $request->fecha_nacimiento;
+        $modulouno->rfc= $request->rfc;
+        $modulouno->curp= $request->curp;
+        $modulouno->pais= $request->pais;
+        $modulouno->estados= $request->estados;
         $modulouno->save();
         return $modulouno;
     }

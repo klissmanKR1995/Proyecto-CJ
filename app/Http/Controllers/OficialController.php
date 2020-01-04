@@ -13,7 +13,7 @@ class OficialController extends Controller
     }
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin','oficial']);
+        $request->user()->authorizeRoles(['oficial']);
         
         return view('oficial');
     }

@@ -18,8 +18,8 @@ Vue.component('juicios-component', require('./components/juiciosNComponent.vue')
 Vue.component('valoresvariables-component', require('./components/valoresvariablesNComponent.vue').default);
 
 Vue.component('expedientes-component', require('./components/expedientesComponent.vue').default);
-
 Vue.component('modulouno-component', require('./components/modulounoComponent.vue').default);
+Vue.component('modulounoactualizar-component', require('./components/modulounoactualizarComponent.vue').default);
 
 
 
