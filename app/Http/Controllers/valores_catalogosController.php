@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use App\valorescatalagos;
 
@@ -125,6 +126,16 @@ class valores_catalogosController extends Controller
     {
         $valorescatalagos = valorescatalagos::find($id);
         $valorescatalagos->delete();
+    }
+
+    public function exportPdf()
+    {
+        $valorescatalagos = valorescatalagos::get();
+        
+        $pdf = PDF::loadView('pdf.valorescatalogos', compact('valorescatalagos'));
+
+
+        return $pdf->download('consulta-valoresCatalogos.pdf');
     }
 
     public function getCatalogos(Request $request)

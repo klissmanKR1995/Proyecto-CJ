@@ -81,3 +81,13 @@ Route::resource('/modulouno', 'ejemploController');
 /* Rutas del PDF */
 
 Route::get('distritosPDF', 'distritosController@exportPdf')->name('distritos.pdf');
+
+Route::get('juzgadosPDF', 'juzgadosController@exportPdf')->name('juzgados.pdf');
+
+Route::get('materiasPDF', 'materiasController@exportPdf')->name('materias.pdf');
+
+Route::get('juiciosPDF', 'juiciosController@exportPdf')->name('juicios.pdf');
+
+Route::get('variablesPDF', 'catalogosController@exportPdf')->name('variables.pdf');
+
+Route::get('valoresvariablesPDF', 'valores_catalogosController@exportPdf')->name('valoresvariables.pdf');

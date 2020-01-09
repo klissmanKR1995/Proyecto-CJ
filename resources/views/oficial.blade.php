@@ -109,8 +109,8 @@
             <div class="container-fluid">
               <h1 class="mt-4">Bienvenidos</h1>
               <p> Al sistema de generación de estadísticas del <strong> Poder Judicial del Estado de Tlaxcala. </strong> </p>
-              
-              
+    
+              <inicio-component></inicio-component>
 
               <br> 
             </div>
@@ -128,7 +128,8 @@
 
           <div class="container">
            
-          <expedientes-component> </expedientes-component> 
+           <expedientes-component> </expedientes-component> 
+ 
 
           </div>
         </div>
@@ -145,7 +146,8 @@
 
         <div class="container">
          
-        <modulouno-component></modulouno-component> 
+         <modulouno-component> </modulouno-component>   
+
 
         </div>
       </div>

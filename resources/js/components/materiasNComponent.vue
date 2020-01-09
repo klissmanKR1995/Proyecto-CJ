@@ -5,7 +5,14 @@
         <h5 class="text-center"> Actualizar Información <i> (materias) </i> </h5> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre Materia" v-model="materia.nombre_materia" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus Materia" v-model="materia.estatus"><br>
+        <div class="form-group">
+            <select id="inputStateMaterias" class="form-control" v-model="materia.estatus">
+              <option value="">Estatus Materia </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+        </div>
         
         <center>    
         <div class="alert alert-danger" role="alert" id="existeAlertaMateria">
@@ -17,10 +24,17 @@
       </form>  
 
       <form @submit.prevent="agregar" v-else>
-        <h4 class="text-center"> Formulario materias </h4> <br>
+        <h4 class="text-center"> Formulario Materias </h4> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre Materia" v-model="materia.nombre_materia" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus Materia" v-model="materia.estatus"><br>
+        <div class="form-group">
+          <select id="inputStateMaterias" class="form-control" v-model="materia.estatus">
+            <option value="">Estatus Materia </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
+        </div>
         
         <center>    
         <div class="alert alert-danger" role="alert" id="existeAlertaMateria">

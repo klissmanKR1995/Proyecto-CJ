@@ -15,7 +15,7 @@ class CreateExpedientesTable extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->bigIncrements('id_expediente');
-            $table->integer('numero_expediente');
+            $table->string('numero_expediente');
             $table->string('nombre_actor');
             $table->string('nombre_demandado');
             $table->date('fecha_en_tribunal');

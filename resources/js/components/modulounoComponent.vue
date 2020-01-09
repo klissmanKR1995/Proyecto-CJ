@@ -137,16 +137,16 @@
 
               <div class="form-row">
                 <div class="col-md-4">
-                 <label for="inputState">¿Habla español?</label>
-                  <select id="inputState" class="form-control" v-model="modulouno.habla_español">
+                 <label for="inputState1">¿Habla español?</label>
+                  <select id="inputState1" class="form-control" v-model="modulouno.habla_español">
                     <option selected>Seleccionar</option>
                     <option>Si</option>
                     <option>No</option>
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <label for="inputState">¿Habla lengua indigena?</label>
-                   <select id="inputState" class="form-control" v-model="modulouno.habla_lengua_indigena">
+                  <label for="inputState2">¿Habla lengua indigena?</label>
+                   <select id="inputState2" class="form-control" v-model="modulouno.habla_lengua_indigena">
                     <option selected>Seleccionar</option>
                     <option>Si</option>
                     <option>No</option>
@@ -161,8 +161,8 @@
 
               <div class="form-row">
                 <div class="col-md-4">
-                 <label for="inputState">¿Habla lengua extranjera?</label>
-                  <select id="inputState" class="form-control" v-model="modulouno.habla_lengua_extranjera">
+                 <label for="inputState3">¿Habla lengua extranjera?</label>
+                  <select id="inputState3" class="form-control" v-model="modulouno.habla_lengua_extranjera">
                     <option selected>Seleccionar</option>
                     <option>Si</option>
                     <option>No</option>
@@ -350,16 +350,16 @@
 
             <div class="form-row">
               <div class="col-md-4">
-               <label for="inputState">¿Habla español?</label>
-                <select id="inputState" class="form-control" v-model="modulouno.habla_español">
+               <label for="inputState1">¿Habla español?</label>
+                <select id="inputState1" class="form-control" v-model="modulouno.habla_español">
                   <option selected>Seleccionar</option>
                   <option>Si</option>
                   <option>No</option>
                 </select>
               </div>
               <div class="col-md-4">
-                <label for="inputState">¿Habla lengua indigena?</label>
-                 <select id="inputState" class="form-control" v-model="modulouno.habla_lengua_indigena">
+                <label for="inputState2">¿Habla lengua indigena?</label>
+                 <select id="inputState2" class="form-control" v-model="modulouno.habla_lengua_indigena">
                   <option selected>Seleccionar</option>
                   <option>Si</option>
                   <option>No</option>
@@ -374,8 +374,8 @@
 
             <div class="form-row">
               <div class="col-md-4">
-               <label for="inputState">¿Habla lengua extranjera?</label>
-                <select id="inputState" class="form-control" v-model="modulouno.habla_lengua_extranjera">
+               <label for="inputState3">¿Habla lengua extranjera?</label>
+                <select id="inputState3" class="form-control" v-model="modulouno.habla_lengua_extranjera">
                   <option selected>Seleccionar</option>
                   <option>Si</option>
                   <option>No</option>

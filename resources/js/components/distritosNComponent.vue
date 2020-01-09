@@ -1,45 +1,46 @@
 <template>
   <div>
     <div class="modal-content"> <br>
-       <form @submit.prevent="editar(distrito)" v-if="editarActivo">
-          <h5 class="text-center"> Actualizar Información <i> (distritos) </i> </h5> <br>
-          <input type="text" class="form-control mb-2" placeholder="Nombre Distrito" v-model="distrito.nombre_distrito" @blur="comprobarDuplicados"><br>
-           
-            <div class="form-group">
-              <select id="inputState" class="form-control" v-model="distrito.estatus">
-                <option>Activo</option>
-                <option>No-activo</option>
-                <option>Suspendido</option>
-              </select>
-            </div>
-          
-          <center>   
-          <div class="alert alert-danger" role="alert" id="existeAlerta">
-            Registro existente, verifique la información a almacenar
-          </div> 
-          <button class="btn btn-primary" type="submit" id="guardar"> Actualizar </button>
-          <button class="btn btn-danger" type="submit" @click="cancelarEdicion()"> Cancelar </button>
-          </center> <br>
+      <form @submit.prevent="editar(distrito)" v-if="editarActivo">
+        <h5 class="text-center"> Actualizar Información <i> (distritos) </i> </h5> <br>
+        <input type="text" class="form-control mb-2" placeholder="Nombre Distrito" v-model="distrito.nombre_distrito" @blur="comprobarDuplicados"><br>
+         
+        <div class="form-group">
+          <select id="inputStateDistrito" class="form-control" v-model="distrito.estatus">
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
+        </div>
+        
+        <center>   
+        <div class="alert alert-danger" role="alert" id="existeAlerta">
+          Registro existente, verifique la información a almacenar
+        </div> 
+        <button class="btn btn-primary" type="submit" id="guardar"> Actualizar </button>
+        <button class="btn btn-danger" type="submit" @click="cancelarEdicion()"> Cancelar </button>
+        </center> <br>
       </form>  
 
       <form @submit.prevent="agregar" v-else>
-          <h4 class="text-center"> Formulario distritos </h4> <br>
-          <input type="text" class="form-control mb-2" placeholder="Nombre Distrito" v-model="distrito.nombre_distrito"  @blur="comprobarDuplicados"><br>
+        <h4 class="text-center"> Formulario Distritos </h4> <br>
+        <input type="text" class="form-control mb-2" placeholder="Nombre Distrito" v-model="distrito.nombre_distrito"  @blur="comprobarDuplicados"><br>
 
-          <div class="form-group">
-            <select id="inputState" class="form-control" v-model="distrito.estatus">
-              <option>Activo</option>
-              <option>No-activo</option>
-              <option>Suspendido</option>
-            </select>
-          </div>
-          
-          <center>    
-          <div class="alert alert-danger" role="alert" id="existeAlerta">
-            Registro existente, verifique la información a almacenar
-          </div>
-          <button class="btn btn-danger" type="submit" id="guardar"> Guardar </button> 
-          </center><br>
+        <div class="form-group">
+          <select id="inputStateDistrito" class="form-control" v-model="distrito.estatus">
+            <option value="">Estatus Distrito </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
+        </div>
+        
+        <center>    
+        <div class="alert alert-danger" role="alert" id="existeAlerta">
+          Registro existente, verifique la información a almacenar
+        </div>
+        <button class="btn btn-danger" type="submit" id="guardar"> Guardar </button> 
+        </center><br>
       </form>  
     </div>
 

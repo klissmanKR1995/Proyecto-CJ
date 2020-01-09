@@ -5,7 +5,14 @@
           <h5 class="text-center"> Actualizar Información <i> (catalogos) </i> </h5> <br>
           <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable" @blur="comprobarDuplicados"><br>
 
-          <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
+          <div class="form-group">
+            <select id="inputStateVariables" class="form-control" v-model="catalogo.estatus">
+              <option value="">Estatus Variable </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+          </div>
           
           <center>    
           <div class="alert alert-danger" role="alert" id="existeAlertaVariable">
@@ -17,10 +24,17 @@
       </form>  
 
       <form @submit.prevent="agregar" v-else>
-        <h4 class="text-center"> Formulario catalogos </h4> <br>
+        <h4 class="text-center"> Formulario Catalogos </h4> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre Variable" v-model="catalogo.nombre_variable" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus Variable" v-model="catalogo.estatus"><br>
+        <div class="form-group">
+          <select id="inputStateVariables" class="form-control" v-model="catalogo.estatus">
+            <option value="">Estatus Variable </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
+        </div>
         
         <center>    
         <div class="alert alert-danger" role="alert" id="existeAlertaVariable">

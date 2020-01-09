@@ -145,29 +145,13 @@
             <div class="container-fluid">
               <h1 class="mt-4">Bienvenidos</h1>
               <p> Al sistema de generación de estadísticas del <strong> Poder Judicial del Estado de Tlaxcala. </strong> </p>
-              
-              
+
+                <inicio-component></inicio-component>
 
               <br> 
             </div>
         </div>
         <!-- Termina contenido de inicio-->
-
-        <!-- Empieza formulario tipos de usuario -->
-        <div class="tab-pane fade" id="v-pills-tiposUsuarios" role="tabpanel" aria-labelledby="v-pills-tiposUsuarios-tab">
-
-          <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
-          </div>
-
-          <div class="container">
-           
-            Tipo de users
-
-          </div>
-           
-        </div>  
-        <!-- Termina formulario tipos de usuarios -->
 
 
         <!-- Empieza formulario de usuarios -->
@@ -266,17 +250,16 @@
         <div class="tab-pane fade" id="v-pills-distritos" role="tabpanel" aria-labelledby="v-pills-distritos-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de distritos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-           <distritos-component> </distritos-component>
+            <distritos-component> </distritos-component>
             
-            <center>
+            
                 <a href="{{ route('distritos.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
-                <a href="" class="btn btn-success"> Exportar EXCEL </a>
-            </center>    
+                
           </div>    
       </div>
      
@@ -286,13 +269,18 @@
         <div class="tab-pane fade" id="v-pills-juzgado" role="tabpanel" aria-labelledby="v-pills-juzgado-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de juzgados, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-           <juzgados-component> </juzgados-component> 
+            <juzgados-component> </juzgados-component>   
 
+
+            
+                  <a href="{{ route('juzgados.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+ 
+                
           </div>
         </div>
       <!-- Termina formulario juzgado -->
@@ -301,13 +289,17 @@
         <div class="tab-pane fade" id="v-pills-materia" role="tabpanel" aria-labelledby="v-pills-materia-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de materias, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-           <materias-component> </materias-component>
-           
+            <materias-component> </materias-component>  
+
+            
+                  <a href="{{ route('materias.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+ 
+             
           </div>
         </div>
       <!-- Termina formulario materias -->
@@ -317,13 +309,16 @@
         <div class="tab-pane fade" id="v-pills-juicios" role="tabpanel" aria-labelledby="v-pills-juicios-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de juicios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-            <juicios-component> </juicios-component>
+            <juicios-component> </juicios-component> 
 
+            
+              <a href="{{ route('juicios.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+             
           </div>
         </div>
       <!-- Termina formulario juicios -->
@@ -332,12 +327,16 @@
         <div class="tab-pane fade" id="v-pills-variables" role="tabpanel" aria-labelledby="v-pills-variables-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de catalogos, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de variables, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-            <variables-component></variables-component>
+            <variables-component> </variables-component>   
+
+            
+              <a href="{{ route('variables.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+            
 
           </div>
         </div>
@@ -353,7 +352,11 @@
 
           <div class="container">
            
-              <valoresvariables-component></valoresvariables-component>
+            <valoresvariables-component> </valoresvariables-component> 
+
+            
+              <a href="{{ route('valoresvariables.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+            
 
           </div>
         </div>
@@ -365,12 +368,12 @@
         <div class="tab-pane fade" id="v-pills-moduloUno" role="tabpanel" aria-labelledby="v-pills-moduloUno-tab">
 
           <div class="alert alert-secondary text-center" role="alert">
-            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de tipos de usuarios, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+            <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> de modulo I, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
           </div>
 
           <div class="container">
            
-           <modulounoactualizar-component> </modulounoactualizar-component>
+          <!-- <modulounoactualizar-component> </modulounoactualizar-component> -->
           
           </div>
     

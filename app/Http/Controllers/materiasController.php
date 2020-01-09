@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use App\materias;
 
@@ -106,6 +107,16 @@ class materiasController extends Controller
     {
         $materias = materias::find($id);
         $materias->delete();
+    }
+
+    public function exportPdf()
+    {
+        $materias = materias::get();
+        
+        $pdf = PDF::loadView('pdf.materias', compact('materias'));
+
+
+        return $pdf->download('consulta-materias.pdf');
     }
 
     public function materiasAll()

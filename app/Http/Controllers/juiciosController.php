@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use App\juicios;
 
@@ -112,6 +113,16 @@ class juiciosController extends Controller
     {
         $juicios = juicios::find($id);
         $juicios->delete();
+    }
+
+    public function exportPdf()
+    {
+        $juicios = juicios::get();
+        
+        $pdf = PDF::loadView('pdf.juicios', compact('juicios'));
+
+
+        return $pdf->download('consulta-juicios.pdf');
     }
 
     public function juiciosAll()

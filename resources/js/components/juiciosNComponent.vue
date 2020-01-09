@@ -5,7 +5,14 @@
         <h5 class="text-center"> Actualizar Información <i> (Juicios) </i> </h5> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre juicio" v-model="juicio.nombre_juicio" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus juicio" v-model="juicio.estatus"><br>
+        <div class="form-group">
+            <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
+              <option value="">Estatus Juicio </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+        </div>
         
         <div class="form-group">
           <select id="id_materia" class="form-control" v-model="juicio.id_materia">
@@ -13,8 +20,6 @@
             <option v-for="(item, index) in materias" :value="item.id_materia">{{item.nombre_materia}}</option>
           </select>
         </div>
-
-        
 
         <div class="text-center">    
           <div class="alert alert-danger" role="alert" id="existeAlertaJuicio">
@@ -31,8 +36,15 @@
         
         <input type="text" class="form-control mb-2" placeholder="Nombre juicio" v-model="juicio.nombre_juicio" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus juicio" v-model="juicio.estatus"><br>
-       
+        <div class="form-group">
+            <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
+              <option value="">Estatus Juicio </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+        </div>
+
         <div class="form-group">
           <select id="id_materia" class="form-control" v-model="juicio.id_materia">
             <option value="">Materia al que pertenece </option>
@@ -47,7 +59,7 @@
         <button class="btn btn-danger" type="submit" id="guardarjuicio"> Guardar </button> 
         </div><br>
       </form>  
-    </div> 
+    </div> <br>
 
     <div>
       <table class="table table-striped">

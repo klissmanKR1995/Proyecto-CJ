@@ -116,6 +116,16 @@ class juzgadosController extends Controller
         $juzgados->delete();
     }
 
+    public function exportPdf()
+    {
+        $juzgados = juzgados::get();
+        
+        $pdf = PDF::loadView('pdf.juzgados', compact('juzgados'));
+
+
+        return $pdf->download('consulta-juzgados.pdf');
+    }
+
     public function searchNombreJuzgado(Request $request)
     {
         $status = false;

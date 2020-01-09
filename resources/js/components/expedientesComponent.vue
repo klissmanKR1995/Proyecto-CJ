@@ -48,7 +48,7 @@
       </form>  
 
       <form @submit.prevent="agregar" v-else>
-          <h4 class="text-center"> Formulario Libro de gobierno </h4> <br>
+          <h4 class="text-center"> Formulario Libro de Gobierno </h4> <br>
           
           <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente" @blur="comprobarDuplicados"><br>
 

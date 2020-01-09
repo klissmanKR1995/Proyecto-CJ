@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use App\catalogos;
 
@@ -103,6 +104,16 @@ class catalogosController extends Controller
     {
         $catalogos = catalogos::find($id);
         $catalogos->delete();
+    }
+
+    public function exportPdf()
+    {
+        $catalogos = catalogos::get();
+        
+        $pdf = PDF::loadView('pdf.catalogos', compact('catalogos'));
+
+
+        return $pdf->download('consulta-variables.pdf');
     }
 
     public function catalogosAll()

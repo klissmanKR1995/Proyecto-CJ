@@ -5,7 +5,14 @@
         <h5 class="text-center"> Actualizar Información <i> (juzgados) </i> </h5> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre Juzgado" v-model="juzgado.nombre_juzgado" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus Juzgado" v-model="juzgado.estatus"><br>
+        <div class="form-group">
+            <select id="inputStateJuzgados" class="form-control" v-model="juzgado.estatus">
+              <option value="">Estatus Juzgado </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+        </div>
         
         <div class="form-group">
           <select id="id_distrito" class="form-control" v-model="juzgado.id_distrito">
@@ -24,10 +31,17 @@
       </form>  
 
       <form @submit.prevent="agregar" v-else>
-        <h4 class="text-center"> Formulario juzgados </h4> <br>
+        <h4 class="text-center"> Formulario Juzgados </h4> <br>
         <input type="text" class="form-control mb-2" placeholder="Nombre Juzgado" v-model="juzgado.nombre_juzgado" @blur="comprobarDuplicados"><br>
 
-        <input type="text" class="form-control mb-2" placeholder="Estatus Juzgado" v-model="juzgado.estatus"><br>
+        <div class="form-group">
+            <select id="inputStateJuzgados" class="form-control" v-model="juzgado.estatus">
+              <option value="">Estatus Juzgado </option>
+              <option>Activo</option>
+              <option>No-activo</option>
+              <option>Suspendido</option>
+            </select>
+        </div>
        
 
        <div class="form-group">
