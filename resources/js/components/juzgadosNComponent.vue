@@ -6,12 +6,12 @@
         <input type="text" class="form-control mb-2" placeholder="Nombre Juzgado" v-model="juzgado.nombre_juzgado" @blur="comprobarDuplicados"><br>
 
         <div class="form-group">
-            <select id="inputStateJuzgados" class="form-control" v-model="juzgado.estatus">
-              <option value="">Estatus Juzgado </option>
-              <option>Activo</option>
-              <option>No-activo</option>
-              <option>Suspendido</option>
-            </select>
+          <select id="inputStateJuzgadosActualizar" class="form-control" v-model="juzgado.estatus">
+            <option value="">Estatus Juzgado </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
         </div>
         
         <div class="form-group">
@@ -35,12 +35,12 @@
         <input type="text" class="form-control mb-2" placeholder="Nombre Juzgado" v-model="juzgado.nombre_juzgado" @blur="comprobarDuplicados"><br>
 
         <div class="form-group">
-            <select id="inputStateJuzgados" class="form-control" v-model="juzgado.estatus">
-              <option value="">Estatus Juzgado </option>
-              <option>Activo</option>
-              <option>No-activo</option>
-              <option>Suspendido</option>
-            </select>
+          <select id="inputStateJuzgadosGuardar" class="form-control" v-model="juzgado.estatus">
+            <option value="">Estatus Juzgado </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
         </div>
        
 
@@ -59,14 +59,14 @@
       </form>  
     </div> 
 
-    <div>
+    <div class="container">
       <table class="table table-striped">
         <thead>
             <tr>
               <th scope="col"> Nombre - Juzgado </th>
               <th scope="col"> Estatus - Juzgado </th>
               <th scope="col"> Nombre - Distrito </th>
-              <th scope="col"> Fecha de Registro</th>
+              <th scope="col"> Fecha de Registro </th>
             </tr>
             <tr v-for="(item, index) in juzgados.data" :key="index">
               <td>{{item.nombre_juzgado}}</td>
@@ -80,33 +80,30 @@
       </table> 
 
       <pagination :data="juzgados" @pagination-change-page="getResultsJuzgados">
-      </pagination>
+      </pagination>      
+    </div>  
 
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModal1Label">Confirmar elminación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" name="id" id="id">
-              ¿Estas seguro(a) de eliminar el registro seleccionado?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarJuzgado('cancelar')">Cancelar</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarJuzgado('aceptar')">Eliminar</button>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal1Label">Confirmar elminación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id" id="id">
+            ¿Estas seguro(a) de eliminar el registro seleccionado?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarJuzgado('cancelar')">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarJuzgado('aceptar')">Eliminar</button>
           </div>
         </div>
       </div>
-
-      
-    </div>   
+    </div>
   </div>            
 </template>
 

@@ -153,12 +153,5 @@ class expedientesController extends Controller
         return json_encode(array('status' => $status));
     }
 
-    public function prueba(Request $request)
-    {
-        return json_encode(DB::table('expedientes')
-            ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
-            ->select('expedientes.*', 'juicios.nombre_juicio')
-            ->orderBy('numero_expediente', 'asc')
-            ->paginate(5));
-    }
+    
 }

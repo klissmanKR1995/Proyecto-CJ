@@ -44,7 +44,7 @@
       </form>  
     </div> <br>
 
-    <div>
+    <div class="container">
       <table class="table table-striped">
         <thead>
             <tr>
@@ -67,10 +67,9 @@
        <!-- Paginador -->
       <pagination :data="valorescatalogos" @pagination-change-page="getResultsValores">
       </pagination>
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalvaloresVariables" tabindex="-1" role="dialog" aria-labelledby="exampleModalvaloresVariablesLabel" aria-hidden="true">
+    </div>   
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalvaloresVariables" tabindex="-1" role="dialog" aria-labelledby="exampleModalvaloresVariablesLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -90,10 +89,6 @@
           </div>
         </div>
       </div>
-
-
-
-    </div>   
   </div>            
 </template>
 

@@ -17,7 +17,7 @@ class ejemploController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            return json_encode(DB::table('ejemplos')
+            return (DB::table('ejemplos')
             ->join('expedientes', 'ejemplos.id_expediente', '=', 'expedientes.id_expediente')
             ->select('ejemplos.*', 'expedientes.numero_expediente')
             ->orderBy('numero_expediente', 'asc')

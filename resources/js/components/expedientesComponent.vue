@@ -50,7 +50,7 @@
       <form @submit.prevent="agregar" v-else>
           <h4 class="text-center"> Formulario Libro de Gobierno </h4> <br>
           
-          <input type="text" class="form-control mb-2" placeholder="Número de expediente" v-model="expediente.numero_expediente" @blur="comprobarDuplicados"><br>
+          <input type="text" class="form-control mb-2" placeholder="Número de expediente/Año" v-model="expediente.numero_expediente" @blur="comprobarDuplicados"><br>
 
           <div class="form-row">
             <div class="col">
@@ -121,34 +121,28 @@
             </tr>
         </thead>   
       </table>
-
-      
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalExpedientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalExpedientesLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalExpedientesLabel">Confirmar elminación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" name="id" id="id">
-              ¿Estas seguro(a) de eliminar el registro seleccionado?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarExpediente('cancelar')">Cancelar</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarExpediente('aceptar')">Eliminar</button>
-            </div>
+    </div>   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalExpedientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalExpedientesLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalExpedientesLabel">Confirmar elminación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id" id="id">
+            ¿Estas seguro(a) de eliminar el registro seleccionado?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarExpediente('cancelar')">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarExpediente('aceptar')">Eliminar</button>
           </div>
         </div>
       </div>
-
-      
-      <br>
-    </div>   
+    </div>
   </div>            
 </template>
 
@@ -171,17 +165,23 @@
             axios.get('/Proyecto-CJ/public/juiciosAll')
             .then(res => {
                 this.juicios = res.data;
-            }),
+            }).catch(error => {
+                console.log(error.response)
+            });
             axios.get('/Proyecto-CJ/public/expedientes')
             .then(res => {
                 this.expedientes = res.data;
-            })
+            }).catch(error => {
+                console.log(error.response)
+            });
        },
         methods:{
             getResults(page = 1) {
               axios.get('/Proyecto-CJ/public/expedientes?page=' + page)
                 .then(response => {
                   this.expedientes = response.data;
+                }).catch(error => {
+                    console.log(error.response)
                 });
             },
             editarFormulario(item){

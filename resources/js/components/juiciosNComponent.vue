@@ -6,15 +6,15 @@
         <input type="text" class="form-control mb-2" placeholder="Nombre juicio" v-model="juicio.nombre_juicio" @blur="comprobarDuplicados"><br>
 
         <div class="form-group">
-            <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
-              <option value="">Estatus Juicio </option>
-              <option>Activo</option>
-              <option>No-activo</option>
-              <option>Suspendido</option>
-            </select>
+          <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
+            <option value="">Estatus Juicio </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
         </div>
         
-        <div class="form-group">
+         <div class="form-group">
           <select id="id_materia" class="form-control" v-model="juicio.id_materia">
             <option value="">Materia al que pertenece </option>
             <option v-for="(item, index) in materias" :value="item.id_materia">{{item.nombre_materia}}</option>
@@ -37,12 +37,12 @@
         <input type="text" class="form-control mb-2" placeholder="Nombre juicio" v-model="juicio.nombre_juicio" @blur="comprobarDuplicados"><br>
 
         <div class="form-group">
-            <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
-              <option value="">Estatus Juicio </option>
-              <option>Activo</option>
-              <option>No-activo</option>
-              <option>Suspendido</option>
-            </select>
+          <select id="inputStateJuicios" class="form-control" v-model="juicio.estatus">
+            <option value="">Estatus Juicio </option>
+            <option>Activo</option>
+            <option>No-activo</option>
+            <option>Suspendido</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -61,7 +61,7 @@
       </form>  
     </div> <br>
 
-    <div>
+    <div class="container">
       <table class="table table-striped">
         <thead>
             <tr>
@@ -83,31 +83,30 @@
 
       <pagination :data="juicios" @pagination-change-page="getResultsJuicios">
       </pagination>
+    </div>   
 
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalJuicios" tabindex="-1" role="dialog" aria-labelledby="exampleModalJuiciosLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalJuiciosLabel">Confirmar elminación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" name="id" id="id">
-              ¿Estas seguro(a) de eliminar el registro seleccionado?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarjuicio('cancelar')">Cancelar</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarjuicio('aceptar')">Eliminar</button>
-            </div>
+   <!-- Modal -->
+    <div class="modal fade" id="exampleModalJuicios" tabindex="-1" role="dialog" aria-labelledby="exampleModalJuiciosLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalJuiciosLabel">Confirmar elminación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id" id="id">
+            ¿Estas seguro(a) de eliminar el registro seleccionado?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarjuicio('cancelar')">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarjuicio('aceptar')">Eliminar</button>
           </div>
         </div>
-      </div> 
+      </div>
+    </div> 
        
-    </div>   
   </div>            
 </template>
 

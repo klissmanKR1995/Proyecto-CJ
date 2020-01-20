@@ -63,34 +63,30 @@
         </thead>   
       </table> 
 
-
       <pagination :data="catalogos" @pagination-change-page="getResultsVariables">
       </pagination>
-
-        <!-- Modal -->
-      <div class="modal fade" id="modal_catalagos" tabindex="-1" role="dialog" aria-labelledby="modal_catalagosLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modal_catalagosLabel">Confirmar elminación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" name="id" id="id">
-              ¿Estas seguro(a) de eliminar el registro seleccionado?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarCatalogo('cancelar')">Cancelar</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarCatalogo('aceptar')">Eliminar</button>
-            </div>
+    </div>   
+    <!-- Modal -->
+    <div class="modal fade" id="modal_catalagos" tabindex="-1" role="dialog" aria-labelledby="modal_catalagosLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal_catalagosLabel">Confirmar elminación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id" id="id">
+            ¿Estas seguro(a) de eliminar el registro seleccionado?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarCatalogo('cancelar')">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarCatalogo('aceptar')">Eliminar</button>
           </div>
         </div>
       </div>
-
-    <br>
-    </div>   
+    </div>
   </div>            
 </template>
 
@@ -98,7 +94,6 @@
     export default {
        data(){
             return{
-                laravelData: {},
                 catalogos: {},
                 catalogo: {nombre_variable: '', estatus: ''},
                 editarActivo: false

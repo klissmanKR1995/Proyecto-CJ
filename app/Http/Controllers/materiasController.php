@@ -121,10 +121,11 @@ class materiasController extends Controller
 
     public function materiasAll()
     {
-        return json_encode(
+        return (
             materias::all()
         );
     }
+
 
     public function searchNombreMateria(Request $request)
     {

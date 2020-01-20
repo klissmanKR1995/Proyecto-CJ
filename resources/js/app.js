@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+/**
+ Componentes Administrador
+ */
+
 Vue.component('inicio-component', require('./components/inicioComponent.vue').default);
 Vue.component('distritos-component', require('./components/distritosNComponent.vue').default);
 Vue.component('juzgados-component', require('./components/juzgadosNComponent.vue').default);
@@ -17,12 +21,12 @@ Vue.component('juicios-component', require('./components/juiciosNComponent.vue')
 Vue.component('variables-component', require('./components/variablesNComponent.vue').default);
 Vue.component('valoresvariables-component', require('./components/valoresvariablesNComponent.vue').default);
 
+/**
+ Componentes Oficial de partes
+ */
+
 Vue.component('expedientes-component', require('./components/expedientesComponent.vue').default);
 Vue.component('modulouno-component', require('./components/modulounoComponent.vue').default);
-//Vue.component('modulounoactualizar-component', require('./components/modulounoactualizarComponent.vue').default);
-
-
-
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 

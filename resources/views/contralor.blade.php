@@ -69,7 +69,7 @@
 
               
 
-              <a class="nav-link menuMain" id="v-pills-expedientes-tab" data-toggle="pill" href="#v-pills-expedientes" role="tab" aria-controls="v-pills-expedientes" aria-selected="false"><i class="fas fa-file-alt"></i> Generación de Estádisticas</a>
+              <a class="nav-link menuMain" id="v-pills-estadisticas-tab" data-toggle="pill" href="#v-pills-estadisticas" role="tab" aria-controls="v-pills-estadisticas" aria-selected="false"><i class="fas fa-file-alt"></i> Generación de Estádisticas</a>
 
               <a class="nav-link menuMain" id="v-pills-manualAyuda-tab" data-toggle="pill" href="#v-pills-manualAyuda" role="tab" aria-controls="v-pills-manualAyuda" aria-selected="false"> <i class="fas fa-question"></i> Manual-Ayuda</a>
       
@@ -128,7 +128,7 @@
 
           <div class="container">
            
-          
+            <veruno-component> </veruno-component>
  
 
           </div>
@@ -153,6 +153,66 @@
       </div>
       <!-- Termina formulario moduloDosContralor -->
 
+       <!-- Empieza formulario de estadisticas -->
+      <div class="tab-pane fade" id="v-pills-estadisticas" role="tabpanel" aria-labelledby="v-pills-estadisticas-tab">
+
+        <div class="alert alert-secondary text-center" role="alert">
+          <font size="4"> ACCIONES: </font>  <strong> Generación </strong> de reportes estádisticos de expedientes, <strong> POR MODULOS DE CAPTURA </strong> y visualización de <strong> información de modulos </strong>
+        </div>
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card" style="width: 26rem;">
+                <div id="piechart" style="width: 900px; height: 140px;"></div>
+                <div class="card-body">
+                  <h5 class="card-title">Reporte Expedientes</h5>
+                  <p class="card-text">El siguiente reporte marca el total de mujeres y hombres dentro de los registros de expedientes.</p>
+                  <a href="#" class="btn btn-danger">Descargar reporte</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card" style="width: 26rem;">
+                <div id="piechart2" style="width: 900px; height: 140px;"></div>
+                <div class="card-body">
+                  <h5 class="card-title">Reporte Expedientes</h5>
+                  <p class="card-text">El siguiente reporte marca el total de mujeres dentro de los registros de expedientes.</p>
+                  <a href="#" class="btn btn-danger">Descargar reporte</a>
+                </div>
+              </div>
+            </div>
+          </div> <br>
+
+           <div class="row">
+            <div class="col-md-6">
+              <div class="card" style="width: 26rem;">
+                <div id="piechart3" style="width: 900px; height: 140px;"></div>
+                <div class="card-body">
+                  <h5 class="card-title">Reporte Expedientes</h5>
+                  <p class="card-text">El siguiente reporte marca el total de mujeres y hombres dentro de los registros de expedientes.</p>
+                  <a href="#" class="btn btn-danger">Descargar reporte</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card" style="width: 26rem;">
+                <div id="piechart4" style="width: 900px; height: 140px;"></div>
+                <div class="card-body">
+                  <h5 class="card-title">Reporte Expedientes</h5>
+                  <p class="card-text">El siguiente reporte marca el total de mujeres dentro de los registros de expedientes.</p>
+                  <a href="#" class="btn btn-danger">Descargar reporte</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Termina formulario estadisticas -->
+
 
     <!-- /#wrapper -->
   </div>
@@ -165,6 +225,96 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Mujeres',     11],
+      ['Hombres',      8],
+    ]);
+
+    var options = {
+      title: 'Reporte de expedientes'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Mujeres',     11],
+      ['Hombres',      8],
+    ]);
+
+    var options = {
+      title: 'Reporte de expedientes'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Mujeres',     11],
+      ['Hombres',      8],
+    ]);
+
+    var options = {
+      title: 'Reporte de expedientes'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Mujeres',     11],
+      ['Hombres',      8],
+    ]);
+
+    var options = {
+      title: 'Reporte de expedientes'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+
+    chart.draw(data, options);
+  }
+</script>
 
 
 <!-- Menu Toggle Script -->

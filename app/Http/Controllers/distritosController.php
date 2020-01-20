@@ -124,7 +124,7 @@ class distritosController extends Controller
 
     public function distritosAll()
     {
-        return json_encode(
+        return (
             distritos::all()
         );
     }

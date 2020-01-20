@@ -23,10 +23,10 @@ class juiciosController extends Controller
      */
      public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin','oficial']);
+        
         
         if($request->ajax()){
-            return json_encode(DB::table('juicios')
+            return (DB::table('juicios')
             ->join('materias', 'juicios.id_materia', '=', 'materias.id_materia')
             ->select('juicios.*', 'materias.nombre_materia')
             ->orderBy('nombre_juicio', 'asc')
@@ -127,7 +127,7 @@ class juiciosController extends Controller
 
     public function juiciosAll()
     {
-        return json_encode(
+        return (
             juicios::all()
         );
     }

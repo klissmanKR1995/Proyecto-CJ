@@ -118,7 +118,7 @@ class catalogosController extends Controller
 
     public function catalogosAll()
     {
-        return json_encode(
+        return (
             catalogos::all()
         );
     }

@@ -26,6 +26,7 @@ Route::get('/oficial', 'OficialController@index');
 
 Route::get('/contralor', 'ContralorController@index');
 
+Route::get('/graficas', 'graController@index');
 
 /* Rutas de los componentes en interfaz home (Administrador) */
 
@@ -62,6 +63,43 @@ Route::get('/searchNombreVariable', 'catalogosController@searchNombreVariable')-
 Route::resource('/valorescatalogos', 'valores_catalogosController');
 
 Route::get('/getCatalogos', 'valores_catalogosController@getCatalogos')->name('getCatalogos');
+
+Route::get('/personaCatalogos', 'valores_catalogosController@personaCatalogos')->name('personaCatalogos');
+
+Route::get('/sexoCatalogos', 'valores_catalogosController@sexoCatalogos')->name('sexoCatalogos');
+
+Route::get('/paisesCatalogos', 'valores_catalogosController@paisesCatalogos')->name('paisesCatalogos');
+
+Route::get('/estadosCatalogos', 'valores_catalogosController@estadosCatalogos')->name('estadosCatalogos');
+
+Route::get('/municipiosCatalogos', 'valores_catalogosController@municipiosCatalogos')->name('municipiosCatalogos');
+
+Route::get('/nacionalidadesCatalogos', 'valores_catalogosController@nacionalidadesCatalogos')->name('nacionalidadesCatalogos');
+
+Route::get('/pais_habitualCatalogos', 'valores_catalogosController@pais_habitualCatalogos')->name('pais_habitualCatalogos');
+
+Route::get('/estado_habitualCatalogos', 'valores_catalogosController@estado_habitualCatalogos')->name('estado_habitualCatalogos');
+
+Route::get('/municipio_habitualCatalogos', 'valores_catalogosController@municipio_habitualCatalogos')->name('municipio_habitualCatalogos');
+
+Route::get('/tipoDomicilioCatalogos', 'valores_catalogosController@tipoDomicilioCatalogos')->name('tipoDomicilioCatalogos');
+
+Route::get('/discapacidadesCatalogos', 'valores_catalogosController@discapacidadesCatalogos')->name('discapacidadesCatalogos');
+
+Route::get('/escolaridadCatalogos', 'valores_catalogosController@escolaridadCatalogos')->name('escolaridadCatalogos');
+
+Route::get('/lenguaIndigenaCatalogos', 'valores_catalogosController@lenguaIndigenaCatalogos')->name('lenguaIndigenaCatalogos');
+
+Route::get('/ocupacionCatalogos', 'valores_catalogosController@ocupacionCatalogos')->name('ocupacionCatalogos');
+
+Route::get('/fuenteIngresosCatalogos', 'valores_catalogosController@fuenteIngresosCatalogos')->name('fuenteIngresosCatalogos');
+
+Route::get('/condicionActividadCatalogos', 'valores_catalogosController@condicionActividadCatalogos')->name('condicionActividadCatalogos');
+
+Route::get('/tipoRepresentacionCatalogos', 'valores_catalogosController@tipoRepresentacionCatalogos')->name('tipoRepresentacionCatalogos');
+
+Route::get('/sexoRepresentacionCatalogos', 'valores_catalogosController@sexoRepresentacionCatalogos')->name('sexoRepresentacionCatalogos');
+
 
 Route::get('/searchNombreValores', 'valores_catalogosController@searchNombreValores')->name('searchNombreValores');
 
