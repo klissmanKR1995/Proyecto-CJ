@@ -130,7 +130,11 @@ class valores_catalogosController extends Controller
 
     public function exportPdf()
     {
-        $valorescatalagos = valorescatalagos::get();
+        $valorescatalagos = DB::table('valores_catalagos')
+                       ->join('catalogos', 'valores_catalagos.id_catalogo', '=', 'catalogos.id_catalogo')
+                       ->select('valores_catalagos.*', 'catalogos.nombre_variable')
+                       ->get();
+        
         
         $pdf = PDF::loadView('pdf.valorescatalogos', compact('valorescatalagos'));
 

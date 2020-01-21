@@ -117,7 +117,10 @@ class juiciosController extends Controller
 
     public function exportPdf()
     {
-        $juicios = juicios::get();
+        $juicios = DB::table('juicios')
+                       ->join('materias', 'juicios.id_materia', '=', 'materias.id_materia')
+                       ->select('juicios.*', 'materias.nombre_materia')
+                       ->get();
         
         $pdf = PDF::loadView('pdf.juicios', compact('juicios'));
 

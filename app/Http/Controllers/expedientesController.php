@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use App\expedientes;
 //use App\juicios;
@@ -27,7 +28,9 @@ class expedientesController extends Controller
         if($request->ajax()){
             return DB::table('expedientes')
             ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
-            ->select('expedientes.*', 'juicios.nombre_juicio')
+            ->join('materias', 'expedientes.id_materia', '=', 'materias.id_materia')
+            ->join('juzgados', 'expedientes.id_juzgado', '=', 'juzgados.id_juzgado')
+            ->select('expedientes.*', 'juicios.nombre_juicio', 'materias.nombre_materia', 'juzgados.nombre_juzgado')
             ->orderBy('numero_expediente', 'asc')
             ->get();        
         }else{
@@ -55,6 +58,8 @@ class expedientesController extends Controller
     {
         $expedientes = new expedientes();
         $expedientes->numero_expediente = $request->numero_expediente;
+        $expedientes->id_materia = $request->id_materia;
+        $expedientes->id_juzgado = $request->id_juzgado;
         $expedientes->nombre_actor = $request->nombre_actor;
         $expedientes->nombre_demandado = $request->nombre_demandado;
         $expedientes->fecha_en_tribunal = $request->fecha_en_tribunal;
@@ -67,7 +72,9 @@ class expedientesController extends Controller
 
         return DB::table('expedientes')
             ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
-            ->select('expedientes.*', 'juicios.nombre_juicio')
+            ->join('materias', 'expedientes.id_materia', '=', 'materias.id_materia')
+            ->join('juzgados', 'expedientes.id_juzgado', '=', 'juzgados.id_juzgado')
+            ->select('expedientes.*', 'juicios.nombre_juicio', 'materias.nombre_materia', 'juzgados.nombre_juzgado')
             ->where('id_expediente', $expedientes->id_expediente)
             ->orderBy('numero_expediente', 'asc')
             ->get(); 
@@ -106,6 +113,8 @@ class expedientesController extends Controller
     {
         $expedientes = expedientes::find($id);
         $expedientes->numero_expediente = $request->numero_expediente;
+        $expedientes->id_materia = $request->id_materia;
+        $expedientes->id_juzgado = $request->id_juzgado;
         $expedientes->nombre_actor = $request->nombre_actor;
         $expedientes->nombre_demandado = $request->nombre_demandado;
         $expedientes->fecha_en_tribunal = $request->fecha_en_tribunal;
@@ -125,6 +134,23 @@ class expedientesController extends Controller
     {
         $expedientes = expedientes::find($id);
         $expedientes->delete();
+    }
+
+
+    public function exportPdf()
+    {
+        $expedientes = DB::table('expedientes')
+                        ->join('juicios', 'expedientes.id_juicio', '=', 'juicios.id_juicio')
+                        ->join('materias', 'expedientes.id_materia', '=', 'materias.id_materia')
+                        ->join('juzgados', 'expedientes.id_juzgado', '=', 'juzgados.id_juzgado')
+                        ->select('expedientes.*', 'juicios.nombre_juicio', 'materias.nombre_materia', 'juzgados.nombre_juzgado')
+                       ->get();
+        
+        $pdf = PDF::loadView('pdf.expedientes', compact('expedientes'));
+
+
+        return $pdf->setPaper('a4', 'landscape')
+                   ->download('consulta-expedientes.pdf');
     }
 
     public function expedientesAll()

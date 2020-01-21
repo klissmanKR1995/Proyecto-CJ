@@ -15,6 +15,8 @@ class CreateExpedientesTable extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->bigIncrements('id_expediente');
+            $table->bigInteger('id_materia')->unsigned();
+            $table->bigInteger('id_juzgado')->unsigned();
             $table->string('numero_expediente');
             $table->string('nombre_actor');
             $table->string('nombre_demandado');
@@ -22,7 +24,9 @@ class CreateExpedientesTable extends Migration
             $table->date('fecha_en_juzgado');
             $table->bigInteger('id_juicio')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('id_juicio')->references('id_juicio')->on('juicios');   
+            $table->foreign('id_juicio')->references('id_juicio')->on('juicios');
+            $table->foreign('id_materia')->references('id_materia')->on('materias');
+            $table->foreign('id_juzgado')->references('id_juzgado')->on('juzgados');   
             $table->foreign('user_id')->references('id')->on('users');  
 
             $table->timestamps();

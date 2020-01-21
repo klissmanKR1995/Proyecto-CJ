@@ -11,7 +11,7 @@
               <center>
               <label for="Fecha-tribunal">Materia al que pertenece</label>
               </center>
-                <select id="id_materia" class="form-control" v-model="expediente.id_materia">
+                <select  class="form-control" v-model="expediente.id_materia">
                   <option v-for="(item, index) in materias" :value="item.id_materia">{{item.nombre_materia}}</option>
                 </select>
             </div>
@@ -77,7 +77,7 @@
               <center>
               <label for="Fecha-tribunal">Materia al que pertenece</label>
               </center>
-                <select id="id_materia" class="form-control" v-model="expediente.id_materia">
+                <select  class="form-control" v-model="expediente.id_materia">
                   <option v-for="(item, index) in materias" :value="item.id_materia">{{item.nombre_materia}}</option>
                 </select>
             </div>
@@ -145,6 +145,9 @@
               <th scope="col"> Fecha - Tribunal</th>
               <th scope="col"> Fecha - Juzgado</th>
               <th scope="col"> Tipo - Juicio</th>
+              <th scope="col"> Fecha - Registro</th>
+              <th scope="col"> Actualizar - Registro</th>
+              <th scope="col"> Eliminar - Registro</th>
             </tr>
             <tr v-for="(item, index) in expedientes" :key="index">
               <td>{{item.numero_expediente}}</td>
@@ -155,6 +158,9 @@
               <td>{{item.fecha_en_tribunal}}</td>
               <td>{{item.fecha_en_juzgado}}</td>
               <td>{{item.nombre_juicio}}</td>
+              <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
+              <td><button class="btn btn-primary" @click="editarFormulario(item)">Actualizar</button></td>
+              <td><button class="btn btn-danger"  @click="confirmar(item.id_expediente)">Eliminar</button></td>
             </tr>
         </thead>   
       </table>

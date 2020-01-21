@@ -118,12 +118,22 @@ class juzgadosController extends Controller
 
     public function exportPdf()
     {
-        $juzgados = juzgados::get();
+        $juzgados = DB::table('juzgados')
+                       ->join('distritos', 'juzgados.id_distrito', '=', 'distritos.id_distrito')
+                       ->select('juzgados.*', 'distritos.nombre_distrito')
+                       ->get();
         
         $pdf = PDF::loadView('pdf.juzgados', compact('juzgados'));
 
 
         return $pdf->download('consulta-juzgados.pdf');
+    }
+
+    public function juzgadosAll()
+    {
+        return (
+            juzgados::all()
+        );
     }
 
     public function searchNombreJuzgado(Request $request)

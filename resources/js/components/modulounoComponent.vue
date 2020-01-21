@@ -451,7 +451,6 @@
                 <th scope="col"> Ingreso-Mensual </th>
                 <th scope="col"> Tipo-Representación </th>
                 <th scope="col"> Sexo-Representación </th>
-                <th scope="col"> Fecha-Registro </th>
               </tr>
               <tr v-for="(item, index) in modulounos.data" :key="index">
                 <td>{{item.numero_expediente}}</td>
@@ -485,7 +484,6 @@
                 <td>{{item.ingreso_mensual}}</td>
                 <td>{{item.tipo_representacion}}</td>
                 <td>{{item.sexo_representacion}}</td>
-                <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
               </tr>
           </thead>   
         </table>

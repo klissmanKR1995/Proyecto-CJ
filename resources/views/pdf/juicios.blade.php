@@ -35,7 +35,7 @@
 	          	<tr>
 	          		 <td>{{$juicio->nombre_juicio}}</td>
 		             <td>{{$juicio->estatus}}</td>
-		             <td>{{$juicio->id_materia}}</td>
+		             <td>{{$juicio->nombre_materia}}</td>
 		             <td> <span class="badge badge-primary"> {{$juicio->created_at}} </span> </td>
 	          	</tr>
 	          @endforeach 

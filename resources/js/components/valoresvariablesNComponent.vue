@@ -51,7 +51,7 @@
               <th scope="col"> Nombre - Catalogo </th>
               <th scope="col"> Valor - Catalogo</th>
               <th scope="col"> Fecha - Registro</th>
-              <th scope="col"> <input type="text" class="form-control" name="buscar" id="buscar"  @keyup="buscarDato()"> </th>
+              <th scope="col"> <input type="text" class="form-control" name="buscar" id="buscar"  @keyup="buscarDato()" placeholder="Buscar"> </th>
             </tr>
             <tr v-for="(item, index) in valorescatalogos.data" :key="index">
               <td>{{item.nombre_variable}}</td>

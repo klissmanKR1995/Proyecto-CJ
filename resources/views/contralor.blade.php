@@ -49,16 +49,21 @@
               <!-- Menu con submenu usuarios-->
 
               <li class="nav-item">
-                  <a class="nav-link collapsed py-1 dropdown-toggle" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-users"></i> Modulos</a>
+                  <a class="nav-link collapsed py-1 dropdown-toggle" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-university"></i> Modulos</a>
                   <div class="collapse" id="submenu1sub1" aria-expanded="false" aria-controls="v-pills-home">
                       <ul class="flex-column nav pl-4">
+                           <li class="nav-item">
+                              <a class="nav-link p-1" id="v-pills-expedientes-tab" data-toggle="pill" href="#v-pills-expedientes" role="tab" aria-controls="v-pills-expedientes" aria-selected="false"><i class="fas fa-university"></i>
+                                   Expedientes
+                              </a>
+                          </li>
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-moduloUnoContralor-tab" data-toggle="pill" href="#v-pills-moduloUnoContralor" role="tab" aria-controls="v-pills-moduloUnoContralor" aria-selected="false"><i class="fas fa-users"></i>
+                              <a class="nav-link p-1" id="v-pills-moduloUnoContralor-tab" data-toggle="pill" href="#v-pills-moduloUnoContralor" role="tab" aria-controls="v-pills-moduloUnoContralor" aria-selected="false"><i class="fas fa-university"></i>
                                    Modulo I
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-moduloDosContralor-tab" data-toggle="pill" href="#v-pills-moduloDosContralor" role="tab" aria-controls="v-pills-moduloDosContralor" aria-selected="false"> <i class="fas fa-user"></i>
+                              <a class="nav-link p-1" id="v-pills-moduloDosContralor-tab" data-toggle="pill" href="#v-pills-moduloDosContralor" role="tab" aria-controls="v-pills-moduloDosContralor" aria-selected="false"> <i class="fas fa-university"></i>
                                   Modulo II
                               </a>
                           </li>
@@ -71,7 +76,6 @@
 
               <a class="nav-link menuMain" id="v-pills-estadisticas-tab" data-toggle="pill" href="#v-pills-estadisticas" role="tab" aria-controls="v-pills-estadisticas" aria-selected="false"><i class="fas fa-file-alt"></i> Generación de Estádisticas</a>
 
-              <a class="nav-link menuMain" id="v-pills-manualAyuda-tab" data-toggle="pill" href="#v-pills-manualAyuda" role="tab" aria-controls="v-pills-manualAyuda" aria-selected="false"> <i class="fas fa-question"></i> Manual-Ayuda</a>
       
               <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -115,7 +119,27 @@
               <br> 
             </div>
         </div>
-        <!-- Termina contenido de inicio-->
+      <!-- Termina contenido de inicio-->
+
+
+
+      <!-- Empieza formulario de expedientes de gobierno -->
+        <div class="tab-pane fade" id="v-pills-expedientes" role="tabpanel" aria-labelledby="v-pills-expedientes-tab">
+
+          <div class="alert alert-secondary text-center" role="alert">
+            <font size="4"> ACCIONES: </font>  <strong> Visualiazación </strong> de registro de expedientes, <strong> POR MODULOS DE CAPTURA </strong> y generación de <strong> REPORTES ESTÁDISTICOS </strong>
+          </div>
+
+          <div class="container">
+           
+            <expedintescontraloria-component> </expedintescontraloria-component>
+
+            <a href="{{ route('expedientes.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+ 
+
+          </div>
+        </div>
+      <!-- Termina formulario moduloUnoContralor -->
 
 
 
@@ -128,7 +152,8 @@
 
           <div class="container">
            
-            <veruno-component> </veruno-component>
+           <veruno-component> </veruno-component>
+            
  
 
           </div>

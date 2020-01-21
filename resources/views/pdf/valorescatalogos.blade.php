@@ -32,7 +32,7 @@
 	            
 	          @foreach($valorescatalagos as $valorescatalago)
 	          	<tr>
-	          		 <td>{{$valorescatalago->id_catalogo}}</td>
+	          		 <td>{{$valorescatalago->nombre_variable}}</td>
 		             <td>{{$valorescatalago->valor_variable}}</td>
 		             <td> <span class="badge badge-primary"> {{$valorescatalago->created_at}} </span> </td>
 	          	</tr>

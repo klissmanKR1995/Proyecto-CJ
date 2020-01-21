@@ -38,6 +38,8 @@ Route::get('/searchNombreDistrito', 'distritosController@searchNombreDistrito')-
 
 Route::resource('/juzgados', 'juzgadosController');
 
+Route::get('juzgadosAll', 'juzgadosController@juzgadosAll')->name('juzgadosAll');
+
 Route::get('/searchNombreJuzgado', 'juzgadosController@searchNombreJuzgado')->name('searchNombreJuzgado');
 
 Route::resource('/materias', 'materiasController');
@@ -129,3 +131,5 @@ Route::get('juiciosPDF', 'juiciosController@exportPdf')->name('juicios.pdf');
 Route::get('variablesPDF', 'catalogosController@exportPdf')->name('variables.pdf');
 
 Route::get('valoresvariablesPDF', 'valores_catalogosController@exportPdf')->name('valoresvariables.pdf');
+
+Route::get('expedientesPDF', 'expedientesController@exportPdf')->name('expedientes.pdf');

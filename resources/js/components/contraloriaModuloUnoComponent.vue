@@ -1,78 +1,106 @@
 <template>
   <div>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-            <tr>
-              <th scope="col"> Número de expediente </th>
-              <th scope="col"> Datos </th>
-              <th scope="col"> Persona </th>
-              <th scope="col"> Razón-Social </th>
-              <th scope="col"> Nombre-Comercial </th>
-              <th scope="col"> Nombre-Completo </th>
-              <th scope="col"> Sexo </th>
-              <th scope="col"> Fecha-Nacimiento </th>
-              <th scope="col"> RFC </th>
-              <th scope="col"> Curp </th>
-              <th scope="col"> Pais </th>
-              <th scope="col"> Estado </th>
-              <th scope="col"> Municipio </th>
-              <th scope="col"> Nacionalidad </th>
-              <th scope="col"> Pais-Habitual </th>
-              <th scope="col"> Estado-Habitual </th>
-              <th scope="col"> Municipio-Habitual </th>
-              <th scope="col"> Tipo-Domicilio </th>
-              <th scope="col"> Tipo-Discapacidad </th>
-              <th scope="col"> Situación-Conyugal </th>
-              <th scope="col"> Escolaridad </th>
-              <th scope="col"> Condición-Migratoria </th>
-              <th scope="col"> Habla-Español </th>
-              <th scope="col"> Habla-Lengua-Indigena </th>
-              <th scope="col"> Habla-Lengua-Extranjera </th>
-              <th scope="col"> Trabaja-Ocupación </th>
-              <th scope="col"> Condición-Actividad </th>
-              <th scope="col"> Fuente-Ingresos </th>
-              <th scope="col"> Ingreso-Mensual </th>
-              <th scope="col"> Tipo-Representación </th>
-              <th scope="col"> Sexo-Representación </th>
-              <th scope="col"> Fecha-Registro </th>
-            </tr>
-            <tr v-for="(item, index) in modulounos.data" :key="index">
-              <td>{{item.numero_expediente}}</td>
-              <td>{{item.datos}}</td>
-              <td>{{item.persona}}</td>
-              <td>{{item.razon_social}}</td>
-              <td>{{item.nombre_comercial}}</td>
-              <td>{{item.nombre_completo}}</td>
-              <td>{{item.sexo}}</td>
-              <td>{{item.fecha_nacimiento}}</td>
-              <td>{{item.rfc}}</td>
-              <td>{{item.curp}}</td>
-              <td>{{item.pais}}</td>
-              <td>{{item.estados}}</td>
-              <td>{{item.municipios}}</td>
-              <td>{{item.nacionalidad}}</td>
-              <td>{{item.pais_habitual}}</td>
-              <td>{{item.estado_habitual}}</td>
-              <td>{{item.municipio_habitual}}</td>
-              <td>{{item.tipo_domicilio}}</td>
-              <td>{{item.tipo_discapacidad}}</td>
-              <td>{{item.situacion_conyugal}}</td>
-              <td>{{item.escolaridad}}</td>
-              <td>{{item.condicion_migratoria}}</td>
-              <td>{{item.habla_español}}</td>
-              <td>{{item.habla_lengua_indigena}}</td>
-              <td>{{item.habla_lengua_extranjera}}</td>
-              <td>{{item.trabaja_ocupacion}}</td>
-              <td>{{item.condicion_actividad}}</td>
-              <td>{{item.fuente_ingresos}}</td>
-              <td>{{item.ingreso_mensual}}</td>
-              <td>{{item.tipo_representacion}}</td>
-              <td>{{item.sexo_representacion}}</td>
-              <td> <span class="badge badge-primary"> {{item.created_at}} </span> </td>
-            </tr>
-        </thead>   
-      </table>
+    <div class="container">  
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+              <tr>
+                <th scope="col"> Número de expediente </th>
+                <th scope="col"> Datos </th>
+                <th scope="col"> Persona </th>
+                <th scope="col"> Razón-Social </th>
+                <th scope="col"> Nombre-Comercial </th>
+                <th scope="col"> Nombre-Completo </th>
+                <th scope="col"> Sexo </th>
+                <th scope="col"> Fecha-Nacimiento </th>
+                <th scope="col"> RFC </th>
+                <th scope="col"> Curp </th>
+                <th scope="col"> Pais </th>
+                <th scope="col"> Estado </th>
+                <th scope="col"> Municipio </th>
+                <th scope="col"> Nacionalidad </th>
+                <th scope="col"> Pais-Habitual </th>
+                <th scope="col"> Estado-Habitual </th>
+                <th scope="col"> Municipio-Habitual </th>
+                <th scope="col"> Tipo-Domicilio </th>
+                <th scope="col"> Tipo-Discapacidad </th>
+                <th scope="col"> Situación-Conyugal </th>
+                <th scope="col"> Escolaridad </th>
+                <th scope="col"> Condición-Migratoria </th>
+                <th scope="col"> Habla-Español </th>
+                <th scope="col"> Habla-Lengua-Indigena </th>
+                <th scope="col"> Habla-Lengua-Extranjera </th>
+                <th scope="col"> Trabaja-Ocupación </th>
+                <th scope="col"> Condición-Actividad </th>
+                <th scope="col"> Fuente-Ingresos </th>
+                <th scope="col"> Ingreso-Mensual </th>
+                <th scope="col"> Tipo-Representación </th>
+                <th scope="col"> Sexo-Representación </th>
+              </tr>
+              <tr v-for="(item, index) in modulounos.data" :key="index">
+                <td>{{item.numero_expediente}}</td>
+                <td>{{item.datos}}</td>
+                <td>{{item.persona}}</td>
+                <td>{{item.razon_social}}</td>
+                <td>{{item.nombre_comercial}}</td>
+                <td>{{item.nombre_completo}}</td>
+                <td>{{item.sexo}}</td>
+                <td>{{item.fecha_nacimiento}}</td>
+                <td>{{item.rfc}}</td>
+                <td>{{item.curp}}</td>
+                <td>{{item.pais}}</td>
+                <td>{{item.estados}}</td>
+                <td>{{item.municipios}}</td>
+                <td>{{item.nacionalidad}}</td>
+                <td>{{item.pais_habitual}}</td>
+                <td>{{item.estado_habitual}}</td>
+                <td>{{item.municipio_habitual}}</td>
+                <td>{{item.tipo_domicilio}}</td>
+                <td>{{item.tipo_discapacidad}}</td>
+                <td>{{item.situacion_conyugal}}</td>
+                <td>{{item.escolaridad}}</td>
+                <td>{{item.condicion_migratoria}}</td>
+                <td>{{item.habla_español}}</td>
+                <td>{{item.habla_lengua_indigena}}</td>
+                <td>{{item.habla_lengua_extranjera}}</td>
+                <td>{{item.trabaja_ocupacion}}</td>
+                <td>{{item.condicion_actividad}}</td>
+                <td>{{item.fuente_ingresos}}</td>
+                <td>{{item.ingreso_mensual}}</td>
+                <td>{{item.tipo_representacion}}</td>
+                <td>{{item.sexo_representacion}}</td>
+              </tr>
+          </thead>   
+        </table>
+
+
+       <!-- Paginador -->
+       <pagination :data="modulounos" @pagination-change-page="getResults"> </pagination>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalModuloUno" tabindex="-1" role="dialog" aria-labelledby="exampleModalModuloUnoLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalModuloUnoLabel">Confirmar elminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" name="id" id="id">
+                ¿Estas seguro(a) de eliminar el registro seleccionado?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="eliminarModulouno('cancelar')">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" @click="eliminarModulouno('aceptar')">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Termina modal -->
+      </div>  
     </div>    
   </div>            
 </template>
@@ -94,6 +122,9 @@
                 estados: [] ,
                 municipios: [] ,
                 nacionalidades: [] ,
+                pais_habitual: [] ,
+                estado_habitual: [] ,
+                municipio_habitual: [] ,
                 tipoDomicilio: [] ,
                 discapacidades: [] ,
                 escolaridad: [] ,
@@ -102,8 +133,9 @@
                 condicionActividad: [] ,
                 fuenteIngresos: [] ,
                 tipoRepresentacion: [] ,
+                sexoRepresentacion: [] ,
                 editarActivo: false,
-                result1: ""
+                result1: "",
             }
        },
        mounted() {
@@ -114,75 +146,131 @@
             axios.get('/Proyecto-CJ/public/expedientesAll')
             .then(res => {
                 this.expedientes = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=1')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/getCatalogos')
             .then(res => {
                 this.datosPartes = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=2')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/personaCatalogos')
             .then(res => {
                 this.persona = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=3')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/sexoCatalogos')
             .then(res => {
                 this.sexo = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=4')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/paisesCatalogos')
             .then(res => {
                 this.paises = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=5')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/estadosCatalogos')
             .then(res => {
                 this.estados = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=6')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/municipiosCatalogos')
             .then(res => {
                 this.municipios = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=7')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/nacionalidadesCatalogos')
             .then(res => {
                 this.nacionalidades = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=8')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/pais_habitualCatalogos')
+            .then(res => {
+                this.pais_habitual = res.data;
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/estado_habitualCatalogos')
+            .then(res => {
+                this.estado_habitual = res.data;
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/municipio_habitualCatalogos')
+            .then(res => {
+                this.municipio_habitual = res.data;
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/tipoDomicilioCatalogos')
             .then(res => {
                 this.tipoDomicilio = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=9')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/discapacidadesCatalogos')
             .then(res => {
                 this.discapacidades = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=10')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/escolaridadCatalogos')
             .then(res => {
                 this.escolaridad = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=11')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/lenguaIndigenaCatalogos')
             .then(res => {
                 this.lenguaIndigena = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=12')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/ocupacionCatalogos')
             .then(res => {
                 this.ocupacion = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=13')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/condicionActividadCatalogos')
             .then(res => {
                 this.condicionActividad = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=14')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/fuenteIngresosCatalogos')
             .then(res => {
                 this.fuenteIngresos = res.data;
-            }),
-            axios.get('/Proyecto-CJ/public/getCatalogos?id_catalogo=15')
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/tipoRepresentacionCatalogos')
             .then(res => {
                 this.tipoRepresentacion = res.data;
-            })
-
-            
+            }).catch(error => {
+                console.log(error.response)
+            });
+            axios.get('/Proyecto-CJ/public/sexoRepresentacionCatalogos')
+            .then(res => {
+                this.sexoRepresentacion = res.data;
+            }).catch(error => {
+                console.log(error.response)
+            });
        },
         methods:{
             getResults(page = 1) {
               axios.get('/Proyecto-CJ/public/modulouno?page=' + page)
                 .then(response => {
                   this.modulounos = response.data;
+                }).catch(error => {
+                    console.log(error.response)
                 });
             },
             editarFormulario(item){

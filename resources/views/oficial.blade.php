@@ -67,8 +67,6 @@
               </li>
               <!-- Termina menu con submenu usuarios-->
 
-              <a class="nav-link menuMain" id="v-pills-manualAyuda-tab" data-toggle="pill" href="#v-pills-manualAyuda" role="tab" aria-controls="v-pills-manualAyuda" aria-selected="false"> <i class="fas fa-question"></i> Manual-Ayuda</a>
-      
               <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i> 
@@ -125,6 +123,8 @@
           <div class="container">
            
            <expedientes-component> </expedientes-component> 
+
+           <a href="{{ route('expedientes.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
  
 
           </div>
