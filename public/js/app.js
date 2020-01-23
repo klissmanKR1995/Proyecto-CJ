@@ -1688,6 +1688,883 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulotress: {},
+      modulotres: {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      },
+      mecanismosRealizar: [],
+      paisEmplazamiento: [],
+      estadoEmplazamiento: [],
+      municipioEmplazamiento: [],
+      codigoPostal: [],
+      mecanismosRealizacion: [],
+      siContesta: [],
+      demandadoReconviene: [],
+      reconvenidoReconvencion: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResults();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizarCatalogos').then(function (res) {
+      _this.mecanismosRealizar = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/paisEmplazamientoCatalogos').then(function (res) {
+      _this.paisEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/estadoEmplazamientoCatalogos').then(function (res) {
+      _this.estadoEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/municipioEmplazamientoCatalogos').then(function (res) {
+      _this.municipioEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/codigoPostalCatalogos').then(function (res) {
+      _this.codigoPostal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizacionCatalogos').then(function (res) {
+      _this.mecanismosRealizacion = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/siContestaCatalogos').then(function (res) {
+      _this.siContesta = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulotres?page=' + page).then(function (response) {
+        _this2.modulotress = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulotres.id_expediente = item.id_expediente;
+      this.modulotres.fecha_juez_emplazamiento = item.fecha_juez_emplazamiento;
+      this.modulotres.mecanismos_realizar_emplazamiento = item.mecanismos_realizar_emplazamiento;
+      this.modulotres.pais_emplazamiento = item.pais_emplazamiento;
+      this.modulotres.estado_emplazamiento = item.estado_emplazamiento;
+      this.modulotres.municipio_emplazamiento = item.municipio_emplazamiento;
+      this.modulotres.codigo_postal = item.codigo_postal;
+      this.modulotres.numero_visitas = item.numero_visitas;
+      this.modulotres.se_realizo = item.se_realizo;
+      this.modulotres.mecanismos_realizacion_emplazamiento = item.mecanismos_realizacion_emplazamiento;
+      this.modulotres.si_fecha = item.si_fecha;
+      this.modulotres.no_motivos = item.no_motivos;
+      this.modulotres.contestacion_demanda = item.contestacion_demanda;
+      this.modulotres.fecha_declaracion_rebeldia = item.fecha_declaracion_rebeldia;
+      this.modulotres.si_contesta_demanda = item.si_contesta_demanda;
+      this.modulotres.fecha_contestacion_demanda = item.fecha_contestacion_demanda;
+      this.modulotres.reconviene_demanda = item.reconviene_demanda;
+      this.modulotres.fecha_reconvencion_demanda = item.fecha_reconvencion_demanda;
+      this.modulotres.contesta_reconvencion = item.contesta_reconvencion;
+      this.modulotres.numero_total_acuerdos = item.numero_total_acuerdos;
+      this.modulotres.id_modulotres = item.id_modulotres;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_juez_emplazamiento: item.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: item.mecanismos_realizar_emplazamiento,
+        pais_emplazamiento: item.pais_emplazamiento,
+        estado_emplazamiento: item.estado_emplazamiento,
+        municipio_emplazamiento: item.municipio_emplazamiento,
+        codigo_postal: item.codigo_postal,
+        numero_visitas: item.numero_visitas,
+        se_realizo: item.se_realizo,
+        mecanismos_realizacion_emplazamiento: item.mecanismos_realizacion_emplazamiento,
+        si_fecha: item.si_fecha,
+        no_motivos: item.no_motivos,
+        contestacion_demanda: item.contestacion_demanda,
+        fecha_declaracion_rebeldia: item.fecha_declaracion_rebeldia,
+        si_contesta_demanda: item.si_contesta_demanda,
+        fecha_contestacion_demanda: item.fecha_contestacion_demanda,
+        reconviene_demanda: item.reconviene_demanda,
+        fecha_reconvencion_demanda: item.fecha_reconvencion_demanda,
+        contesta_reconvencion: item.contesta_reconvencion,
+        numero_total_acuerdos: item.numero_total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulotres/".concat(item.id_modulotres), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResults(_this3.modulotress.current_page);
+      });
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.numero_total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulotres = {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulotres de formularios
+      //if(this.modulotres.municipios.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulotres.id_expediente, this.modulotres.descripcion); 
+      var params = {
+        id_expediente: this.modulotres.id_expediente,
+        fecha_juez_emplazamiento: this.modulotres.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: this.modulotres.mecanismos_realizar_emplazamiento.valor_variable,
+        pais_emplazamiento: this.modulotres.pais_emplazamiento.valor_variable,
+        estado_emplazamiento: this.modulotres.estado_emplazamiento.valor_variable,
+        municipio_emplazamiento: this.modulotres.municipio_emplazamiento.valor_variable,
+        codigo_postal: this.modulotres.codigo_postal.valor_variable,
+        numero_visitas: this.modulotres.numero_visitas,
+        se_realizo: this.modulotres.se_realizo,
+        mecanismos_realizacion_emplazamiento: this.modulotres.mecanismos_realizacion_emplazamiento.valor_variable,
+        si_fecha: this.modulotres.si_fecha,
+        no_motivos: this.modulotres.no_motivos,
+        contestacion_demanda: this.modulotres.contestacion_demanda,
+        fecha_declaracion_rebeldia: this.modulotres.fecha_declaracion_rebeldia,
+        si_contesta_demanda: this.modulotres.si_contesta_demanda.valor_variable,
+        fecha_contestacion_demanda: this.modulotres.fecha_contestacion_demanda,
+        reconviene_demanda: this.modulotres.reconviene_demanda,
+        fecha_reconvencion_demanda: this.modulotres.fecha_reconvencion_demanda,
+        contesta_reconvencion: this.modulotres.contesta_reconvencion,
+        numero_total_acuerdos: this.modulotres.numero_total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.contesta_reconvencion = '';
+      this.modulotres.numero_total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulotres', params).then(function (res) {
+        _this4.getResults(_this4.modulotress.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloTres').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloTres: function eliminarModuloTres(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulotres/" + $("#id").val()).then(function () {
+          _this5.getResults(_this5.modulotress.current_page);
+
+          $('#exampleModalModuloTres').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloTres').modal("hide");
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulodoss: {},
+      modulodos: {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      },
+      tipoDerechos: [],
+      tipoMedida: [],
+      tipoAmparo: [],
+      faseProcesal: [],
+      resolucionAmparo: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResultsModuloDos();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoDerechosCatalogos').then(function (res) {
+      _this.tipoDerechos = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoMedidaCatalogos').then(function (res) {
+      _this.tipoMedida = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoAmparoCatalogos').then(function (res) {
+      _this.tipoAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/faseProcesalCatalogos').then(function (res) {
+      _this.faseProcesal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/resolucionAmparoCatalogos').then(function (res) {
+      _this.resolucionAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResultsModuloDos: function getResultsModuloDos() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulodos?page=' + page).then(function (response) {
+        _this2.modulodoss = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulodos.id_expediente = item.id_expediente;
+      this.modulodos.fecha_sentencia = item.fecha_sentencia;
+      this.modulodos.fecha_promocion = item.fecha_promocion;
+      this.modulodos.solicitud_embargo = item.solicitud_embargo;
+      this.modulodos.fecha_solicitud_embargo = item.fecha_solicitud_embargo;
+      this.modulodos.autorizacion_embargo = item.autorizacion_embargo;
+      this.modulodos.fecha_emision = item.fecha_emision;
+      this.modulodos.ejecucion_embargo = item.ejecucion_embargo;
+      this.modulodos.fecha_ejecucion_embargo = item.fecha_ejecucion_embargo;
+      this.modulodos.cumple_pago = item.cumple_pago;
+      this.modulodos.bienes_sentencia = item.bienes_sentencia;
+      this.modulodos.solicita_adjudicacion = item.solicita_adjudicacion;
+      this.modulodos.designa_perito = item.designa_perito;
+      this.modulodos.fecha_designacion = item.fecha_designacion;
+      this.modulodos.fecha_aceptacion = item.fecha_aceptacion;
+      this.modulodos.fecha_informe = item.fecha_informe;
+      this.modulodos.venta_almoneda = item.venta_almoneda;
+      this.modulodos.fecha_acuerdo = item.fecha_acuerdo;
+      this.modulodos.numero_publicaciones = item.numero_publicaciones;
+      this.modulodos.fecha_venta = item.fecha_venta;
+      this.modulodos.almonedas_publicas = item.almonedas_publicas;
+      this.modulodos.cambio_propietario = item.cambio_propietario;
+      this.modulodos.orden_lanzamiento = item.orden_lanzamiento;
+      this.modulodos.fecha_lanzamiento = item.fecha_lanzamiento;
+      this.modulodos.existencia_derechos = item.existencia_derechos;
+      this.modulodos.tipo_derechos = item.tipo_derechos;
+      this.modulodos.medidas_dictadas = item.medidas_dictadas;
+      this.modulodos.tipo_medida = item.tipo_medida;
+      this.modulodos.solicitud_amparo = item.solicitud_amparo;
+      this.modulodos.tipo_amparo = item.tipo_amparo;
+      this.modulodos.suspension_provisional = item.suspension_provisional;
+      this.modulodos.fase_procesal = item.fase_procesal;
+      this.modulodos.resolucion_amparo = item.resolucion_amparo;
+      this.modulodos.total_acuerdos = item.total_acuerdos;
+      this.modulodos.id_modulodos = item.id_modulodos;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_sentencia: item.fecha_sentencia,
+        fecha_promocion: item.fecha_promocion,
+        solicitud_embargo: item.solicitud_embargo,
+        fecha_solicitud_embargo: item.fecha_solicitud_embargo,
+        autorizacion_embargo: item.autorizacion_embargo,
+        fecha_emision: item.fecha_emision,
+        ejecucion_embargo: item.ejecucion_embargo,
+        fecha_ejecucion_embargo: item.fecha_ejecucion_embargo,
+        cumple_pago: item.cumple_pago,
+        bienes_sentencia: item.bienes_sentencia,
+        solicita_adjudicacion: item.solicita_adjudicacion,
+        designa_perito: item.designa_perito,
+        fecha_designacion: item.fecha_designacion,
+        fecha_aceptacion: item.fecha_aceptacion,
+        fecha_informe: item.fecha_informe,
+        venta_almoneda: item.venta_almoneda,
+        fecha_acuerdo: item.fecha_acuerdo,
+        numero_publicaciones: item.numero_publicaciones,
+        fecha_venta: item.fecha_venta,
+        almonedas_publicas: item.almonedas_publicas,
+        cambio_propietario: item.cambio_propietario,
+        orden_lanzamiento: item.orden_lanzamiento,
+        fecha_lanzamiento: item.fecha_lanzamiento,
+        existencia_derechos: item.existencia_derechos,
+        tipo_derechos: item.tipo_derechos,
+        medidas_dictadas: item.medidas_dictadas,
+        tipo_medida: item.tipo_medida,
+        solicitud_amparo: item.solicitud_amparo,
+        tipo_amparo: item.tipo_amparo,
+        suspension_provisional: item.suspension_provisional,
+        fase_procesal: item.fase_procesal,
+        resolucion_amparo: item.resolucion_amparo,
+        total_acuerdos: item.total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulodos/".concat(item.id_modulodos), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResultsModuloDos(_this3.modulodoss.current_page);
+      });
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulodos = {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulodos de formularios
+      //if(this.modulodos.designa_perito.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulodos.id_expediente, this.modulodos.descripcion); 
+      var params = {
+        id_expediente: this.modulodos.id_expediente,
+        fecha_sentencia: this.modulodos.fecha_sentencia,
+        fecha_promocion: this.modulodos.fecha_promocion,
+        solicitud_embargo: this.modulodos.solicitud_embargo,
+        fecha_solicitud_embargo: this.modulodos.fecha_solicitud_embargo,
+        autorizacion_embargo: this.modulodos.autorizacion_embargo,
+        fecha_emision: this.modulodos.fecha_emision,
+        ejecucion_embargo: this.modulodos.ejecucion_embargo,
+        fecha_ejecucion_embargo: this.modulodos.fecha_ejecucion_embargo,
+        cumple_pago: this.modulodos.cumple_pago,
+        bienes_sentencia: this.modulodos.bienes_sentencia,
+        solicita_adjudicacion: this.modulodos.solicita_adjudicacion,
+        designa_perito: this.modulodos.designa_perito,
+        fecha_designacion: this.modulodos.fecha_designacion,
+        fecha_aceptacion: this.modulodos.fecha_aceptacion,
+        fecha_informe: this.modulodos.fecha_informe,
+        venta_almoneda: this.modulodos.venta_almoneda,
+        fecha_acuerdo: this.modulodos.fecha_acuerdo,
+        numero_publicaciones: this.modulodos.numero_publicaciones,
+        fecha_venta: this.modulodos.fecha_venta,
+        almonedas_publicas: this.modulodos.almonedas_publicas,
+        cambio_propietario: this.modulodos.cambio_propietario,
+        orden_lanzamiento: this.modulodos.orden_lanzamiento,
+        fecha_lanzamiento: this.modulodos.fecha_lanzamiento,
+        existencia_derechos: this.modulodos.existencia_derechos,
+        tipo_derechos: this.modulodos.tipo_derechos.valor_variable,
+        medidas_dictadas: this.modulodos.medidas_dictadas,
+        tipo_medida: this.modulodos.tipo_medida.valor_variable,
+        solicitud_amparo: this.modulodos.solicitud_amparo,
+        tipo_amparo: this.modulodos.tipo_amparo.valor_variable,
+        suspension_provisional: this.modulodos.suspension_provisional,
+        fase_procesal: this.modulodos.fase_procesal.valor_variable,
+        resolucion_amparo: this.modulodos.resolucion_amparo.valor_variable,
+        total_acuerdos: this.modulodos.total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulodos', params).then(function (res) {
+        _this4.getResultsModuloDos(_this4.modulodoss.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloDos').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloDos: function eliminarModuloDos(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulodos/" + $("#id").val()).then(function () {
+          _this5.getResultsModuloDos(_this5.modulodoss.current_page);
+
+          $('#exampleModalModuloDos').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloDos').modal("hide");
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloUnoComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloUnoComponent.vue?vue&type=script&lang=js& ***!
@@ -4177,6 +5054,3296 @@ __webpack_require__.r(__webpack_exports__);
           $("#existeAlertaMateria").hide("slow");
         }
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulotress: {},
+      modulotres: {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      },
+      mecanismosRealizar: [],
+      paisEmplazamiento: [],
+      estadoEmplazamiento: [],
+      municipioEmplazamiento: [],
+      codigoPostal: [],
+      mecanismosRealizacion: [],
+      siContesta: [],
+      demandadoReconviene: [],
+      reconvenidoReconvencion: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResults();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizarCatalogos').then(function (res) {
+      _this.mecanismosRealizar = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/paisEmplazamientoCatalogos').then(function (res) {
+      _this.paisEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/estadoEmplazamientoCatalogos').then(function (res) {
+      _this.estadoEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/municipioEmplazamientoCatalogos').then(function (res) {
+      _this.municipioEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/codigoPostalCatalogos').then(function (res) {
+      _this.codigoPostal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizacionCatalogos').then(function (res) {
+      _this.mecanismosRealizacion = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/siContestaCatalogos').then(function (res) {
+      _this.siContesta = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulotres?page=' + page).then(function (response) {
+        _this2.modulotress = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulotres.id_expediente = item.id_expediente;
+      this.modulotres.fecha_juez_emplazamiento = item.fecha_juez_emplazamiento;
+      this.modulotres.mecanismos_realizar_emplazamiento = item.mecanismos_realizar_emplazamiento;
+      this.modulotres.pais_emplazamiento = item.pais_emplazamiento;
+      this.modulotres.estado_emplazamiento = item.estado_emplazamiento;
+      this.modulotres.municipio_emplazamiento = item.municipio_emplazamiento;
+      this.modulotres.codigo_postal = item.codigo_postal;
+      this.modulotres.numero_visitas = item.numero_visitas;
+      this.modulotres.se_realizo = item.se_realizo;
+      this.modulotres.mecanismos_realizacion_emplazamiento = item.mecanismos_realizacion_emplazamiento;
+      this.modulotres.si_fecha = item.si_fecha;
+      this.modulotres.no_motivos = item.no_motivos;
+      this.modulotres.contestacion_demanda = item.contestacion_demanda;
+      this.modulotres.fecha_declaracion_rebeldia = item.fecha_declaracion_rebeldia;
+      this.modulotres.si_contesta_demanda = item.si_contesta_demanda;
+      this.modulotres.fecha_contestacion_demanda = item.fecha_contestacion_demanda;
+      this.modulotres.reconviene_demanda = item.reconviene_demanda;
+      this.modulotres.fecha_reconvencion_demanda = item.fecha_reconvencion_demanda;
+      this.modulotres.contesta_reconvencion = item.contesta_reconvencion;
+      this.modulotres.numero_total_acuerdos = item.numero_total_acuerdos;
+      this.modulotres.id_modulotres = item.id_modulotres;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_juez_emplazamiento: item.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: item.mecanismos_realizar_emplazamiento,
+        pais_emplazamiento: item.pais_emplazamiento,
+        estado_emplazamiento: item.estado_emplazamiento,
+        municipio_emplazamiento: item.municipio_emplazamiento,
+        codigo_postal: item.codigo_postal,
+        numero_visitas: item.numero_visitas,
+        se_realizo: item.se_realizo,
+        mecanismos_realizacion_emplazamiento: item.mecanismos_realizacion_emplazamiento,
+        si_fecha: item.si_fecha,
+        no_motivos: item.no_motivos,
+        contestacion_demanda: item.contestacion_demanda,
+        fecha_declaracion_rebeldia: item.fecha_declaracion_rebeldia,
+        si_contesta_demanda: item.si_contesta_demanda,
+        fecha_contestacion_demanda: item.fecha_contestacion_demanda,
+        reconviene_demanda: item.reconviene_demanda,
+        fecha_reconvencion_demanda: item.fecha_reconvencion_demanda,
+        contesta_reconvencion: item.contesta_reconvencion,
+        numero_total_acuerdos: item.numero_total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulotres/".concat(item.id_modulotres), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResults(_this3.modulotress.current_page);
+      });
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.numero_total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulotres = {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulotres de formularios
+      //if(this.modulotres.municipios.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulotres.id_expediente, this.modulotres.descripcion); 
+      var params = {
+        id_expediente: this.modulotres.id_expediente,
+        fecha_juez_emplazamiento: this.modulotres.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: this.modulotres.mecanismos_realizar_emplazamiento.valor_variable,
+        pais_emplazamiento: this.modulotres.pais_emplazamiento.valor_variable,
+        estado_emplazamiento: this.modulotres.estado_emplazamiento.valor_variable,
+        municipio_emplazamiento: this.modulotres.municipio_emplazamiento.valor_variable,
+        codigo_postal: this.modulotres.codigo_postal.valor_variable,
+        numero_visitas: this.modulotres.numero_visitas,
+        se_realizo: this.modulotres.se_realizo,
+        mecanismos_realizacion_emplazamiento: this.modulotres.mecanismos_realizacion_emplazamiento.valor_variable,
+        si_fecha: this.modulotres.si_fecha,
+        no_motivos: this.modulotres.no_motivos,
+        contestacion_demanda: this.modulotres.contestacion_demanda,
+        fecha_declaracion_rebeldia: this.modulotres.fecha_declaracion_rebeldia,
+        si_contesta_demanda: this.modulotres.si_contesta_demanda.valor_variable,
+        fecha_contestacion_demanda: this.modulotres.fecha_contestacion_demanda,
+        reconviene_demanda: this.modulotres.reconviene_demanda,
+        fecha_reconvencion_demanda: this.modulotres.fecha_reconvencion_demanda,
+        contesta_reconvencion: this.modulotres.contesta_reconvencion,
+        numero_total_acuerdos: this.modulotres.numero_total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.contesta_reconvencion = '';
+      this.modulotres.numero_total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulotres', params).then(function (res) {
+        _this4.getResults(_this4.modulotress.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloTres').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloTres: function eliminarModuloTres(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulotres/" + $("#id").val()).then(function () {
+          _this5.getResults(_this5.modulotress.current_page);
+
+          $('#exampleModalModuloTres').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloTres').modal("hide");
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulotress: {},
+      modulotres: {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      },
+      mecanismosRealizar: [],
+      paisEmplazamiento: [],
+      estadoEmplazamiento: [],
+      municipioEmplazamiento: [],
+      codigoPostal: [],
+      mecanismosRealizacion: [],
+      siContesta: [],
+      demandadoReconviene: [],
+      reconvenidoReconvencion: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResults();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizarCatalogos').then(function (res) {
+      _this.mecanismosRealizar = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/paisEmplazamientoCatalogos').then(function (res) {
+      _this.paisEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/estadoEmplazamientoCatalogos').then(function (res) {
+      _this.estadoEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/municipioEmplazamientoCatalogos').then(function (res) {
+      _this.municipioEmplazamiento = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/codigoPostalCatalogos').then(function (res) {
+      _this.codigoPostal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/mecanismosRealizacionCatalogos').then(function (res) {
+      _this.mecanismosRealizacion = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/siContestaCatalogos').then(function (res) {
+      _this.siContesta = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulotres?page=' + page).then(function (response) {
+        _this2.modulotress = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulotres.id_expediente = item.id_expediente;
+      this.modulotres.fecha_juez_emplazamiento = item.fecha_juez_emplazamiento;
+      this.modulotres.mecanismos_realizar_emplazamiento = item.mecanismos_realizar_emplazamiento;
+      this.modulotres.pais_emplazamiento = item.pais_emplazamiento;
+      this.modulotres.estado_emplazamiento = item.estado_emplazamiento;
+      this.modulotres.municipio_emplazamiento = item.municipio_emplazamiento;
+      this.modulotres.codigo_postal = item.codigo_postal;
+      this.modulotres.numero_visitas = item.numero_visitas;
+      this.modulotres.se_realizo = item.se_realizo;
+      this.modulotres.mecanismos_realizacion_emplazamiento = item.mecanismos_realizacion_emplazamiento;
+      this.modulotres.si_fecha = item.si_fecha;
+      this.modulotres.no_motivos = item.no_motivos;
+      this.modulotres.contestacion_demanda = item.contestacion_demanda;
+      this.modulotres.fecha_declaracion_rebeldia = item.fecha_declaracion_rebeldia;
+      this.modulotres.si_contesta_demanda = item.si_contesta_demanda;
+      this.modulotres.fecha_contestacion_demanda = item.fecha_contestacion_demanda;
+      this.modulotres.reconviene_demanda = item.reconviene_demanda;
+      this.modulotres.fecha_reconvencion_demanda = item.fecha_reconvencion_demanda;
+      this.modulotres.contesta_reconvencion = item.contesta_reconvencion;
+      this.modulotres.numero_total_acuerdos = item.numero_total_acuerdos;
+      this.modulotres.id_modulotres = item.id_modulotres;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_juez_emplazamiento: item.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: item.mecanismos_realizar_emplazamiento,
+        pais_emplazamiento: item.pais_emplazamiento,
+        estado_emplazamiento: item.estado_emplazamiento,
+        municipio_emplazamiento: item.municipio_emplazamiento,
+        codigo_postal: item.codigo_postal,
+        numero_visitas: item.numero_visitas,
+        se_realizo: item.se_realizo,
+        mecanismos_realizacion_emplazamiento: item.mecanismos_realizacion_emplazamiento,
+        si_fecha: item.si_fecha,
+        no_motivos: item.no_motivos,
+        contestacion_demanda: item.contestacion_demanda,
+        fecha_declaracion_rebeldia: item.fecha_declaracion_rebeldia,
+        si_contesta_demanda: item.si_contesta_demanda,
+        fecha_contestacion_demanda: item.fecha_contestacion_demanda,
+        reconviene_demanda: item.reconviene_demanda,
+        fecha_reconvencion_demanda: item.fecha_reconvencion_demanda,
+        contesta_reconvencion: item.contesta_reconvencion,
+        numero_total_acuerdos: item.numero_total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulotres/".concat(item.id_modulotres), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResults(_this3.modulotress.current_page);
+      });
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.numero_total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulotres = {
+        id_expediente: '',
+        fecha_juez_emplazamiento: '',
+        mecanismos_realizar_emplazamiento: '',
+        pais_emplazamiento: '',
+        estado_emplazamiento: '',
+        municipio_emplazamiento: '',
+        codigo_postal: '',
+        numero_visitas: '',
+        se_realizo: '',
+        mecanismos_realizacion_emplazamiento: '',
+        si_fecha: '',
+        no_motivos: '',
+        contestacion_demanda: '',
+        fecha_declaracion_rebeldia: '',
+        si_contesta_demanda: '',
+        fecha_contestacion_demanda: '',
+        reconviene_demanda: '',
+        fecha_reconvencion_demanda: '',
+        contesta_reconvencion: '',
+        numero_total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulotres de formularios
+      //if(this.modulotres.municipios.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulotres.id_expediente, this.modulotres.descripcion); 
+      var params = {
+        id_expediente: this.modulotres.id_expediente,
+        fecha_juez_emplazamiento: this.modulotres.fecha_juez_emplazamiento,
+        mecanismos_realizar_emplazamiento: this.modulotres.mecanismos_realizar_emplazamiento.valor_variable,
+        pais_emplazamiento: this.modulotres.pais_emplazamiento.valor_variable,
+        estado_emplazamiento: this.modulotres.estado_emplazamiento.valor_variable,
+        municipio_emplazamiento: this.modulotres.municipio_emplazamiento.valor_variable,
+        codigo_postal: this.modulotres.codigo_postal.valor_variable,
+        numero_visitas: this.modulotres.numero_visitas,
+        se_realizo: this.modulotres.se_realizo,
+        mecanismos_realizacion_emplazamiento: this.modulotres.mecanismos_realizacion_emplazamiento.valor_variable,
+        si_fecha: this.modulotres.si_fecha,
+        no_motivos: this.modulotres.no_motivos,
+        contestacion_demanda: this.modulotres.contestacion_demanda,
+        fecha_declaracion_rebeldia: this.modulotres.fecha_declaracion_rebeldia,
+        si_contesta_demanda: this.modulotres.si_contesta_demanda.valor_variable,
+        fecha_contestacion_demanda: this.modulotres.fecha_contestacion_demanda,
+        reconviene_demanda: this.modulotres.reconviene_demanda,
+        fecha_reconvencion_demanda: this.modulotres.fecha_reconvencion_demanda,
+        contesta_reconvencion: this.modulotres.contesta_reconvencion,
+        numero_total_acuerdos: this.modulotres.numero_total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulotres.id_expediente = '';
+      this.modulotres.fecha_juez_emplazamiento = '';
+      this.modulotres.mecanismos_realizar_emplazamiento = '';
+      this.modulotres.pais_emplazamiento = '';
+      this.modulotres.estado_emplazamiento = '';
+      this.modulotres.municipio_emplazamiento = '';
+      this.modulotres.codigo_postal = '';
+      this.modulotres.numero_visitas = '';
+      this.modulotres.se_realizo = '';
+      this.modulotres.mecanismos_realizacion_emplazamiento = '';
+      this.modulotres.si_fecha = '';
+      this.modulotres.no_motivos = '';
+      this.modulotres.contestacion_demanda = '';
+      this.modulotres.fecha_declaracion_rebeldia = '';
+      this.modulotres.si_contesta_demanda = '';
+      this.modulotres.fecha_contestacion_demanda = '';
+      this.modulotres.reconviene_demanda = '';
+      this.modulotres.fecha_reconvencion_demanda = '';
+      this.modulotres.contesta_reconvencion = '';
+      this.modulotres.numero_total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulotres', params).then(function (res) {
+        _this4.getResults(_this4.modulotress.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloTres').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloTres: function eliminarModuloTres(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulotres/" + $("#id").val()).then(function () {
+          _this5.getResults(_this5.modulotress.current_page);
+
+          $('#exampleModalModuloTres').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloTres').modal("hide");
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulodoss: {},
+      modulodos: {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      },
+      tipoDerechos: [],
+      tipoMedida: [],
+      tipoAmparo: [],
+      faseProcesal: [],
+      resolucionAmparo: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResultsModuloDos();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoDerechosCatalogos').then(function (res) {
+      _this.tipoDerechos = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoMedidaCatalogos').then(function (res) {
+      _this.tipoMedida = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoAmparoCatalogos').then(function (res) {
+      _this.tipoAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/faseProcesalCatalogos').then(function (res) {
+      _this.faseProcesal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/resolucionAmparoCatalogos').then(function (res) {
+      _this.resolucionAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResultsModuloDos: function getResultsModuloDos() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulodos?page=' + page).then(function (response) {
+        _this2.modulodoss = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulodos.id_expediente = item.id_expediente;
+      this.modulodos.fecha_sentencia = item.fecha_sentencia;
+      this.modulodos.fecha_promocion = item.fecha_promocion;
+      this.modulodos.solicitud_embargo = item.solicitud_embargo;
+      this.modulodos.fecha_solicitud_embargo = item.fecha_solicitud_embargo;
+      this.modulodos.autorizacion_embargo = item.autorizacion_embargo;
+      this.modulodos.fecha_emision = item.fecha_emision;
+      this.modulodos.ejecucion_embargo = item.ejecucion_embargo;
+      this.modulodos.fecha_ejecucion_embargo = item.fecha_ejecucion_embargo;
+      this.modulodos.cumple_pago = item.cumple_pago;
+      this.modulodos.bienes_sentencia = item.bienes_sentencia;
+      this.modulodos.solicita_adjudicacion = item.solicita_adjudicacion;
+      this.modulodos.designa_perito = item.designa_perito;
+      this.modulodos.fecha_designacion = item.fecha_designacion;
+      this.modulodos.fecha_aceptacion = item.fecha_aceptacion;
+      this.modulodos.fecha_informe = item.fecha_informe;
+      this.modulodos.venta_almoneda = item.venta_almoneda;
+      this.modulodos.fecha_acuerdo = item.fecha_acuerdo;
+      this.modulodos.numero_publicaciones = item.numero_publicaciones;
+      this.modulodos.fecha_venta = item.fecha_venta;
+      this.modulodos.almonedas_publicas = item.almonedas_publicas;
+      this.modulodos.cambio_propietario = item.cambio_propietario;
+      this.modulodos.orden_lanzamiento = item.orden_lanzamiento;
+      this.modulodos.fecha_lanzamiento = item.fecha_lanzamiento;
+      this.modulodos.existencia_derechos = item.existencia_derechos;
+      this.modulodos.tipo_derechos = item.tipo_derechos;
+      this.modulodos.medidas_dictadas = item.medidas_dictadas;
+      this.modulodos.tipo_medida = item.tipo_medida;
+      this.modulodos.solicitud_amparo = item.solicitud_amparo;
+      this.modulodos.tipo_amparo = item.tipo_amparo;
+      this.modulodos.suspension_provisional = item.suspension_provisional;
+      this.modulodos.fase_procesal = item.fase_procesal;
+      this.modulodos.resolucion_amparo = item.resolucion_amparo;
+      this.modulodos.total_acuerdos = item.total_acuerdos;
+      this.modulodos.id_modulodos = item.id_modulodos;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_sentencia: item.fecha_sentencia,
+        fecha_promocion: item.fecha_promocion,
+        solicitud_embargo: item.solicitud_embargo,
+        fecha_solicitud_embargo: item.fecha_solicitud_embargo,
+        autorizacion_embargo: item.autorizacion_embargo,
+        fecha_emision: item.fecha_emision,
+        ejecucion_embargo: item.ejecucion_embargo,
+        fecha_ejecucion_embargo: item.fecha_ejecucion_embargo,
+        cumple_pago: item.cumple_pago,
+        bienes_sentencia: item.bienes_sentencia,
+        solicita_adjudicacion: item.solicita_adjudicacion,
+        designa_perito: item.designa_perito,
+        fecha_designacion: item.fecha_designacion,
+        fecha_aceptacion: item.fecha_aceptacion,
+        fecha_informe: item.fecha_informe,
+        venta_almoneda: item.venta_almoneda,
+        fecha_acuerdo: item.fecha_acuerdo,
+        numero_publicaciones: item.numero_publicaciones,
+        fecha_venta: item.fecha_venta,
+        almonedas_publicas: item.almonedas_publicas,
+        cambio_propietario: item.cambio_propietario,
+        orden_lanzamiento: item.orden_lanzamiento,
+        fecha_lanzamiento: item.fecha_lanzamiento,
+        existencia_derechos: item.existencia_derechos,
+        tipo_derechos: item.tipo_derechos,
+        medidas_dictadas: item.medidas_dictadas,
+        tipo_medida: item.tipo_medida,
+        solicitud_amparo: item.solicitud_amparo,
+        tipo_amparo: item.tipo_amparo,
+        suspension_provisional: item.suspension_provisional,
+        fase_procesal: item.fase_procesal,
+        resolucion_amparo: item.resolucion_amparo,
+        total_acuerdos: item.total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulodos/".concat(item.id_modulodos), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResultsModuloDos(_this3.modulodoss.current_page);
+      });
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulodos = {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulodos de formularios
+      //if(this.modulodos.designa_perito.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulodos.id_expediente, this.modulodos.descripcion); 
+      var params = {
+        id_expediente: this.modulodos.id_expediente,
+        fecha_sentencia: this.modulodos.fecha_sentencia,
+        fecha_promocion: this.modulodos.fecha_promocion,
+        solicitud_embargo: this.modulodos.solicitud_embargo,
+        fecha_solicitud_embargo: this.modulodos.fecha_solicitud_embargo,
+        autorizacion_embargo: this.modulodos.autorizacion_embargo,
+        fecha_emision: this.modulodos.fecha_emision,
+        ejecucion_embargo: this.modulodos.ejecucion_embargo,
+        fecha_ejecucion_embargo: this.modulodos.fecha_ejecucion_embargo,
+        cumple_pago: this.modulodos.cumple_pago,
+        bienes_sentencia: this.modulodos.bienes_sentencia,
+        solicita_adjudicacion: this.modulodos.solicita_adjudicacion,
+        designa_perito: this.modulodos.designa_perito,
+        fecha_designacion: this.modulodos.fecha_designacion,
+        fecha_aceptacion: this.modulodos.fecha_aceptacion,
+        fecha_informe: this.modulodos.fecha_informe,
+        venta_almoneda: this.modulodos.venta_almoneda,
+        fecha_acuerdo: this.modulodos.fecha_acuerdo,
+        numero_publicaciones: this.modulodos.numero_publicaciones,
+        fecha_venta: this.modulodos.fecha_venta,
+        almonedas_publicas: this.modulodos.almonedas_publicas,
+        cambio_propietario: this.modulodos.cambio_propietario,
+        orden_lanzamiento: this.modulodos.orden_lanzamiento,
+        fecha_lanzamiento: this.modulodos.fecha_lanzamiento,
+        existencia_derechos: this.modulodos.existencia_derechos,
+        tipo_derechos: this.modulodos.tipo_derechos.valor_variable,
+        medidas_dictadas: this.modulodos.medidas_dictadas,
+        tipo_medida: this.modulodos.tipo_medida.valor_variable,
+        solicitud_amparo: this.modulodos.solicitud_amparo,
+        tipo_amparo: this.modulodos.tipo_amparo.valor_variable,
+        suspension_provisional: this.modulodos.suspension_provisional,
+        fase_procesal: this.modulodos.fase_procesal.valor_variable,
+        resolucion_amparo: this.modulodos.resolucion_amparo.valor_variable,
+        total_acuerdos: this.modulodos.total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulodos', params).then(function (res) {
+        _this4.getResultsModuloDos(_this4.modulodoss.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloDos').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloDos: function eliminarModuloDos(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulodos/" + $("#id").val()).then(function () {
+          _this5.getResultsModuloDos(_this5.modulodoss.current_page);
+
+          $('#exampleModalModuloDos').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloDos').modal("hide");
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      expedientes: [],
+      modulodoss: {},
+      modulodos: {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      },
+      tipoDerechos: [],
+      tipoMedida: [],
+      tipoAmparo: [],
+      faseProcesal: [],
+      resolucionAmparo: [],
+      editarActivo: false,
+      result1: ""
+    };
+  },
+  mounted: function mounted() {
+    // Fetch initial results
+    this.getResultsModuloDos();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+      _this.expedientes = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoDerechosCatalogos').then(function (res) {
+      _this.tipoDerechos = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoMedidaCatalogos').then(function (res) {
+      _this.tipoMedida = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/tipoAmparoCatalogos').then(function (res) {
+      _this.tipoAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/faseProcesalCatalogos').then(function (res) {
+      _this.faseProcesal = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+    axios.get('/Proyecto-CJ/public/resolucionAmparoCatalogos').then(function (res) {
+      _this.resolucionAmparo = res.data;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
+  methods: {
+    getResultsModuloDos: function getResultsModuloDos() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/Proyecto-CJ/public/modulodos?page=' + page).then(function (response) {
+        _this2.modulodoss = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    editarFormulario: function editarFormulario(item) {
+      this.editarActivo = true;
+      this.modulodos.id_expediente = item.id_expediente;
+      this.modulodos.fecha_sentencia = item.fecha_sentencia;
+      this.modulodos.fecha_promocion = item.fecha_promocion;
+      this.modulodos.solicitud_embargo = item.solicitud_embargo;
+      this.modulodos.fecha_solicitud_embargo = item.fecha_solicitud_embargo;
+      this.modulodos.autorizacion_embargo = item.autorizacion_embargo;
+      this.modulodos.fecha_emision = item.fecha_emision;
+      this.modulodos.ejecucion_embargo = item.ejecucion_embargo;
+      this.modulodos.fecha_ejecucion_embargo = item.fecha_ejecucion_embargo;
+      this.modulodos.cumple_pago = item.cumple_pago;
+      this.modulodos.bienes_sentencia = item.bienes_sentencia;
+      this.modulodos.solicita_adjudicacion = item.solicita_adjudicacion;
+      this.modulodos.designa_perito = item.designa_perito;
+      this.modulodos.fecha_designacion = item.fecha_designacion;
+      this.modulodos.fecha_aceptacion = item.fecha_aceptacion;
+      this.modulodos.fecha_informe = item.fecha_informe;
+      this.modulodos.venta_almoneda = item.venta_almoneda;
+      this.modulodos.fecha_acuerdo = item.fecha_acuerdo;
+      this.modulodos.numero_publicaciones = item.numero_publicaciones;
+      this.modulodos.fecha_venta = item.fecha_venta;
+      this.modulodos.almonedas_publicas = item.almonedas_publicas;
+      this.modulodos.cambio_propietario = item.cambio_propietario;
+      this.modulodos.orden_lanzamiento = item.orden_lanzamiento;
+      this.modulodos.fecha_lanzamiento = item.fecha_lanzamiento;
+      this.modulodos.existencia_derechos = item.existencia_derechos;
+      this.modulodos.tipo_derechos = item.tipo_derechos;
+      this.modulodos.medidas_dictadas = item.medidas_dictadas;
+      this.modulodos.tipo_medida = item.tipo_medida;
+      this.modulodos.solicitud_amparo = item.solicitud_amparo;
+      this.modulodos.tipo_amparo = item.tipo_amparo;
+      this.modulodos.suspension_provisional = item.suspension_provisional;
+      this.modulodos.fase_procesal = item.fase_procesal;
+      this.modulodos.resolucion_amparo = item.resolucion_amparo;
+      this.modulodos.total_acuerdos = item.total_acuerdos;
+      this.modulodos.id_modulodos = item.id_modulodos;
+    },
+    editar: function editar(item) {
+      var _this3 = this;
+
+      var params = {
+        id_expediente: item.id_expediente,
+        fecha_sentencia: item.fecha_sentencia,
+        fecha_promocion: item.fecha_promocion,
+        solicitud_embargo: item.solicitud_embargo,
+        fecha_solicitud_embargo: item.fecha_solicitud_embargo,
+        autorizacion_embargo: item.autorizacion_embargo,
+        fecha_emision: item.fecha_emision,
+        ejecucion_embargo: item.ejecucion_embargo,
+        fecha_ejecucion_embargo: item.fecha_ejecucion_embargo,
+        cumple_pago: item.cumple_pago,
+        bienes_sentencia: item.bienes_sentencia,
+        solicita_adjudicacion: item.solicita_adjudicacion,
+        designa_perito: item.designa_perito,
+        fecha_designacion: item.fecha_designacion,
+        fecha_aceptacion: item.fecha_aceptacion,
+        fecha_informe: item.fecha_informe,
+        venta_almoneda: item.venta_almoneda,
+        fecha_acuerdo: item.fecha_acuerdo,
+        numero_publicaciones: item.numero_publicaciones,
+        fecha_venta: item.fecha_venta,
+        almonedas_publicas: item.almonedas_publicas,
+        cambio_propietario: item.cambio_propietario,
+        orden_lanzamiento: item.orden_lanzamiento,
+        fecha_lanzamiento: item.fecha_lanzamiento,
+        existencia_derechos: item.existencia_derechos,
+        tipo_derechos: item.tipo_derechos,
+        medidas_dictadas: item.medidas_dictadas,
+        tipo_medida: item.tipo_medida,
+        solicitud_amparo: item.solicitud_amparo,
+        tipo_amparo: item.tipo_amparo,
+        suspension_provisional: item.suspension_provisional,
+        fase_procesal: item.fase_procesal,
+        resolucion_amparo: item.resolucion_amparo,
+        total_acuerdos: item.total_acuerdos
+      };
+      axios.put("/Proyecto-CJ/public/modulodos/".concat(item.id_modulodos), params).then(function (res) {
+        _this3.editarActivo = false;
+
+        _this3.getResultsModuloDos(_this3.modulodoss.current_page);
+      });
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+    },
+    cancelarEdicion: function cancelarEdicion() {
+      this.editarActivo = false;
+      this.modulodos = {
+        id_expediente: '',
+        fecha_sentencia: '',
+        fecha_promocion: '',
+        solicitud_embargo: '',
+        fecha_solicitud_embargo: '',
+        autorizacion_embargo: '',
+        fecha_emision: '',
+        ejecucion_embargo: '',
+        fecha_ejecucion_embargo: '',
+        cumple_pago: '',
+        bienes_sentencia: '',
+        solicita_adjudicacion: '',
+        designa_perito: '',
+        fecha_designacion: '',
+        fecha_aceptacion: '',
+        fecha_informe: '',
+        venta_almoneda: '',
+        fecha_acuerdo: '',
+        numero_publicaciones: '',
+        fecha_venta: '',
+        almonedas_publicas: '',
+        cambio_propietario: '',
+        orden_lanzamiento: '',
+        fecha_lanzamiento: '',
+        existencia_derechos: '',
+        tipo_derechos: '',
+        medidas_dictadas: '',
+        tipo_medida: '',
+        solicitud_amparo: '',
+        tipo_amparo: '',
+        suspension_provisional: '',
+        fase_procesal: '',
+        resolucion_amparo: '',
+        total_acuerdos: ''
+      };
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      //Valida modulodos de formularios
+      //if(this.modulodos.designa_perito.trim() === ''){
+      //alert('Debes completar todos los campos antes de guardar');
+      //return;
+      //}
+      //console.log(this.modulodos.id_expediente, this.modulodos.descripcion); 
+      var params = {
+        id_expediente: this.modulodos.id_expediente,
+        fecha_sentencia: this.modulodos.fecha_sentencia,
+        fecha_promocion: this.modulodos.fecha_promocion,
+        solicitud_embargo: this.modulodos.solicitud_embargo,
+        fecha_solicitud_embargo: this.modulodos.fecha_solicitud_embargo,
+        autorizacion_embargo: this.modulodos.autorizacion_embargo,
+        fecha_emision: this.modulodos.fecha_emision,
+        ejecucion_embargo: this.modulodos.ejecucion_embargo,
+        fecha_ejecucion_embargo: this.modulodos.fecha_ejecucion_embargo,
+        cumple_pago: this.modulodos.cumple_pago,
+        bienes_sentencia: this.modulodos.bienes_sentencia,
+        solicita_adjudicacion: this.modulodos.solicita_adjudicacion,
+        designa_perito: this.modulodos.designa_perito,
+        fecha_designacion: this.modulodos.fecha_designacion,
+        fecha_aceptacion: this.modulodos.fecha_aceptacion,
+        fecha_informe: this.modulodos.fecha_informe,
+        venta_almoneda: this.modulodos.venta_almoneda,
+        fecha_acuerdo: this.modulodos.fecha_acuerdo,
+        numero_publicaciones: this.modulodos.numero_publicaciones,
+        fecha_venta: this.modulodos.fecha_venta,
+        almonedas_publicas: this.modulodos.almonedas_publicas,
+        cambio_propietario: this.modulodos.cambio_propietario,
+        orden_lanzamiento: this.modulodos.orden_lanzamiento,
+        fecha_lanzamiento: this.modulodos.fecha_lanzamiento,
+        existencia_derechos: this.modulodos.existencia_derechos,
+        tipo_derechos: this.modulodos.tipo_derechos.valor_variable,
+        medidas_dictadas: this.modulodos.medidas_dictadas,
+        tipo_medida: this.modulodos.tipo_medida.valor_variable,
+        solicitud_amparo: this.modulodos.solicitud_amparo,
+        tipo_amparo: this.modulodos.tipo_amparo.valor_variable,
+        suspension_provisional: this.modulodos.suspension_provisional,
+        fase_procesal: this.modulodos.fase_procesal.valor_variable,
+        resolucion_amparo: this.modulodos.resolucion_amparo.valor_variable,
+        total_acuerdos: this.modulodos.total_acuerdos
+      }; //Accion para limpiar los campos
+
+      this.modulodos.id_expediente = '';
+      this.modulodos.fecha_sentencia = '';
+      this.modulodos.fecha_promocion = '';
+      this.modulodos.solicitud_embargo = '';
+      this.modulodos.fecha_solicitud_embargo = '';
+      this.modulodos.autorizacion_embargo = '';
+      this.modulodos.fecha_emision = '';
+      this.modulodos.ejecucion_embargo = '';
+      this.modulodos.fecha_ejecucion_embargo = '';
+      this.modulodos.cumple_pago = '';
+      this.modulodos.bienes_sentencia = '';
+      this.modulodos.solicita_adjudicacion = '';
+      this.modulodos.designa_perito = '';
+      this.modulodos.fecha_designacion = '';
+      this.modulodos.fecha_aceptacion = '';
+      this.modulodos.fecha_informe = '';
+      this.modulodos.venta_almoneda = '';
+      this.modulodos.fecha_acuerdo = '';
+      this.modulodos.numero_publicaciones = '';
+      this.modulodos.fecha_venta = '';
+      this.modulodos.almonedas_publicas = '';
+      this.modulodos.cambio_propietario = '';
+      this.modulodos.orden_lanzamiento = '';
+      this.modulodos.fecha_lanzamiento = '';
+      this.modulodos.existencia_derechos = '';
+      this.modulodos.tipo_derechos = '';
+      this.modulodos.medidas_dictadas = '';
+      this.modulodos.tipo_medida = '';
+      this.modulodos.solicitud_amparo = '';
+      this.modulodos.tipo_amparo = '';
+      this.modulodos.suspension_provisional = '';
+      this.modulodos.fase_procesal = '';
+      this.modulodos.resolucion_amparo = '';
+      this.modulodos.total_acuerdos = '';
+      axios.post('/Proyecto-CJ/public/modulodos', params).then(function (res) {
+        _this4.getResultsModuloDos(_this4.modulodoss.last_page);
+
+        _this4.expedientes.length = 0;
+        axios.get('/Proyecto-CJ/public/expedientesAll').then(function (res) {
+          _this4.expedientes = res.data;
+        });
+      });
+    },
+    confirmar: function confirmar(id) {
+      $('#exampleModalModuloDos').modal("show");
+      $('#id').val(id);
+    },
+    eliminarModuloDos: function eliminarModuloDos(op) {
+      var _this5 = this;
+
+      if (op === "aceptar") {
+        axios["delete"]("/Proyecto-CJ/public/modulodos/" + $("#id").val()).then(function () {
+          _this5.getResultsModuloDos(_this5.modulodoss.current_page);
+
+          $('#exampleModalModuloDos').modal("hide");
+        });
+      } else {
+        $('#exampleModalModuloDos').modal("hide");
+      }
     }
   }
 });
@@ -43171,6 +47338,560 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._l(_vm.modulotress.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_juez_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizar_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.estado_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.municipio_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.codigo_postal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_visitas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.se_realizo))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizacion_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_fecha))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.no_motivos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_declaracion_rebeldia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_contesta_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.reconviene_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_reconvencion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contesta_reconvencion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_total_acuerdos))])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulotress },
+            on: { "pagination-change-page": _vm.getResults }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloTres",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloTresLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Juez Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos Realizar Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Municipio Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Codigo Postal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número Visitas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Se realizo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos de realización ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Fecha ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" No, Motivos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Contestación Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Declaración rebeldia ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Contesta Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Contestación Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Reconviene Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Reconvención Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Contesta Reconvención ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número Total Acuerdos ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloTresLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._l(_vm.modulodoss.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_sentencia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_promocion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.autorizacion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_emision))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cumple_pago))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicita_adjudicacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.designa_perito))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_designacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_aceptacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_informe))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.venta_almoneda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_acuerdo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_publicaciones))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_venta))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.almonedas_publicas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cambio_propietario))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.orden_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.existencia_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.medidas_dictadas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_medida))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.suspension_provisional))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fase_procesal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.resolucion_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.total_acuerdos))])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulodoss },
+            on: { "pagination-change-page": _vm.getResultsModuloDos }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloDos",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloDosLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de promocion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha solicitud embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Autorización embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha emisión ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Ejecución embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha ejecucion embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cumple pago ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Bienes sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Solicita adjudicación ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Designa Perito ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha designacion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha aceptación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha informe ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Venta almoneda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha acuerdo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número publicaciones ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha venta ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Almonedas publicas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cambio propietario ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Orden lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Existencia derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Medidas dictadas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo de medida ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud de amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Suspensión provisional ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fase procesal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Resolución amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Total acuerdos ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloDosLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloUnoComponent.vue?vue&type=template&id=31c2bcf0&":
 /*!********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contraloriaModuloUnoComponent.vue?vue&type=template&id=31c2bcf0& ***!
@@ -47740,6 +52461,10250 @@ var staticRenderFns = [
       _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
       _vm._v(
         "\n          ¿Estas seguro(a) de eliminar el registro seleccionado?\n        "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "modal-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.editarActivo
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.editar(_vm.modulotres)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.id_expediente,
+                            expression: "modulotres.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "id_expediente" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulotres,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha juez emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_juez_emplazamiento,
+                            expression: "modulotres.fecha_juez_emplazamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_juez_emplazamiento
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_juez_emplazamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos para realizar emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizar,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres.mecanismos_realizar_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizar_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizar_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.paisEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.pais_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "pais_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.pais_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.estadoEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.estado_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "estado_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.estado_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.municipioEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.municipio_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "municipio_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.municipio_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Código postal señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.codigoPostal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.codigo_postal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulotres, "codigo_postal", $$v)
+                            },
+                            expression: "modulotres.codigo_postal"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número de visitas emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_visitas,
+                            expression: "modulotres.numero_visitas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.numero_visitas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_visitas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Se realiza emplazamiento?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.se_realizo,
+                              expression: "modulotres.se_realizo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "se_realizo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos de realizacion emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres
+                                .mecanismos_realizacion_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizacion_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizacion_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Si se realizo fecha")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.si_fecha,
+                            expression: "modulotres.si_fecha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulotres.si_fecha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "si_fecha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("No se realiza emplazamiento, motivos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.no_motivos,
+                            expression: "modulotres.no_motivos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.no_motivos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "no_motivos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contestacion_demanda,
+                              expression: "modulotres.contestacion_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contestacion_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha declaración rebeldia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_declaracion_rebeldia,
+                            expression: "modulotres.fecha_declaracion_rebeldia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_declaracion_rebeldia
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_declaracion_rebeldia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Si contesta la demanda")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.siContesta,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.si_contesta_demanda,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "si_contesta_demanda",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.si_contesta_demanda"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_contestacion_demanda,
+                            expression: "modulotres.fecha_contestacion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_contestacion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_contestacion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El demandado reconviene la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.reconviene_demanda,
+                              expression: "modulotres.reconviene_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "reconviene_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha reconvención de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_reconvencion_demanda,
+                            expression: "modulotres.fecha_reconvencion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_reconvencion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_reconvencion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El reconvenido contesta la reconvención")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contesta_reconvencion,
+                              expression: "modulotres.contesta_reconvencion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contesta_reconvencion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_total_acuerdos,
+                            expression: "modulotres.numero_total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.modulotres.numero_total_acuerdos
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Actualizar ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.cancelarEdicion()
+                          }
+                        }
+                      },
+                      [_vm._v(" Cancelar ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+        : _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.agregar($event)
+                }
+              }
+            },
+            [
+              _c("h4", { staticClass: "text-center" }, [
+                _vm._v(" Datos emplazamiento (Modulo X)  ")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.id_expediente,
+                            expression: "modulotres.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "id_expediente" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulotres,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha juez emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_juez_emplazamiento,
+                            expression: "modulotres.fecha_juez_emplazamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_juez_emplazamiento
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_juez_emplazamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos para realizar emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizar,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres.mecanismos_realizar_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizar_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizar_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.paisEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.pais_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "pais_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.pais_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.estadoEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.estado_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "estado_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.estado_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.municipioEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.municipio_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "municipio_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.municipio_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Código postal señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.codigoPostal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.codigo_postal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulotres, "codigo_postal", $$v)
+                            },
+                            expression: "modulotres.codigo_postal"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número de visitas emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_visitas,
+                            expression: "modulotres.numero_visitas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.numero_visitas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_visitas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Se realiza emplazamiento?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.se_realizo,
+                              expression: "modulotres.se_realizo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "se_realizo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos de realizacion emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres
+                                .mecanismos_realizacion_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizacion_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizacion_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Si se realizo fecha")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.si_fecha,
+                            expression: "modulotres.si_fecha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulotres.si_fecha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "si_fecha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("No se realiza emplazamiento, motivos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.no_motivos,
+                            expression: "modulotres.no_motivos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.no_motivos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "no_motivos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contestacion_demanda,
+                              expression: "modulotres.contestacion_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contestacion_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha declaración rebeldia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_declaracion_rebeldia,
+                            expression: "modulotres.fecha_declaracion_rebeldia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_declaracion_rebeldia
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_declaracion_rebeldia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Si contesta la demanda")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.siContesta,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.si_contesta_demanda,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "si_contesta_demanda",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.si_contesta_demanda"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_contestacion_demanda,
+                            expression: "modulotres.fecha_contestacion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_contestacion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_contestacion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El demandado reconviene la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.reconviene_demanda,
+                              expression: "modulotres.reconviene_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "reconviene_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha reconvención de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_reconvencion_demanda,
+                            expression: "modulotres.fecha_reconvencion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_reconvencion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_reconvencion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El reconvenido contesta la reconvención")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contesta_reconvencion,
+                              expression: "modulotres.contesta_reconvencion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contesta_reconvencion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_total_acuerdos,
+                            expression: "modulotres.numero_total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.modulotres.numero_total_acuerdos
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Guardar Registro ")]
+                    )
+                  ]),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.modulotress.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_juez_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizar_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.estado_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.municipio_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.codigo_postal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_visitas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.se_realizo))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizacion_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_fecha))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.no_motivos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_declaracion_rebeldia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_contesta_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.reconviene_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_reconvencion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contesta_reconvencion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_total_acuerdos))])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulotress },
+            on: { "pagination-change-page": _vm.getResults }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloTres",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloTresLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-center" }, [
+      _vm._v(" Actualizar Información "),
+      _c("i", [_vm._v(" (Modulo - I) ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Juez Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos Realizar Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Municipio Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Codigo Postal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número Visitas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Se realizo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos de realización ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Fecha ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" No, Motivos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Contestación Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Declaración rebeldia ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Contesta Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Contestación Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Reconviene Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Reconvención Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Contesta Reconvención ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número Total Acuerdos ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloTresLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "modal-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.editarActivo
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.editar(_vm.modulotres)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.id_expediente,
+                            expression: "modulotres.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulotres,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha juez emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_juez_emplazamiento,
+                            expression: "modulotres.fecha_juez_emplazamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_juez_emplazamiento
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_juez_emplazamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos para realizar emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizar,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres.mecanismos_realizar_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizar_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizar_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.paisEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.pais_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "pais_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.pais_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.estadoEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.estado_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "estado_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.estado_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.municipioEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.municipio_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "municipio_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.municipio_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Código postal señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.codigoPostal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.codigo_postal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulotres, "codigo_postal", $$v)
+                            },
+                            expression: "modulotres.codigo_postal"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número de visitas emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_visitas,
+                            expression: "modulotres.numero_visitas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.numero_visitas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_visitas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Se realiza emplazamiento?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.se_realizo,
+                              expression: "modulotres.se_realizo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "se_realizo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos de realizacion emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres
+                                .mecanismos_realizacion_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizacion_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizacion_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Si se realizo fecha")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.si_fecha,
+                            expression: "modulotres.si_fecha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulotres.si_fecha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "si_fecha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("No se realiza emplazamiento, motivos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.no_motivos,
+                            expression: "modulotres.no_motivos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.no_motivos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "no_motivos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contestacion_demanda,
+                              expression: "modulotres.contestacion_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contestacion_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha declaración rebeldia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_declaracion_rebeldia,
+                            expression: "modulotres.fecha_declaracion_rebeldia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_declaracion_rebeldia
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_declaracion_rebeldia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Si contesta la demanda")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.siContesta,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.si_contesta_demanda,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "si_contesta_demanda",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.si_contesta_demanda"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_contestacion_demanda,
+                            expression: "modulotres.fecha_contestacion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_contestacion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_contestacion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El demandado reconviene la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.reconviene_demanda,
+                              expression: "modulotres.reconviene_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "reconviene_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha reconvención de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_reconvencion_demanda,
+                            expression: "modulotres.fecha_reconvencion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_reconvencion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_reconvencion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El reconvenido contesta la reconvención")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contesta_reconvencion,
+                              expression: "modulotres.contesta_reconvencion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contesta_reconvencion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_total_acuerdos,
+                            expression: "modulotres.numero_total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.modulotres.numero_total_acuerdos
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Actualizar ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.cancelarEdicion()
+                          }
+                        }
+                      },
+                      [_vm._v(" Cancelar ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+        : _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.agregar($event)
+                }
+              }
+            },
+            [
+              _c("h4", { staticClass: "text-center" }, [
+                _vm._v(" Datos emplazamiento (Modulo X)  ")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.id_expediente,
+                            expression: "modulotres.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulotres,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha juez emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_juez_emplazamiento,
+                            expression: "modulotres.fecha_juez_emplazamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_juez_emplazamiento
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_juez_emplazamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos para realizar emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizar,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres.mecanismos_realizar_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizar_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizar_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Pais señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.paisEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.pais_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "pais_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.pais_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Estado señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.estadoEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.estado_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "estado_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.estado_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Municipio señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.municipioEmplazamiento,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.municipio_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "municipio_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.municipio_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Código postal señalado emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.codigoPostal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.codigo_postal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulotres, "codigo_postal", $$v)
+                            },
+                            expression: "modulotres.codigo_postal"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número de visitas emplazamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_visitas,
+                            expression: "modulotres.numero_visitas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.numero_visitas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_visitas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("¿Se realiza emplazamiento?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.se_realizo,
+                              expression: "modulotres.se_realizo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "se_realizo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Mecanismos de realizacion emplazamiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.mecanismosRealizacion,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value:
+                              _vm.modulotres
+                                .mecanismos_realizacion_emplazamiento,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "mecanismos_realizacion_emplazamiento",
+                                $$v
+                              )
+                            },
+                            expression:
+                              "modulotres.mecanismos_realizacion_emplazamiento"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Si se realizo fecha")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.si_fecha,
+                            expression: "modulotres.si_fecha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulotres.si_fecha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "si_fecha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("No se realiza emplazamiento, motivos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.no_motivos,
+                            expression: "modulotres.no_motivos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulotres.no_motivos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "no_motivos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contestacion_demanda,
+                              expression: "modulotres.contestacion_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contestacion_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha declaración rebeldia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_declaracion_rebeldia,
+                            expression: "modulotres.fecha_declaracion_rebeldia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_declaracion_rebeldia
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_declaracion_rebeldia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState" } }, [
+                          _vm._v("Si contesta la demanda")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.siContesta,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulotres.si_contesta_demanda,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.modulotres,
+                                "si_contesta_demanda",
+                                $$v
+                              )
+                            },
+                            expression: "modulotres.si_contesta_demanda"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha contestación de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_contestacion_demanda,
+                            expression: "modulotres.fecha_contestacion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_contestacion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_contestacion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El demandado reconviene la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.reconviene_demanda,
+                              expression: "modulotres.reconviene_demanda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "reconviene_demanda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Fecha reconvención de la demanda")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.fecha_reconvencion_demanda,
+                            expression: "modulotres.fecha_reconvencion_demanda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulotres.fecha_reconvencion_demanda
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "fecha_reconvencion_demanda",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("El reconvenido contesta la reconvención")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulotres.contesta_reconvencion,
+                              expression: "modulotres.contesta_reconvencion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulotres,
+                                "contesta_reconvencion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulotres.numero_total_acuerdos,
+                            expression: "modulotres.numero_total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.modulotres.numero_total_acuerdos
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulotres,
+                              "numero_total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Guardar Registro ")]
+                    )
+                  ]),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.modulotress.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_juez_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizar_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.estado_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.municipio_emplazamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.codigo_postal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_visitas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.se_realizo))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(item.mecanismos_realizacion_emplazamiento))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_fecha))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.no_motivos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_declaracion_rebeldia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.si_contesta_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_contestacion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.reconviene_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_reconvencion_demanda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.contesta_reconvencion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_total_acuerdos))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: {
+                            click: function($event) {
+                              return _vm.editarFormulario(item)
+                            }
+                          }
+                        },
+                        [_vm._v("Actualizar")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.confirmar(item.id_modulotres)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulotress },
+            on: { "pagination-change-page": _vm.getResults }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloTres",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloTresLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloTres("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-center" }, [
+      _vm._v(" Actualizar Información "),
+      _c("i", [_vm._v(" (Modulo - I) ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Juez Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos Realizar Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Pais Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Estado Emplazamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Municipio Emplazamiento ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Codigo Postal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número Visitas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Se realizo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Mecanismos de realización ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Fecha ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" No, Motivos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Contestación Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Declaración rebeldia ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Si, Contesta Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Contestación Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Reconviene Demanda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha Reconvención Demanda ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Contesta Reconvención ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Número Total Acuerdos ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Actualizar ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Eliminar ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloTresLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "modal-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.editarActivo
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.editar(_vm.modulodos)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.id_expediente,
+                            expression: "modulodos.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulodos,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha causa sentencia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_sentencia,
+                            expression: "modulodos.fecha_sentencia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_sentencia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_sentencia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de promoción")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_promocion,
+                            expression: "modulodos.fecha_promocion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_promocion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_promocion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_embargo,
+                              expression: "modulodos.solicitud_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_solicitud_embargo,
+                            expression: "modulodos.fecha_solicitud_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_solicitud_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_solicitud_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Se autoriza realización de embargo?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.autorizacion_embargo,
+                              expression: "modulodos.autorizacion_embargo "
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "autorizacion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha emisión de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_emision,
+                            expression: "modulodos.fecha_emision"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_emision },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_emision",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se ejecuta el embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.ejecucion_embargo,
+                              expression: "modulodos.ejecucion_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "ejecucion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha ejecución de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_ejecucion_embargo,
+                            expression: "modulodos.fecha_ejecucion_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_ejecucion_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_ejecucion_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Cumple voluntariamente con pago?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.cumple_pago,
+                              expression: "modulodos.cumple_pago"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "cumple_pago",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Realiza el embargo de bienes?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.bienes_sentencia,
+                              expression: "modulodos.bienes_sentencia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "bienes_sentencia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicita adjudicación")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicita_adjudicacion,
+                              expression: "modulodos.solicita_adjudicacion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicita_adjudicacion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Designa perito valuador")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.designa_perito,
+                              expression: "modulodos.designa_perito"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "designa_perito",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha designación peritos valuadores")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_designacion,
+                            expression: "modulodos.fecha_designacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_designacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_designacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de aceptación del cargo peritos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_aceptacion,
+                            expression: "modulodos.fecha_aceptacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_aceptacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_aceptacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha en que rinden informe")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_informe,
+                            expression: "modulodos.fecha_informe"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_informe },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_informe",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Realiza venta en almoneda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.venta_almoneda,
+                              expression: "modulodos.venta_almoneda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "venta_almoneda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de acuerdo orden")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_acuerdo,
+                            expression: "modulodos.fecha_acuerdo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_acuerdo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_acuerdo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de publicaciones")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.numero_publicaciones,
+                            expression: "modulodos.numero_publicaciones"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.numero_publicaciones },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "numero_publicaciones",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha venta almoneda pública")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_venta,
+                            expression: "modulodos.fecha_venta"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_venta },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_venta",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de almonedas públicas")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.almonedas_publicas,
+                            expression: "modulodos.almonedas_publicas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.almonedas_publicas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "almonedas_publicas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha cambio propietario")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.cambio_propietario,
+                            expression: "modulodos.cambio_propietario"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.cambio_propietario },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "cambio_propietario",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState11" } }, [
+                        _vm._v("Orden de lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.orden_lanzamiento,
+                              expression: "modulodos.orden_lanzamiento"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "orden_lanzamiento",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState12" } }, [
+                        _vm._v("Fecha ejecución lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_lanzamiento,
+                            expression: "modulodos.fecha_lanzamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_lanzamiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_lanzamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Existencia de derechos humandos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.existencia_derechos,
+                              expression: "modulodos.existencia_derechos"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "existencia_derechos",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState13" } }, [
+                        _vm._v("Tipo de derechos humanos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.tipo_derechos,
+                            expression: "modulodos.tipo_derechos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.tipo_derechos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "tipo_derechos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Medidas dictadas para reparar el daño")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.medidas_dictadas,
+                              expression: "modulodos.medidas_dictadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "medidas_dictadas",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de medida")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoMedida,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_medida,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_medida", $$v)
+                            },
+                            expression: "modulodos.tipo_medida"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de amparo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_amparo,
+                              expression: "modulodos.solicitud_amparo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_amparo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de amparo solicitado")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_amparo", $$v)
+                            },
+                            expression: "modulodos.tipo_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se solicito suspension provisional")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.suspension_provisional,
+                              expression: "modulodos.suspension_provisional"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "suspension_provisional",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fase procesal")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.faseProcesal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.fase_procesal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "fase_procesal", $$v)
+                            },
+                            expression: "modulodos.fase_procesal"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Resolución de amparo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.resolucionAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.resolucion_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "resolucion_amparo", $$v)
+                            },
+                            expression: "modulodos.resolucion_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.total_acuerdos,
+                            expression: "modulodos.total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.total_acuerdos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Actualizar ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.cancelarEdicion()
+                          }
+                        }
+                      },
+                      [_vm._v(" Cancelar ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+        : _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.agregar($event)
+                }
+              }
+            },
+            [
+              _c("h4", { staticClass: "text-center" }, [
+                _vm._v(" Ejecución de la sentencia (Modulo VIII)  ")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.id_expediente,
+                            expression: "modulodos.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulodos,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha causa sentencia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_sentencia,
+                            expression: "modulodos.fecha_sentencia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_sentencia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_sentencia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de promoción")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_promocion,
+                            expression: "modulodos.fecha_promocion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_promocion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_promocion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_embargo,
+                              expression: "modulodos.solicitud_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_solicitud_embargo,
+                            expression: "modulodos.fecha_solicitud_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_solicitud_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_solicitud_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Se autoriza realización de embargo?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.autorizacion_embargo,
+                              expression: "modulodos.autorizacion_embargo "
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "autorizacion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha emisión de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_emision,
+                            expression: "modulodos.fecha_emision"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_emision },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_emision",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se ejecuta el embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.ejecucion_embargo,
+                              expression: "modulodos.ejecucion_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "ejecucion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha ejecución de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_ejecucion_embargo,
+                            expression: "modulodos.fecha_ejecucion_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_ejecucion_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_ejecucion_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Cumple voluntariamente con pago?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.cumple_pago,
+                              expression: "modulodos.cumple_pago"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "cumple_pago",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Realiza el embargo de bienes?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.bienes_sentencia,
+                              expression: "modulodos.bienes_sentencia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "bienes_sentencia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicita adjudicación")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicita_adjudicacion,
+                              expression: "modulodos.solicita_adjudicacion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicita_adjudicacion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Designa perito valuador")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.designa_perito,
+                              expression: "modulodos.designa_perito"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "designa_perito",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha designación peritos valuadores")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_designacion,
+                            expression: "modulodos.fecha_designacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_designacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_designacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de aceptación del cargo peritos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_aceptacion,
+                            expression: "modulodos.fecha_aceptacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_aceptacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_aceptacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha en que rinden informe")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_informe,
+                            expression: "modulodos.fecha_informe"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_informe },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_informe",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Realiza venta en almoneda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.venta_almoneda,
+                              expression: "modulodos.venta_almoneda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "venta_almoneda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de acuerdo orden")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_acuerdo,
+                            expression: "modulodos.fecha_acuerdo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_acuerdo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_acuerdo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de publicaciones")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.numero_publicaciones,
+                            expression: "modulodos.numero_publicaciones"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.numero_publicaciones },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "numero_publicaciones",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha venta almoneda pública")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_venta,
+                            expression: "modulodos.fecha_venta"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_venta },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_venta",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de almonedas públicas")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.almonedas_publicas,
+                            expression: "modulodos.almonedas_publicas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.almonedas_publicas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "almonedas_publicas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha cambio propietario")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.cambio_propietario,
+                            expression: "modulodos.cambio_propietario"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.cambio_propietario },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "cambio_propietario",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState11" } }, [
+                        _vm._v("Orden de lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.orden_lanzamiento,
+                              expression: "modulodos.orden_lanzamiento"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "orden_lanzamiento",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState12" } }, [
+                        _vm._v("Fecha ejecución lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_lanzamiento,
+                            expression: "modulodos.fecha_lanzamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_lanzamiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_lanzamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Existencia de derechos humandos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.existencia_derechos,
+                              expression: "modulodos.existencia_derechos"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "existencia_derechos",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState13" } }, [
+                          _vm._v("Tipo de derechos humanos vulnerados")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoDerechos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_derechos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_derechos", $$v)
+                            },
+                            expression: "modulodos.tipo_derechos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Medidas dictadas para reparar el daño")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.medidas_dictadas,
+                              expression: "modulodos.medidas_dictadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "medidas_dictadas",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de medida")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoMedida,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_medida,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_medida", $$v)
+                            },
+                            expression: "modulodos.tipo_medida"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de amparo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_amparo,
+                              expression: "modulodos.solicitud_amparo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_amparo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de amparo solicitado")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_amparo", $$v)
+                            },
+                            expression: "modulodos.tipo_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se solicito suspension provisional")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.suspension_provisional,
+                              expression: "modulodos.suspension_provisional"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "suspension_provisional",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fase procesal")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.faseProcesal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.fase_procesal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "fase_procesal", $$v)
+                            },
+                            expression: "modulodos.fase_procesal"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Resolución de amparo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.resolucionAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.resolucion_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "resolucion_amparo", $$v)
+                            },
+                            expression: "modulodos.resolucion_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.total_acuerdos,
+                            expression: "modulodos.total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.total_acuerdos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Guardar Registro ")]
+                    )
+                  ]),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.modulodoss.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_sentencia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_promocion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.autorizacion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_emision))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cumple_pago))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicita_adjudicacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.designa_perito))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_designacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_aceptacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_informe))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.venta_almoneda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_acuerdo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_publicaciones))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_venta))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.almonedas_publicas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cambio_propietario))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.orden_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.existencia_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.medidas_dictadas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_medida))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.suspension_provisional))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fase_procesal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.resolucion_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.total_acuerdos))])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulodoss },
+            on: { "pagination-change-page": _vm.getResultsModuloDos }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloDos",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloDosLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-center" }, [
+      _vm._v(" Actualizar Información "),
+      _c("i", [_vm._v(" (Modulo - VIII) ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de promocion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha solicitud embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Autorización embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha emisión ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Ejecución embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha ejecucion embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cumple pago ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Bienes sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Solicita adjudicación ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Designa Perito ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha designacion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha aceptación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha informe ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Venta almoneda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha acuerdo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número publicaciones ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha venta ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Almonedas publicas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cambio propietario ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Orden lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Existencia derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Medidas dictadas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo de medida ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud de amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Suspensión provisional ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fase procesal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Resolución amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Total acuerdos ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloDosLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "modal-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.editarActivo
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.editar(_vm.modulodos)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.id_expediente,
+                            expression: "modulodos.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulodos,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha causa sentencia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_sentencia,
+                            expression: "modulodos.fecha_sentencia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_sentencia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_sentencia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de promoción")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_promocion,
+                            expression: "modulodos.fecha_promocion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_promocion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_promocion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_embargo,
+                              expression: "modulodos.solicitud_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_solicitud_embargo,
+                            expression: "modulodos.fecha_solicitud_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_solicitud_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_solicitud_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Se autoriza realización de embargo?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.autorizacion_embargo,
+                              expression: "modulodos.autorizacion_embargo "
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "autorizacion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha emisión de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_emision,
+                            expression: "modulodos.fecha_emision"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_emision },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_emision",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se ejecuta el embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.ejecucion_embargo,
+                              expression: "modulodos.ejecucion_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "ejecucion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha ejecución de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_ejecucion_embargo,
+                            expression: "modulodos.fecha_ejecucion_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_ejecucion_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_ejecucion_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Cumple voluntariamente con pago?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.cumple_pago,
+                              expression: "modulodos.cumple_pago"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "cumple_pago",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Realiza el embargo de bienes?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.bienes_sentencia,
+                              expression: "modulodos.bienes_sentencia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "bienes_sentencia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicita adjudicación")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicita_adjudicacion,
+                              expression: "modulodos.solicita_adjudicacion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicita_adjudicacion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Designa perito valuador")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.designa_perito,
+                              expression: "modulodos.designa_perito"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "designa_perito",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha designación peritos valuadores")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_designacion,
+                            expression: "modulodos.fecha_designacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_designacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_designacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de aceptación del cargo peritos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_aceptacion,
+                            expression: "modulodos.fecha_aceptacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_aceptacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_aceptacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha en que rinden informe")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_informe,
+                            expression: "modulodos.fecha_informe"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_informe },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_informe",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Realiza venta en almoneda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.venta_almoneda,
+                              expression: "modulodos.venta_almoneda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "venta_almoneda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de acuerdo orden")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_acuerdo,
+                            expression: "modulodos.fecha_acuerdo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_acuerdo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_acuerdo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de publicaciones")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.numero_publicaciones,
+                            expression: "modulodos.numero_publicaciones"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.numero_publicaciones },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "numero_publicaciones",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha venta almoneda pública")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_venta,
+                            expression: "modulodos.fecha_venta"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_venta },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_venta",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de almonedas públicas")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.almonedas_publicas,
+                            expression: "modulodos.almonedas_publicas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.almonedas_publicas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "almonedas_publicas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha cambio propietario")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.cambio_propietario,
+                            expression: "modulodos.cambio_propietario"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.cambio_propietario },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "cambio_propietario",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState11" } }, [
+                        _vm._v("Orden de lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.orden_lanzamiento,
+                              expression: "modulodos.orden_lanzamiento"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "orden_lanzamiento",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState12" } }, [
+                        _vm._v("Fecha ejecución lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_lanzamiento,
+                            expression: "modulodos.fecha_lanzamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_lanzamiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_lanzamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Existencia de derechos humandos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.existencia_derechos,
+                              expression: "modulodos.existencia_derechos"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "existencia_derechos",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState13" } }, [
+                        _vm._v("Tipo de derechos humanos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.tipo_derechos,
+                            expression: "modulodos.tipo_derechos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.tipo_derechos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "tipo_derechos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Medidas dictadas para reparar el daño")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.medidas_dictadas,
+                              expression: "modulodos.medidas_dictadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "medidas_dictadas",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de medida")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoMedida,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_medida,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_medida", $$v)
+                            },
+                            expression: "modulodos.tipo_medida"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de amparo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_amparo,
+                              expression: "modulodos.solicitud_amparo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_amparo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de amparo solicitado")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_amparo", $$v)
+                            },
+                            expression: "modulodos.tipo_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se solicito suspension provisional")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.suspension_provisional,
+                              expression: "modulodos.suspension_provisional"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "suspension_provisional",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fase procesal")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.faseProcesal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.fase_procesal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "fase_procesal", $$v)
+                            },
+                            expression: "modulodos.fase_procesal"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Resolución de amparo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.resolucionAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.resolucion_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "resolucion_amparo", $$v)
+                            },
+                            expression: "modulodos.resolucion_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.total_acuerdos,
+                            expression: "modulodos.total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.total_acuerdos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Actualizar ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.cancelarEdicion()
+                          }
+                        }
+                      },
+                      [_vm._v(" Cancelar ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+        : _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.agregar($event)
+                }
+              }
+            },
+            [
+              _c("h4", { staticClass: "text-center" }, [
+                _vm._v(" Ejecución de la sentencia (Modulo VIII)  ")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "container" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.id_expediente,
+                            expression: "modulodos.id_expediente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.modulodos,
+                              "id_expediente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Número de expediente ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.expedientes, function(item, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id_expediente } },
+                            [_vm._v(_vm._s(item.numero_expediente))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha causa sentencia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_sentencia,
+                            expression: "modulodos.fecha_sentencia"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_sentencia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_sentencia",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de promoción")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_promocion,
+                            expression: "modulodos.fecha_promocion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_promocion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_promocion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_embargo,
+                              expression: "modulodos.solicitud_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de solicitud de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_solicitud_embargo,
+                            expression: "modulodos.fecha_solicitud_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_solicitud_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_solicitud_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Se autoriza realización de embargo?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.autorizacion_embargo,
+                              expression: "modulodos.autorizacion_embargo "
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "autorizacion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha emisión de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_emision,
+                            expression: "modulodos.fecha_emision"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_emision },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_emision",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se ejecuta el embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.ejecucion_embargo,
+                              expression: "modulodos.ejecucion_embargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "ejecucion_embargo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha ejecución de embargo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_ejecucion_embargo,
+                            expression: "modulodos.fecha_ejecucion_embargo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: {
+                          value: _vm.modulodos.fecha_ejecucion_embargo
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_ejecucion_embargo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Cumple voluntariamente con pago?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.cumple_pago,
+                              expression: "modulodos.cumple_pago"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "cumple_pago",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("¿Realiza el embargo de bienes?")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.bienes_sentencia,
+                              expression: "modulodos.bienes_sentencia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "bienes_sentencia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicita adjudicación")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicita_adjudicacion,
+                              expression: "modulodos.solicita_adjudicacion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicita_adjudicacion",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Designa perito valuador")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.designa_perito,
+                              expression: "modulodos.designa_perito"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "designa_perito",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha designación peritos valuadores")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_designacion,
+                            expression: "modulodos.fecha_designacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_designacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_designacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de aceptación del cargo peritos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_aceptacion,
+                            expression: "modulodos.fecha_aceptacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_aceptacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_aceptacion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha en que rinden informe")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_informe,
+                            expression: "modulodos.fecha_informe"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_informe },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_informe",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Realiza venta en almoneda")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.venta_almoneda,
+                              expression: "modulodos.venta_almoneda"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "venta_almoneda",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha de acuerdo orden")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_acuerdo,
+                            expression: "modulodos.fecha_acuerdo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_acuerdo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_acuerdo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de publicaciones")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.numero_publicaciones,
+                            expression: "modulodos.numero_publicaciones"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.numero_publicaciones },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "numero_publicaciones",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha venta almoneda pública")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_venta,
+                            expression: "modulodos.fecha_venta"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_venta },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_venta",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número de almonedas públicas")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.almonedas_publicas,
+                            expression: "modulodos.almonedas_publicas"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.almonedas_publicas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "almonedas_publicas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Fecha cambio propietario")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.cambio_propietario,
+                            expression: "modulodos.cambio_propietario"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.cambio_propietario },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "cambio_propietario",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState11" } }, [
+                        _vm._v("Orden de lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.orden_lanzamiento,
+                              expression: "modulodos.orden_lanzamiento"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "orden_lanzamiento",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState12" } }, [
+                        _vm._v("Fecha ejecución lanzamiento")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.fecha_lanzamiento,
+                            expression: "modulodos.fecha_lanzamiento"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "date" },
+                        domProps: { value: _vm.modulodos.fecha_lanzamiento },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "fecha_lanzamiento",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Existencia de derechos humandos vulnerados")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.existencia_derechos,
+                              expression: "modulodos.existencia_derechos"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "existencia_derechos",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState13" } }, [
+                          _vm._v("Tipo de derechos humanos vulnerados")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoDerechos,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_derechos,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_derechos", $$v)
+                            },
+                            expression: "modulodos.tipo_derechos"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Medidas dictadas para reparar el daño")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.medidas_dictadas,
+                              expression: "modulodos.medidas_dictadas"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "medidas_dictadas",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de medida")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoMedida,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_medida,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_medida", $$v)
+                            },
+                            expression: "modulodos.tipo_medida"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Solicitud de amparo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.solicitud_amparo,
+                              expression: "modulodos.solicitud_amparo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "solicitud_amparo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Tipo de amparo solicitado")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.tipoAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.tipo_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "tipo_amparo", $$v)
+                            },
+                            expression: "modulodos.tipo_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Se solicito suspension provisional")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modulodos.suspension_provisional,
+                              expression: "modulodos.suspension_provisional"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.modulodos,
+                                "suspension_provisional",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Seleccionar")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("Si")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("No")])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Fase procesal")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.faseProcesal,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.fase_procesal,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "fase_procesal", $$v)
+                            },
+                            expression: "modulodos.fase_procesal"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("label", { attrs: { for: "inputState1" } }, [
+                          _vm._v("Resolución de amparo")
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-select", {
+                          staticClass: "vue-select1",
+                          attrs: {
+                            label: "valor_variable",
+                            options: _vm.resolucionAmparo,
+                            model: _vm.result1
+                          },
+                          on: {
+                            "update:model": function($event) {
+                              _vm.result1 = $event
+                            }
+                          },
+                          model: {
+                            value: _vm.modulodos.resolucion_amparo,
+                            callback: function($$v) {
+                              _vm.$set(_vm.modulodos, "resolucion_amparo", $$v)
+                            },
+                            expression: "modulodos.resolucion_amparo"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", { attrs: { for: "inputState1" } }, [
+                        _vm._v("Número total de acuerdos emitidos")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modulodos.total_acuerdos,
+                            expression: "modulodos.total_acuerdos"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.modulodos.total_acuerdos },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modulodos,
+                              "total_acuerdos",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("center", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Guardar Registro ")]
+                    )
+                  ]),
+                  _c("br")
+                ],
+                1
+              )
+            ]
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c(
+              "thead",
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.modulodoss.data, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(item.numero_expediente))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_sentencia))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_promocion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_solicitud_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.autorizacion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_emision))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_ejecucion_embargo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cumple_pago))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.pais))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicita_adjudicacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.designa_perito))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_designacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_aceptacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_informe))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.venta_almoneda))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_acuerdo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.numero_publicaciones))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_venta))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.almonedas_publicas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.cambio_propietario))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.orden_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha_lanzamiento))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.existencia_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_derechos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.medidas_dictadas))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_medida))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.solicitud_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.tipo_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.suspension_provisional))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fase_procesal))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.resolucion_amparo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.total_acuerdos))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: {
+                            click: function($event) {
+                              return _vm.editarFormulario(item)
+                            }
+                          }
+                        },
+                        [_vm._v("Actualizar")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.confirmar(item.id_modulodos)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.modulodoss },
+            on: { "pagination-change-page": _vm.getResultsModuloDos }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "exampleModalModuloDos",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalModuloDosLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("cancelar")
+                            }
+                          }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarModuloDos("aceptar")
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-center" }, [
+      _vm._v(" Actualizar Información "),
+      _c("i", [_vm._v(" (Modulo - VIII) ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número de expediente ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha de promocion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha solicitud embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Autorización embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha emisión ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Ejecución embargo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Fecha ejecucion embargo ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cumple pago ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Bienes sentencia ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Solicita adjudicación ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Designa Perito ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha designacion ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha aceptación ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha informe ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Venta almoneda ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha acuerdo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Número publicaciones ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha venta ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Almonedas publicas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Cambio propietario ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Orden lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fecha lanzamiento ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Existencia derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo derechos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Medidas dictadas ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo de medida ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Solicitud de amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Tipo amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [
+        _vm._v(" Suspensión provisional ")
+      ]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Fase procesal ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Resolución amparo ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Total acuerdos ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Actualizar ")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v(" Eliminar ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalModuloDosLabel" }
+        },
+        [_vm._v("Confirmar elminación")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("input", { attrs: { type: "hidden", name: "id", id: "id" } }),
+      _vm._v(
+        "\n              ¿Estas seguro(a) de eliminar el registro seleccionado?\n            "
       )
     ])
   }
@@ -66255,18 +81220,28 @@ Vue.component('variables-component', __webpack_require__(/*! ./components/variab
 Vue.component('valoresvariables-component', __webpack_require__(/*! ./components/valoresvariablesNComponent.vue */ "./resources/js/components/valoresvariablesNComponent.vue")["default"]);
 Vue.component('expedientesadmin-component', __webpack_require__(/*! ./components/expedientesAdminComponent.vue */ "./resources/js/components/expedientesAdminComponent.vue")["default"]);
 Vue.component('modulounoactualizar-component', __webpack_require__(/*! ./components/modulounoactualizarComponent.vue */ "./resources/js/components/modulounoactualizarComponent.vue")["default"]);
+Vue.component('modulodosactualizar-component', __webpack_require__(/*! ./components/modulodosactualizarComponent.vue */ "./resources/js/components/modulodosactualizarComponent.vue")["default"]);
+Vue.component('modulodiezactualizar-component', __webpack_require__(/*! ./components/modulodiezactualizarComponent.vue */ "./resources/js/components/modulodiezactualizarComponent.vue")["default"]);
 /**
  Componentes Oficial de partes
  */
 
 Vue.component('expedientes-component', __webpack_require__(/*! ./components/expedientesComponent.vue */ "./resources/js/components/expedientesComponent.vue")["default"]);
 Vue.component('modulouno-component', __webpack_require__(/*! ./components/modulounoComponent.vue */ "./resources/js/components/modulounoComponent.vue")["default"]);
+Vue.component('modulodos-component', __webpack_require__(/*! ./components/modulodosComponent.vue */ "./resources/js/components/modulodosComponent.vue")["default"]);
 /**
  Componentes Contralor
  */
 
 Vue.component('expedintescontraloria-component', __webpack_require__(/*! ./components/expedientesContraloriaComponent.vue */ "./resources/js/components/expedientesContraloriaComponent.vue")["default"]);
 Vue.component('veruno-component', __webpack_require__(/*! ./components/contraloriaModuloUnoComponent.vue */ "./resources/js/components/contraloriaModuloUnoComponent.vue")["default"]);
+Vue.component('verdos-component', __webpack_require__(/*! ./components/contraloriaModuloDosComponent.vue */ "./resources/js/components/contraloriaModuloDosComponent.vue")["default"]);
+Vue.component('verdiez-component', __webpack_require__(/*! ./components/contraloriaModuloDiezComponent.vue */ "./resources/js/components/contraloriaModuloDiezComponent.vue")["default"]);
+/**
+ Componentes Diligenciario
+ */
+
+Vue.component('modulodiez-component', __webpack_require__(/*! ./components/modulodiezComponent.vue */ "./resources/js/components/modulodiezComponent.vue")["default"]);
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 var app = new Vue({
   el: '#app'
@@ -66329,6 +81304,144 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDiezComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDiezComponent.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc& */ "./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc&");
+/* harmony import */ var _contraloriaModuloDiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contraloriaModuloDiezComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _contraloriaModuloDiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/contraloriaModuloDiezComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./contraloriaModuloDiezComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDiezComponent.vue?vue&type=template&id=469482dc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDiezComponent_vue_vue_type_template_id_469482dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDosComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDosComponent.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314& */ "./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314&");
+/* harmony import */ var _contraloriaModuloDosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contraloriaModuloDosComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _contraloriaModuloDosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/contraloriaModuloDosComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./contraloriaModuloDosComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contraloriaModuloDosComponent.vue?vue&type=template&id=647d1314&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contraloriaModuloDosComponent_vue_vue_type_template_id_647d1314___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -66932,6 +82045,282 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_materiasNComponent_vue_vue_type_template_id_61a7ef08___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_materiasNComponent_vue_vue_type_template_id_61a7ef08___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezComponent.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/modulodiezComponent.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulodiezComponent.vue?vue&type=template&id=03561af2& */ "./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2&");
+/* harmony import */ var _modulodiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulodiezComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _modulodiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modulodiezComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodiezComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodiezComponent.vue?vue&type=template&id=03561af2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezComponent.vue?vue&type=template&id=03561af2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezComponent_vue_vue_type_template_id_03561af2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezactualizarComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/modulodiezactualizarComponent.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02& */ "./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02&");
+/* harmony import */ var _modulodiezactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulodiezactualizarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _modulodiezactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modulodiezactualizarComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodiezactualizarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodiezactualizarComponent.vue?vue&type=template&id=4f2f3d02&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodiezactualizarComponent_vue_vue_type_template_id_4f2f3d02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/modulodosComponent.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulodosComponent.vue?vue&type=template&id=c517e3d4& */ "./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4&");
+/* harmony import */ var _modulodosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulodosComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _modulodosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modulodosComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodosComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodosComponent.vue?vue&type=template&id=c517e3d4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosComponent.vue?vue&type=template&id=c517e3d4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosComponent_vue_vue_type_template_id_c517e3d4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosactualizarComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/modulodosactualizarComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4& */ "./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4&");
+/* harmony import */ var _modulodosactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulodosactualizarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _modulodosactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/modulodosactualizarComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodosactualizarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosactualizarComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosactualizarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modulodosactualizarComponent.vue?vue&type=template&id=a23ad9b4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modulodosactualizarComponent_vue_vue_type_template_id_a23ad9b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

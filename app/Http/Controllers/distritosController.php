@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\DistritosExport;
 use App\distritos;
 
 
@@ -120,6 +122,14 @@ class distritosController extends Controller
 
 
         return $pdf->download('consulta-distritos.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new DistritosExport, 'distritos.xlsx');
+       
     }
 
     public function distritosAll()

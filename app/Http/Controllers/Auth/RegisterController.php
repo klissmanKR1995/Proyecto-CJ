@@ -78,6 +78,8 @@ class RegisterController extends Controller
 
        $user->roles()->attach(Role::where('name', 'contralor')->first());
 
+       $user->roles()->attach(Role::where('name', 'diligenciario')->first());
+
 
        return $user;
     }
@@ -87,7 +89,7 @@ class RegisterController extends Controller
         // User role
         $role = Auth::user()->role_id;
         
-        // Check user role
+         // Check user role
         switch ($role) {
             case 1:
                     return '/home';
@@ -97,6 +99,9 @@ class RegisterController extends Controller
                 break; 
             case 3:
                     return '/contralor';
+                break; 
+            case 4:
+                    return '/diligenciario';
                 break; 
             default:
                     return '/login'; 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ExpedientesExport;
 use App\expedientes;
 //use App\juicios;
 
@@ -151,6 +153,14 @@ class expedientesController extends Controller
 
         return $pdf->setPaper('a4', 'landscape')
                    ->download('consulta-expedientes.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new ExpedientesExport, 'Expedientes.xlsx');
+       
     }
 
     public function expedientesAll()

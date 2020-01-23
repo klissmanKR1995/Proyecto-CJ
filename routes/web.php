@@ -26,6 +26,8 @@ Route::get('/oficial', 'OficialController@index');
 
 Route::get('/contralor', 'ContralorController@index');
 
+Route::get('/diligenciario', 'DiligenciarioController@index');
+
 Route::get('/graficas', 'graController@index');
 
 /* Rutas de los componentes en interfaz home (Administrador) */
@@ -102,6 +104,31 @@ Route::get('/tipoRepresentacionCatalogos', 'valores_catalogosController@tipoRepr
 
 Route::get('/sexoRepresentacionCatalogos', 'valores_catalogosController@sexoRepresentacionCatalogos')->name('sexoRepresentacionCatalogos');
 
+Route::get('/tipoDerechosCatalogos', 'valores_catalogosController@tipoDerechosCatalogos')->name('tipoDerechosCatalogos');
+
+Route::get('/tipoMedidaCatalogos', 'valores_catalogosController@tipoMedidaCatalogos')->name('tipoMedidaCatalogos');
+
+Route::get('/tipoAmparoCatalogos', 'valores_catalogosController@tipoAmparoCatalogos')->name('tipoAmparoCatalogos');
+
+Route::get('/faseProcesalCatalogos', 'valores_catalogosController@faseProcesalCatalogos')->name('faseProcesalCatalogos');
+
+Route::get('/resolucionAmparoCatalogos', 'valores_catalogosController@resolucionAmparoCatalogos')->name('resolucionAmparoCatalogos');
+
+Route::get('/mecanismosRealizarCatalogos', 'valores_catalogosController@mecanismosRealizarCatalogos')->name('mecanismosRealizarCatalogos');
+
+Route::get('/paisEmplazamientoCatalogos', 'valores_catalogosController@paisEmplazamientoCatalogos')->name('paisEmplazamientoCatalogos');
+
+Route::get('/estadoEmplazamientoCatalogos', 'valores_catalogosController@estadoEmplazamientoCatalogos')->name('estadoEmplazamientoCatalogos');
+
+Route::get('/municipioEmplazamientoCatalogos', 'valores_catalogosController@municipioEmplazamientoCatalogos')->name('municipioEmplazamientoCatalogos');
+
+Route::get('/codigoPostalCatalogos', 'valores_catalogosController@codigoPostalCatalogos')->name('codigoPostalCatalogos');
+
+Route::get('/mecanismosRealizacionCatalogos', 'valores_catalogosController@mecanismosRealizacionCatalogos')->name('mecanismosRealizacionCatalogos');
+
+Route::get('/siContestaCatalogos', 'valores_catalogosController@siContestaCatalogos')->name('siContestaCatalogos');
+
+
 
 Route::get('/searchNombreValores', 'valores_catalogosController@searchNombreValores')->name('searchNombreValores');
 
@@ -117,19 +144,43 @@ Route::get('/searchNombreExpdiente', 'expedientesController@searchNombreExpdient
 
 Route::resource('/modulouno', 'ejemploController');
 
+Route::resource('/modulodos', 'ejemploDosController');
+
+Route::resource('/modulotres', 'ejemploTresController');
+
 
 /* Rutas del PDF */
 
 Route::get('distritosPDF', 'distritosController@exportPdf')->name('distritos.pdf');
 
+Route::get('distritosExcel', 'distritosController@exportExcel')->name('distritos.xlsx');
+
 Route::get('juzgadosPDF', 'juzgadosController@exportPdf')->name('juzgados.pdf');
+
+Route::get('juzgadosExcel', 'juzgadosController@exportExcel')->name('juzgados.xlsx');
 
 Route::get('materiasPDF', 'materiasController@exportPdf')->name('materias.pdf');
 
+Route::get('materiasExcel', 'materiasController@exportExcel')->name('materias.xlsx');
+
 Route::get('juiciosPDF', 'juiciosController@exportPdf')->name('juicios.pdf');
+
+Route::get('juiciosExcel', 'juiciosController@exportExcel')->name('juicios.xlsx');
 
 Route::get('variablesPDF', 'catalogosController@exportPdf')->name('variables.pdf');
 
+Route::get('variablesExcel', 'catalogosController@exportExcel')->name('variables.xlsx');
+
 Route::get('valoresvariablesPDF', 'valores_catalogosController@exportPdf')->name('valoresvariables.pdf');
 
+Route::get('valoresvariablesExcel', 'valores_catalogosController@exportExcel')->name('valoresvariables.xlsx');
+
 Route::get('expedientesPDF', 'expedientesController@exportPdf')->name('expedientes.pdf');
+
+Route::get('expedientesExcel', 'expedientesController@exportExcel')->name('expedientes.xlsx');
+
+Route::get('modulodiezPDF', 'ejemplotresController@exportPdf')->name('modulodiez.pdf');
+
+Route::get('modulounoExcel', 'ejemploController@exportExcel')->name('modulouno.xlsx');
+
+Route::get('modulodiezExcel', 'ejemplotresController@exportExcel')->name('modulodiez.xlsx');

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\MateriasExport;
 use App\materias;
 
 
@@ -117,6 +119,14 @@ class materiasController extends Controller
 
 
         return $pdf->download('consulta-materias.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new MateriasExport, 'materias.xlsx');
+       
     }
 
     public function materiasAll()

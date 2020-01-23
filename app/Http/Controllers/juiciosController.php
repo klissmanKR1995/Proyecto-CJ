@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\JuiciosExport;
 use App\juicios;
 
 class juiciosController extends Controller
@@ -126,6 +128,14 @@ class juiciosController extends Controller
 
 
         return $pdf->download('consulta-juicios.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new JuiciosExport, 'juicios.xlsx');
+       
     }
 
     public function juiciosAll()

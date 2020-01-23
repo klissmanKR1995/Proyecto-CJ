@@ -22,7 +22,8 @@ Vue.component('variables-component', require('./components/variablesNComponent.v
 Vue.component('valoresvariables-component', require('./components/valoresvariablesNComponent.vue').default);
 Vue.component('expedientesadmin-component', require('./components/expedientesAdminComponent.vue').default);
 Vue.component('modulounoactualizar-component', require('./components/modulounoactualizarComponent.vue').default);
-
+Vue.component('modulodosactualizar-component', require('./components/modulodosactualizarComponent.vue').default);
+Vue.component('modulodiezactualizar-component', require('./components/modulodiezactualizarComponent.vue').default);
 
 /**
  Componentes Oficial de partes
@@ -30,12 +31,21 @@ Vue.component('modulounoactualizar-component', require('./components/modulounoac
 
 Vue.component('expedientes-component', require('./components/expedientesComponent.vue').default);
 Vue.component('modulouno-component', require('./components/modulounoComponent.vue').default);
+Vue.component('modulodos-component', require('./components/modulodosComponent.vue').default);
 
 /**
  Componentes Contralor
  */
 Vue.component('expedintescontraloria-component', require('./components/expedientesContraloriaComponent.vue').default);
 Vue.component('veruno-component', require('./components/contraloriaModuloUnoComponent.vue').default);
+Vue.component('verdos-component', require('./components/contraloriaModuloDosComponent.vue').default);
+Vue.component('verdiez-component', require('./components/contraloriaModuloDiezComponent.vue').default);
+
+
+/**
+ Componentes Diligenciario
+ */
+Vue.component('modulodiez-component', require('./components/modulodiezComponent.vue').default);
 
 
 Vue.component('pagination', require('laravel-vue-pagination'));

@@ -49,17 +49,22 @@
               <!-- Menu con submenu usuarios-->
 
               <li class="nav-item">
-                  <a class="nav-link collapsed py-1 dropdown-toggle" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-users"></i> Modulo I</a>
+                  <a class="nav-link collapsed py-1 dropdown-toggle" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="fas fa-university"></i> Modulos</a>
                   <div class="collapse" id="submenu1sub1" aria-expanded="false" aria-controls="v-pills-home">
                       <ul class="flex-column nav pl-4">
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-libro-tab" data-toggle="pill" href="#v-pills-libro" role="tab" aria-controls="v-pills-libro" aria-selected="false"><i class="fas fa-users"></i>
+                              <a class="nav-link p-1" id="v-pills-libro-tab" data-toggle="pill" href="#v-pills-libro" role="tab" aria-controls="v-pills-libro" aria-selected="false"><i class="fas fa-university"></i>
                                    Libro de gobierno
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-moduloUno-tab" data-toggle="pill" href="#v-pills-moduloUno" role="tab" aria-controls="v-pills-moduloUno" aria-selected="false"> <i class="fas fa-user"></i>
+                              <a class="nav-link p-1" id="v-pills-moduloUno-tab" data-toggle="pill" href="#v-pills-moduloUno" role="tab" aria-controls="v-pills-moduloUno" aria-selected="false"> <i class="fas fa-university"></i>
                                   Modulo I
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link p-1" id="v-pills-moduloOcho-tab" data-toggle="pill" href="#v-pills-moduloOcho" role="tab" aria-controls="v-pills-moduloOcho" aria-selected="false"> <i class="fas fa-university"></i>
+                                  Modulo VIII
                               </a>
                           </li>
                       </ul>
@@ -125,6 +130,8 @@
            <expedientes-component> </expedientes-component> 
 
            <a href="{{ route('expedientes.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+
+           <a href="{{ route('expedientes.xlsx') }}" class="btn btn-success"> Exportar Excel </a>
  
 
           </div>
@@ -142,13 +149,33 @@
 
         <div class="container">
          
-         <modulouno-component> </modulouno-component>   
+         <modulouno-component> </modulouno-component>  <br> 
+
+         <a href="{{ route('modulouno.xlsx') }}" class="btn btn-success"> Exportar Excel </a>
+          
 
 
         </div>
       </div>
       <!-- Termina formulario moduloUno -->
 
+
+      <!-- Empieza formulario de moduloOcho -->
+      <div class="tab-pane fade" id="v-pills-moduloOcho" role="tabpanel" aria-labelledby="v-pills-moduloOcho-tab">
+
+        <div class="alert alert-secondary text-center" role="alert">
+          <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> del modulo VIII, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
+        </div>
+
+        <div class="container">
+         
+         <modulodos-component> </modulodos-component>
+          
+
+
+        </div>
+      </div>
+      <!-- Termina formulario moduloOcho -->
 
     <!-- /#wrapper -->
   </div>

@@ -56,6 +56,9 @@ class VerificationController extends Controller
             case 3:
                     return '/contralor';
                 break; 
+            case 4:
+                    return '/diligenciario';
+                break; 
             default:
                     return '/login'; 
                 break;

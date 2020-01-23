@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\CatalogosExport;
 use App\catalogos;
 
 class catalogosController extends Controller
@@ -114,6 +116,14 @@ class catalogosController extends Controller
 
 
         return $pdf->download('consulta-variables.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new CatalogosExport, 'variables.xlsx');
+       
     }
 
     public function catalogosAll()

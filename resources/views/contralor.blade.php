@@ -64,7 +64,12 @@
                           </li>
                           <li class="nav-item">
                               <a class="nav-link p-1" id="v-pills-moduloDosContralor-tab" data-toggle="pill" href="#v-pills-moduloDosContralor" role="tab" aria-controls="v-pills-moduloDosContralor" aria-selected="false"> <i class="fas fa-university"></i>
-                                  Modulo II
+                                  Modulo VIII
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link p-1" id="v-pills-moduloDiezContralor-tab" data-toggle="pill" href="#v-pills-moduloDiezContralor" role="tab" aria-controls="v-pills-moduloDiezContralor" aria-selected="false"> <i class="fas fa-university"></i>
+                                  Modulo X
                               </a>
                           </li>
                       </ul>
@@ -135,6 +140,8 @@
             <expedintescontraloria-component> </expedintescontraloria-component>
 
             <a href="{{ route('expedientes.pdf') }}" class="btn btn-danger"> Exportar PDF </a>
+
+            <a href="{{ route('expedientes.xlsx') }}" class="btn btn-success"> Exportar Excel </a>
  
 
           </div>
@@ -152,7 +159,9 @@
 
           <div class="container">
            
-           <veruno-component> </veruno-component>
+           <veruno-component> </veruno-component> <br>
+
+           <a href="{{ route('modulouno.xlsx') }}" class="btn btn-success"> Exportar Excel </a>
             
  
 
@@ -172,11 +181,29 @@
         <div class="container">
          
         
-
+          <verdos-component> </verdos-component>
 
         </div>
       </div>
       <!-- Termina formulario moduloDosContralor -->
+
+       <!-- Empieza formulario de moduloDiezContralor -->
+      <div class="tab-pane fade" id="v-pills-moduloDiezContralor" role="tabpanel" aria-labelledby="v-pills-moduloDiezContralor-tab">
+
+        <div class="alert alert-secondary text-center" role="alert">
+          <font size="4"> ACCIONES: </font>  <strong> Visualiazación </strong> de registro de expedientes, <strong> POR MODULOS DE CAPTURA </strong> y generación de <strong> REPORTES ESTÁDISTICOS </strong>
+        </div>
+
+        <div class="container">
+         
+        
+          <verdiez-component> </verdiez-component> <br>
+
+          <a href="{{ route('modulodiez.xlsx') }}" class="btn btn-success"> Exportar Excel </a> <br>
+
+        </div>
+      </div>
+      <!-- Termina formulario moduloDiezContralor -->
 
        <!-- Empieza formulario de estadisticas -->
       <div class="tab-pane fade" id="v-pills-estadisticas" role="tabpanel" aria-labelledby="v-pills-estadisticas-tab">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ValoresCatalogosExport;
 use App\valorescatalagos;
 
 class valores_catalogosController extends Controller
@@ -140,6 +142,14 @@ class valores_catalogosController extends Controller
 
 
         return $pdf->download('consulta-valoresCatalogos.pdf');
+    }
+
+    public function exportExcel()
+    {
+        
+        
+        return Excel::download(new ValoresCatalogosExport, 'ValoresCatalogos.xlsx');
+       
     }
 
     public function getCatalogos(Request $request)
@@ -351,6 +361,139 @@ class valores_catalogosController extends Controller
             ->get()
         );
     }
+
+    public function tipoDerechosCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 16)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function tipoMedidaCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 17)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function tipoAmparoCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 18)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function faseProcesalCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 19)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function resolucionAmparoCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 20)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function mecanismosRealizarCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 21)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function paisEmplazamientoCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 4)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function estadoEmplazamientoCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 5)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function municipioEmplazamientoCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 6)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function codigoPostalCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 22)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+    public function mecanismosRealizacionCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 23)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
+     public function siContestaCatalogos(Request $request)
+    {
+        return json_encode(
+            DB::table('valores_catalagos')
+            ->select('id_valor','valor_variable')
+            ->where('id_catalogo', 24)
+            ->orderBy('id_catalogo', 'asc')
+            ->get()
+        );
+    }
+
 
   
     public function searchNombreValores(Request $request)
