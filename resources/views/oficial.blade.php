@@ -62,11 +62,6 @@
                                   Modulo I
                               </a>
                           </li>
-                          <li class="nav-item">
-                              <a class="nav-link p-1" id="v-pills-moduloOcho-tab" data-toggle="pill" href="#v-pills-moduloOcho" role="tab" aria-controls="v-pills-moduloOcho" aria-selected="false"> <i class="fas fa-university"></i>
-                                  Modulo VIII
-                              </a>
-                          </li>
                       </ul>
                   </div>
               </li>
@@ -158,25 +153,6 @@
         </div>
       </div>
       <!-- Termina formulario moduloUno -->
-
-
-      <!-- Empieza formulario de moduloOcho -->
-      <div class="tab-pane fade" id="v-pills-moduloOcho" role="tabpanel" aria-labelledby="v-pills-moduloOcho-tab">
-
-        <div class="alert alert-secondary text-center" role="alert">
-          <font size="4"> ACCIONES: </font>  <strong> ALTAS Y BAJAS </strong> del modulo VIII, <strong> ACTUALIZACIÓN DE LA INFORMACIÓN </strong> y generación de <strong> REPORTES </strong>
-        </div>
-
-        <div class="container">
-         
-         <modulodos-component> </modulodos-component>
-          
-
-
-        </div>
-      </div>
-      <!-- Termina formulario moduloOcho -->
-
     <!-- /#wrapper -->
   </div>
 <!--Cierre de div="app" -->
